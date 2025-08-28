@@ -6,11 +6,12 @@ import Link from "next/link";
 
 export const revalidate = 60;
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await sanityClient.fetch(postBySlugQuery, { slug: params.slug }, { cache: "force-cache" });
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await sanityClient.fetch(postBySlugQuery, { slug }, { cache: "force-cache" });
   if (!post) return <main><h1 className="text-2xl font-semibold">Post not found</h1></main>;
 
-  const related = await sanityClient.fetch(relatedPostsQuery, { slug: params.slug }, { cache: "force-cache" });
+  const related = await sanityClient.fetch(relatedPostsQuery, { slug }, { cache: "force-cache" });
 
   return (
     <main className="space-y-10">

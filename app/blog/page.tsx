@@ -6,8 +6,9 @@ export const revalidate = 60;
 
 const PAGE_SIZE = 9;
 
-export default async function BlogListPage({ searchParams }: { searchParams?: { page?: string } }) {
-  const page = Math.max(1, Number(searchParams?.page ?? 1));
+export default async function BlogPage({ searchParams }: { searchParams?: Promise<{ page?: string }> }) {
+  const params = await searchParams;
+  const page = Math.max(1, Number(params?.page ?? 1));
   const offset = (page - 1) * PAGE_SIZE;
   const end = offset + PAGE_SIZE;
 

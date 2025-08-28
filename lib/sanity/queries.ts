@@ -27,3 +27,21 @@ export const relatedPostsQuery = groq`*[_type=="blogPost" && slug.current!=$slug
   _id, title, "slug": slug.current, coverImage, excerpt, publishedAt,
   "author": author-> { _id, name, "slug": slug.current, avatar }, tags
 }`;
+
+export const clientReviewsQuery = groq`*[_type=="clientReview"] | order(displayOrder asc){
+  _id,
+  companyName,
+  companyLogo,
+  companyWebsite,
+  reviewScreenshot,
+  displayOrder
+}`;
+
+export const clientFeedbackQuery = groq`*[_type=="clientFeedback"] | order(displayOrder asc)[0...9]{
+  _id,
+  companyName,
+  companyLogo,
+  companyWebsite,
+  testimonialScreenshot,
+  displayOrder
+}`;
