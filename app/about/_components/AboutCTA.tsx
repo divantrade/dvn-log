@@ -29,8 +29,8 @@ export default function AboutCTA() {
         <div className="mt-8 pt-8 border-t border-white/20">
           <p className="text-white/80 text-sm">
             Questions? Call us at{" "}
-            <a href="tel:+1234567890" className="text-white font-semibold hover:underline">
-              +1 (234) 567-8900
+            <a href="tel:+905010644068" className="text-white font-semibold hover:underline">
+              +90 501 064 40 68
             </a>{" "}
             or email{" "}
             <a href="mailto:info@dvnlog.com" className="text-white font-semibold hover:underline">

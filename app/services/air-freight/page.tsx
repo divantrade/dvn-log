@@ -1,35 +1,74 @@
-import Link from "next/link";
-import PageHero from "../../_components/PageHero";
 import NavHeightObserver from "../../_components/NavHeightObserver";
+import PageHero from "../../_components/PageHero";
+import ServicePageLayout from "../_components/ServicePageLayout";
 import AirImg from "@/images/plane-airport-sunset.jpg";
 
 export default function AirFreightPage() {
+  const serviceOptions = [
+    {
+      title: "Express Air Services",
+      desc: "Next-flight-out for urgent shipments with priority handling and expedited customs clearance."
+    },
+    {
+      title: "Economy Air Freight",
+      desc: "Cost-effective deferred services for less time-sensitive cargo with reliable schedules."
+    },
+    {
+      title: "Dangerous Goods Handling",
+      desc: "Certified handling of hazardous materials with full IATA compliance and safety protocols."
+    }
+  ];
+
+  const additionalCapabilities = [
+    {
+      title: "Temperature Control",
+      desc: "Climate-controlled cargo solutions for pharmaceuticals, perishables, and sensitive goods with real-time monitoring."
+    },
+    {
+      title: "Specialized Handling",
+      desc: "Expert care for fragile, valuable, and oversized cargo with custom packaging and handling procedures."
+    },
+    {
+      title: "Global Network",
+      desc: "Door-to-door coverage across 500+ destinations with local expertise and 24/7 customer support."
+    },
+    {
+      title: "Real-time Tracking",
+      desc: "Flight tracking and milestone updates with proactive communication and exception management."
+    }
+  ];
+
+  const features = [
+    "Express and economy air services",
+    "Global door-to-door coverage",
+    "Dangerous goods certification",
+    "Temperature-controlled transport",
+    "Real-time flight tracking",
+    "24/7 customer support"
+  ];
+
   return (
     <main className="px-0">
       <NavHeightObserver />
-      <PageHero title={"Air Freight"} subtitle={"Express and economy air cargo for time‑critical shipments."} image={AirImg} imageAlt="Airplane at airport" />
-      <div className="mx-auto max-w-7xl px-6 py-12 space-y-8">
-      <nav className="text-sm text-neutral-600 dark:text-neutral-400"><Link href="/services" className="hover:underline">Services</Link> / Air Freight</nav>
-
-      <section className="grid gap-4">
-        <h2 className="text-xl font-medium text-[var(--brand-primary)]">Capabilities</h2>
-        <ul className="list-disc pl-5 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
-          <li>Next‑flight‑out and deferred services</li>
-          <li>Dangerous goods handling</li>
-          <li>Temperature‑controlled solutions</li>
-          <li>Global door‑to‑door coverage</li>
-        </ul>
-      </section>
-
-      <section className="rounded-xl border border-neutral-200/70 dark:border-neutral-800/70 p-6 bg-neutral-50 dark:bg-neutral-950">
-        <h3 className="font-medium">Ship by air</h3>
-        <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Balance speed and cost with the right service level.</p>
-        <div className="mt-3 flex gap-3">
-          <Link href="/contact" className="px-4 py-2 rounded-md bg-[var(--brand-bg)] text-[var(--brand-fg)]">Contact Us</Link>
-          <Link href="/tracking" className="px-4 py-2 rounded-md border border-[var(--brand-primary-600)]">Track Shipment</Link>
-        </div>
-      </section>
-      </div>
+      <PageHero 
+        title="Air Freight" 
+        subtitle="Express and economy air cargo for time‑critical shipments." 
+        image={AirImg} 
+        imageAlt="Airplane at airport" 
+      />
+      <ServicePageLayout
+        serviceName="Air Freight"
+        heroImage={AirImg}
+        heroImageAlt="Professional air freight services"
+        serviceCategory="Air Freight"
+        title="Move by air with speed and precision"
+        description="Time-critical cargo solutions with express and economy options across global routes. Reliable schedules, certified handling, and end-to-end visibility for urgent shipments."
+        features={features}
+        serviceOptions={serviceOptions}
+        additionalCapabilities={additionalCapabilities}
+        ctaTitle="Ready to ship by air?"
+        ctaDescription="Get competitive rates and reliable transit times for your air freight needs."
+      />
     </main>
   );
 }

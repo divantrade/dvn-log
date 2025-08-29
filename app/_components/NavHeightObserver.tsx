@@ -9,12 +9,18 @@ export default function NavHeightObserver() {
     const root = document.documentElement;
     const header = document.querySelector("header.sticky");
 
+    // Set initial value immediately to prevent layout shift
+    root.style.setProperty("--nav-h", "112px");
+
     const setVar = () => {
-      const h = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+      const h = header instanceof HTMLElement ? header.getBoundingClientRect().height : 112;
       root.style.setProperty("--nav-h", `${Math.round(h)}px`);
     };
 
-    setVar();
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      setVar();
+    });
 
     const ro = new ResizeObserver(() => setVar());
     if (header instanceof HTMLElement) ro.observe(header);

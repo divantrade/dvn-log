@@ -205,7 +205,7 @@ export default function ContactPage() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             className={`form-input w-full px-4 py-3 rounded-lg ${errors.phone ? 'error' : ''}`}
-                            placeholder="+90 XXX XXX XX XX"
+                            placeholder="+90 501 064 40 68"
                           />
                           {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                         </div>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                           <h4 className="font-semibold text-gray-900">Address</h4>
                           <p className="text-gray-600 text-sm">
                             Beycenter Residence<br />
-                            Cumhuriyet Mah., Esenyurt<br />
+                            Cumhuriyet Mahallesi, Esenyurt<br />
                             İstanbul, Turkey
                           </p>
                         </div>
@@ -311,7 +311,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900">Phone</h4>
-                          <p className="text-gray-600 text-sm">+90 XXX XXX XX XX</p>
+                          <p className="text-gray-600 text-sm">+90 501 064 40 68</p>
                         </div>
                       </div>
 
@@ -336,18 +336,15 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-2 text-sm text-gray-600">
                       <div className="flex justify-between">
-                        <span>Monday - Friday</span>
+                        <span>Monday - Sunday</span>
                         <span>09:00 - 18:00</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Saturday</span>
+                        <span>Public Holidays</span>
                         <span>09:00 - 14:00</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Sunday</span>
-                        <span>Closed</span>
-                      </div>
                       <p className="text-xs text-gray-500 mt-3">GMT+3 (Turkey Time)</p>
+                      <p className="text-xs font-semibold text-blue-600 mt-2">Emergency Support Available 24/7</p>
                     </div>
                   </div>
 
@@ -360,8 +357,8 @@ export default function ContactPage() {
                           <FiTruck className="w-5 h-5 text-green-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-2xl text-gray-900">500+</div>
-                          <div className="text-sm text-gray-600">Shipments Delivered</div>
+                          <div className="font-bold text-lg text-gray-900">Reliable Service</div>
+                          <div className="text-sm text-gray-600">Excellence in every delivery</div>
                         </div>
                       </div>
 
@@ -370,8 +367,8 @@ export default function ContactPage() {
                           <FiGlobe className="w-5 h-5 text-purple-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-2xl text-gray-900">25+</div>
-                          <div className="text-sm text-gray-600">Countries Served</div>
+                          <div className="font-bold text-2xl text-gray-900">50+</div>
+                          <div className="text-sm text-gray-600">Global Coverage</div>
                         </div>
                       </div>
 
@@ -390,8 +387,8 @@ export default function ContactPage() {
                           <FiPackage className="w-5 h-5 text-blue-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-2xl text-gray-900">24/7</div>
-                          <div className="text-sm text-gray-600">Support Available</div>
+                          <div className="font-bold text-lg text-gray-900">7-Day Support</div>
+                          <div className="text-sm text-gray-600">Available</div>
                         </div>
                       </div>
                     </div>

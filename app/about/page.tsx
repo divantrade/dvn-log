@@ -3,7 +3,6 @@ import AboutHero from './_components/AboutHero';
 import AboutValues from './_components/AboutValues';
 import AboutCounters from './_components/AboutCounters';
 import AboutProcess from './_components/AboutProcess';
-import AboutCerts from './_components/AboutCerts';
 import AboutLeadership from './_components/AboutLeadership';
 import AboutCTA from './_components/AboutCTA';
 
@@ -15,7 +14,6 @@ export default function AboutPage() {
         <AboutValues />
         <AboutCounters />
         <AboutProcess />
-        <AboutCerts />
         <AboutLeadership />
         <AboutCTA />
       </div>

@@ -1,47 +1,54 @@
-import groq from "groq";
+// lib/sanity/queries.ts
+import { groq } from "next-sanity";
 
-export const partnersQuery = groq`*[_type=="partner" && active==true] | order(priority desc, name asc){
-  _id, name, logo, websiteUrl, priority, active
-}`;
-
-export const latestPostsQuery = groq`*[_type=="blogPost"] | order(publishedAt desc)[0...3]{
-  _id, title, "slug": slug.current, excerpt, coverImage, publishedAt,
-  "author": author-> { _id, name, "slug": slug.current, avatar },
+export const paginatedPostsQuery = groq`
+*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  "mainImageUrl": coalesce(coverImage.asset->url, ""),
+  "author": author->{
+    name,
+    "imageUrl": coalesce(avatar.asset->url, "")
+  },
   tags
-}`;
+}
+`;
 
-export const paginatedPostsQuery = groq`*[_type=="blogPost"] | order(publishedAt desc)[$offset...$end]{
-  _id, title, "slug": slug.current, excerpt, coverImage, publishedAt,
-  "author": author-> { _id, name, "slug": slug.current, avatar }, tags
-}`;
+export const postsCountQuery = groq`count(*[_type == "blogPost"])`;
 
-export const postsCountQuery = groq`count(*[_type=="blogPost"])`;
-
-export const postBySlugQuery = groq`*[_type=="blogPost" && slug.current==$slug][0]{
-  _id, title, "slug": slug.current, excerpt, coverImage, body, publishedAt,
-  "author": author-> { _id, name, "slug": slug.current, avatar },
-  tags, seo
-}`;
-
-export const relatedPostsQuery = groq`*[_type=="blogPost" && slug.current!=$slug && count((tags[])[@ in ^.^.tags]) > 0] | order(publishedAt desc)[0...3]{
-  _id, title, "slug": slug.current, coverImage, excerpt, publishedAt,
-  "author": author-> { _id, name, "slug": slug.current, avatar }, tags
-}`;
-
-export const clientReviewsQuery = groq`*[_type=="clientReview"] | order(displayOrder asc){
+export const postBySlugQuery = groq`
+*[_type == "blogPost" && slug.current == $slug][0]{
   _id,
-  companyName,
-  companyLogo,
-  companyWebsite,
-  reviewScreenshot,
-  displayOrder
-}`;
+  title,
+  "slug": slug.current,
+  excerpt,
+  "mainImageUrl": coalesce(coverImage.asset->url, ""),
+  body,
+  publishedAt,
+  "author": author->{
+    name,
+    "imageUrl": coalesce(avatar.asset->url, "")
+  },
+  tags,
+  seo
+}
+`;
 
-export const clientFeedbackQuery = groq`*[_type=="clientFeedback"] | order(displayOrder asc)[0...9]{
+export const relatedPostsQuery = groq`
+*[_type == "blogPost" && slug.current != $slug && count((tags[])[@ in ^.^.tags]) > 0] | order(publishedAt desc)[0...3]{
   _id,
-  companyName,
-  companyLogo,
-  companyWebsite,
-  testimonialScreenshot,
-  displayOrder
-}`;
+  title,
+  "slug": slug.current,
+  "mainImageUrl": coalesce(coverImage.asset->url, ""),
+  excerpt,
+  publishedAt,
+  "author": author->{
+    name,
+    "imageUrl": coalesce(avatar.asset->url, "")
+  },
+  tags
+}
+`;

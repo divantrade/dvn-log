@@ -31,11 +31,11 @@ body {
 @keyframes breathingGradient {
   0%, 100% { 
     transform: translateX(-10%) translateY(-5%) scale(1.1);
-    opacity: 0.06;
+    opacity: 0.04;
   }
   50% { 
     transform: translateX(10%) translateY(5%) scale(1.2);
-    opacity: 0.08;
+    opacity: 0.06;
   }
 }
 
@@ -45,10 +45,10 @@ body {
     opacity: 0;
   }
   30% { 
-    opacity: 0.06;
+    opacity: 0.04;
   }
   70% { 
-    opacity: 0.06;
+    opacity: 0.04;
   }
   100% { 
     transform: translateX(150%) translateY(150%) rotate(45deg);
@@ -59,30 +59,30 @@ body {
 @keyframes bokehFloat1 {
   0%, 100% { 
     transform: translate(0, 0) scale(1);
-    opacity: 0.04;
+    opacity: 0.03;
   }
   33% { 
     transform: translate(30px, -20px) scale(1.1);
-    opacity: 0.06;
+    opacity: 0.04;
   }
   66% { 
     transform: translate(-20px, 30px) scale(0.9);
-    opacity: 0.05;
+    opacity: 0.03;
   }
 }
 
 @keyframes bokehFloat2 {
   0%, 100% { 
     transform: translate(0, 0) scale(1);
-    opacity: 0.03;
+    opacity: 0.02;
   }
   40% { 
     transform: translate(-40px, 25px) scale(1.2);
-    opacity: 0.05;
+    opacity: 0.03;
   }
   80% { 
     transform: translate(25px, -35px) scale(0.8);
-    opacity: 0.04;
+    opacity: 0.03;
   }
 }
 
@@ -136,9 +136,9 @@ body {
   .cta-animated-panel .cta-shape-3,
   .cta-animated-panel .cta-shape-4,
   .cta-animated-panel .cta-shape-5 {
-    animation: none;
-    opacity: 0.06;
-    transform: none;
+    animation: none !important;
+    opacity: 0.04 !important;
+    transform: none !important;
   }
 }
 
@@ -203,16 +203,16 @@ body {
   }
 }
 
-/* CTA Geometric Shapes */
+/* Enhanced CTA Geometric Shapes */
 .cta-animated-panel .cta-shape-1 {
   position: absolute;
   top: 20%;
   left: 10%;
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 75px solid rgba(59,130,246,0.15);
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 150px solid rgba(59,130,246,0.15);
   animation: float1 20s ease-in-out infinite alternate;
   z-index: 0;
   pointer-events: none;
@@ -222,8 +222,8 @@ body {
   position: absolute;
   top: 60%;
   right: 15%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: rgba(79,70,229,0.1);
   animation: float2 25s linear infinite;
@@ -235,8 +235,8 @@ body {
   position: absolute;
   top: 30%;
   right: 25%;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   background: rgba(99,102,241,0.12);
   transform: rotate(45deg);
   animation: float3 15s ease-in-out infinite alternate;
@@ -250,9 +250,9 @@ body {
   left: 20%;
   width: 0;
   height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-top: 45px solid rgba(79,70,229,0.08);
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 100px solid rgba(79,70,229,0.08);
   animation: float4 18s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
@@ -262,13 +262,163 @@ body {
   position: absolute;
   top: 10%;
   right: 5%;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(59,130,246,0.08);
+  background: rgba(59,130,246,0.1);
   animation: float5 22s ease-in-out infinite alternate;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Additional floating shapes for enhanced visual interest */
+.cta-animated-panel .cta-shape-6 {
+  position: absolute;
+  bottom: 15%;
+  right: 8%;
+  width: 45px;
+  height: 45px;
+  background: rgba(79,70,229,0.08);
+  transform: rotate(45deg);
+  animation: float3 18s ease-in-out infinite alternate reverse;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Responsive sizing for mobile devices */
+@media (max-width: 768px) {
+  .cta-animated-panel .cta-shape-1 {
+    border-left-width: 60px;
+    border-right-width: 60px;
+    border-bottom-width: 90px;
+    top: 15%;
+    left: 5%;
+  }
+  
+  .cta-animated-panel .cta-shape-2 {
+    width: 50px;
+    height: 50px;
+    top: 65%;
+    right: 10%;
+  }
+  
+  .cta-animated-panel .cta-shape-3 {
+    width: 35px;
+    height: 35px;
+    top: 25%;
+    right: 20%;
+  }
+  
+  .cta-animated-panel .cta-shape-4 {
+    border-left-width: 40px;
+    border-right-width: 40px;
+    border-top-width: 60px;
+    bottom: 20%;
+    left: 15%;
+  }
+  
+  .cta-animated-panel .cta-shape-5 {
+    width: 30px;
+    height: 30px;
+    top: 8%;
+    right: 3%;
+  }
+  
+  .cta-animated-panel .cta-shape-6 {
+    width: 25px;
+    height: 25px;
+    bottom: 12%;
+    right: 5%;
+  }
+}
+
+/* Section heading utility class for unified section titles */
+.section-heading {
+  @apply text-center mb-12;
+}
+
+.section-heading .heading-wrapper {
+  @apply flex items-center justify-center gap-4 mb-6;
+}
+
+.section-heading .heading-wrapper h2 {
+  @apply text-3xl font-bold text-gray-900 whitespace-nowrap;
+}
+
+.section-heading .heading-accent {
+  @apply flex-1 h-px bg-gradient-to-r from-transparent via-blue-600 to-transparent max-w-24;
+}
+
+.section-heading p {
+  @apply text-gray-600 max-w-2xl mx-auto;
+}
+
+/* Staggered reveal animation for articles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .fadeInUp {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hero image zoom animation for excitement effect */
+@keyframes hero-zoom-out {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-subtle-zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-hero-zoom-out {
+  animation: hero-zoom-out 8s ease-out forwards;
+}
+
+.animate-hero-subtle-zoom {
+  animation: hero-subtle-zoom 6s ease-in-out infinite;
 }
 
 /* Mobile/tablet performance optimization */

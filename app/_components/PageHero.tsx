@@ -14,9 +14,9 @@ type PageHeroProps = {
 export default function PageHero({ title, subtitle, imageAlt = "Maritime logistics hero", image, zoomOut = false }: PageHeroProps) {
   return (
     <section
-      className="relative w-full overflow-hidden text-white"
+      className="relative w-full overflow-hidden text-white [min-height:calc(var(--nav-h,112px)*3.25)]"
       aria-label="Page hero"
-      style={{ minHeight: "calc(var(--nav-h, 112px) * 2)" }}
+      style={{ minHeight: "364px" }} // Fixed height to prevent layout shift
     >
       {/* Background image */}
       <div className="absolute inset-0">
@@ -26,10 +26,10 @@ export default function PageHero({ title, subtitle, imageAlt = "Maritime logisti
           fill
           sizes="100vw"
           priority={false}
-          className={"object-cover" + (zoomOut ? " animate-hero-zoom-out" : "")}
+          className={"object-cover" + (zoomOut ? " animate-hero-zoom-out animate-hero-subtle-zoom" : "")}
         />
         {/* subtle overlay for text legibility */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.15)_100%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(30,58,138,0.55)_0%,rgba(59,130,246,0.45)_50%,rgba(96,165,250,0.35)_100%)]" aria-hidden />
       </div>
 
       {/* Content */}

@@ -17,6 +17,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DVN LOG - Global Logistics Solutions",
   description: "Safe, fast delivery to every corner of the world. Ocean, air, road and rail transport services with real-time tracking.",
+  openGraph: {
+    title: "DVN LOG - Global Logistics Solutions",
+    description: "Safe, fast delivery to every corner of the world. Ocean, air, road and rail transport services with real-time tracking.",
+    type: "website",
+    locale: "en_US",
+    siteName: "DVN LOG",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DVN LOG - Global Logistics Solutions",
+    description: "Safe, fast delivery to every corner of the world. Ocean, air, road and rail transport services with real-time tracking.",
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Header />
         <main className="pt-16 md:pt-24">{children}</main>

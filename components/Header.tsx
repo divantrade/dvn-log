@@ -1,12 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import DVNLogo from '@/images/Untitled-1-01 (1).png';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  const services = [
+    { name: 'Ocean Freight', href: '/services/ocean-freight' },
+    { name: 'Air Freight', href: '/services/air-freight' },
+    { name: 'Road Transport', href: '/services/road-transport' },
+    { name: 'Rail Freight', href: '/services/rail-freight' },
+    { name: 'Warehousing', href: '/services/warehousing' },
+    { name: 'Project Cargo', href: '/services/project-cargo' },
+    { name: 'Multimodal', href: '/services/multimodal' }
+  ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#1e40af] to-[#3b82f6] shadow-xl backdrop-blur-sm">
@@ -17,9 +40,9 @@ export default function Header() {
             <Image
               src={DVNLogo}
               alt="DVN LOG"
-              width={120}
-              height={45}
-              className="h-10 md:h-14 w-auto"
+              width={225}
+              height={85}
+              className="h-[4.7rem] md:h-[6.6rem] w-auto"
               priority
             />
           </Link>
@@ -30,10 +53,45 @@ export default function Header() {
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link href="/services" className="text-white hover:text-blue-200 transition-all duration-300 font-medium relative group">
-              Services
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            <div ref={servicesRef} className="relative">
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                className="flex items-center text-white hover:text-blue-200 transition-all duration-300 font-medium relative group"
+              >
+                Services
+                <svg className={`ml-1 w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              {isServicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-slate-200/50 py-2 z-50">
+                  <Link
+                    href="/services"
+                    className="group flex items-center px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 font-medium border-b border-slate-100"
+                    onClick={() => setIsServicesOpen(false)}
+                  >
+                    <div className="w-2 h-2 border border-slate-300 rounded-full mr-3"></div>
+                    <span>All Services</span>
+                  </Link>
+                  
+                  <div className="py-1">
+                    {services.map((service, index) => (
+                      <Link
+                        key={service.name}
+                        href={service.href}
+                        className="group flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-50 transition-all duration-200"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        <div className="w-1.5 h-1.5 border border-blue-300 rounded-full mr-3"></div>
+                        <span className="text-sm">{service.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             <Link href="/about" className="text-white hover:text-blue-200 transition-all duration-300 font-medium relative group">
               About Us
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -81,9 +139,22 @@ export default function Header() {
               <Link href="/" className="text-white hover:text-blue-200 transition-colors font-medium">
                 Home
               </Link>
-              <Link href="/services" className="text-white hover:text-blue-200 transition-colors font-medium">
-                Services
-              </Link>
+              <div className="space-y-2">
+                <Link href="/services" className="flex items-center text-white hover:text-blue-200 transition-colors font-medium">
+                  <div className="w-2 h-2 border border-white/60 rounded-full mr-3"></div>
+                  All Services
+                </Link>
+                {services.map((service) => (
+                  <Link
+                    key={service.name}
+                    href={service.href}
+                    className="flex items-center text-white/80 hover:text-blue-200 transition-colors text-sm pl-4"
+                  >
+                    <div className="w-1.5 h-1.5 border border-white/40 rounded-full mr-2"></div>
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
               <Link href="/about" className="text-white hover:text-blue-200 transition-colors font-medium">
                 About Us
               </Link>

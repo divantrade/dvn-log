@@ -19,7 +19,7 @@ interface EnhancedHeroSliderProps {
 
 export default function EnhancedHeroSlider({ 
   slides, 
-  intervalMs = 5500,
+  intervalMs = 4500,
   children 
 }: EnhancedHeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,15 +82,15 @@ export default function EnhancedHeroSlider({
               fill
               className="object-cover"
               priority={index === 0}
+              sizes="100vw"
               quality={90}
             />
           </div>
         ))}
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+      {/* Navy Overlay for Consistent Contrast */}
+      <div className="absolute inset-0 bg-slate-900/40" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
