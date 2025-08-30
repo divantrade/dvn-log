@@ -38,8 +38,8 @@ export default async function BlogPage({
   const end = offset + PAGE_SIZE;
 
   const [posts, total] = await Promise.all([
-    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end }, { cache: "force-cache" }),
-    sanityClient.fetch<number>(postsCountQuery, {}, { cache: "force-cache" }),
+    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end }, { next: { revalidate: 60 } }),
+    sanityClient.fetch<number>(postsCountQuery, {}, { next: { revalidate: 60 } }),
   ]);
 
   const totalPages = Math.max(1, Math.ceil((total as number) / PAGE_SIZE));
