@@ -52,3 +52,48 @@ export const relatedPostsQuery = groq`
   tags
 }
 `;
+
+export const partnersQuery = groq`
+*[_type == "partner"] | order(displayOrder asc){
+  _id,
+  name,
+  logo,
+  website,
+  displayOrder
+}
+`;
+
+export const clientFeedbackQuery = groq`
+*[_type == "clientFeedback"] | order(displayOrder asc){
+  _id,
+  companyName,
+  companyLogo,
+  companyWebsite,
+  testimonialScreenshot,
+  displayOrder
+}
+`;
+
+export const clientReviewsQuery = groq`
+*[_type == "clientReview"] | order(displayOrder asc){
+  _id,
+  companyName,
+  companyLogo,
+  companyWebsite,
+  reviewScreenshot,
+  displayOrder
+}
+`;
+
+export const testimonialsQuery = groq`
+*[_type == "testimonial"] | order(displayOrder asc){
+  _id,
+  clientName,
+  clientPosition,
+  companyName,
+  companyLogo,
+  testimonialText,
+  rating,
+  featured
+}
+`;

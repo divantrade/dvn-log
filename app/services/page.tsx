@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -23,7 +23,7 @@ type Service = {
   accent: string;
   blurb: string;
   tags: string[];
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 };
 
 const SERVICES: Service[] = [

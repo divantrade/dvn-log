@@ -30,9 +30,10 @@ function formatDate(d?: string) {
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams?: { page?: string };
+  searchParams?: Promise<{ page?: string }>;
 }) {
-  const page = Math.max(1, Number(searchParams?.page ?? 1));
+  const resolvedSearchParams = await searchParams;
+  const page = Math.max(1, Number(resolvedSearchParams?.page ?? 1));
   const offset = (page - 1) * PAGE_SIZE;
   const end = offset + PAGE_SIZE;
 
