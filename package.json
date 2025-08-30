@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "npm install --platform=linux --arch=x64 sharp || true"
+    "postinstall": "npm install --platform=linux --arch=x64 sharp || echo 'Sharp install failed'"
   },
   "dependencies": {
     "@portabletext/react": "^4.0.1",
