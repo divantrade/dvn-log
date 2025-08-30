@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FiMapPin, FiPhone, FiMail, FiClock, FiTruck, FiGlobe, FiUsers, FiPackage, FiSend, FiCheck } from 'react-icons/fi';
+import { FiMapPin, FiPhone, FiMail, FiClock, FiTruck, FiGlobe, FiUsers, FiPackage, FiSend, FiCheck } from 'react-icons/fi/index.js';
 
 interface FormData {
   name: string;
