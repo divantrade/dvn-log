@@ -3,13 +3,27 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 export const sanityClient = createClient({
-  projectId: process.env.SANITY_PROJECT_ID || "dummy-project-id",
+  projectId: process.env.SANITY_PROJECT_ID || "",
   dataset: process.env.SANITY_DATASET || "production",
   apiVersion: process.env.SANITY_API_VERSION || "2024-07-01",
   useCdn: true,
   token: process.env.SANITY_READ_TOKEN, // optional for private datasets
   perspective: "published",
 });
+
+// Safe fetch wrapper for server-side that returns empty data on error
+export const safeSanityServerFetch = async (query: string, params = {}, options = {}) => {
+  try {
+    if (!process.env.SANITY_PROJECT_ID) {
+      console.warn('Sanity project ID not configured, returning empty data');
+      return [];
+    }
+    return await sanityClient.fetch(query, params, options);
+  } catch (error) {
+    console.warn('Sanity server fetch failed, returning empty data:', error);
+    return [];
+  }
+};
 
 const builder = imageUrlBuilder(sanityClient);
 export const urlFor = (source: any) => builder.image(source);

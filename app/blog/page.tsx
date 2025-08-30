@@ -1,7 +1,7 @@
 // app/blog/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { sanityClient } from "@/lib/sanity/client";
+import { safeSanityServerFetch } from "@/lib/sanity/client";
 import { paginatedPostsQuery, postsCountQuery } from "@/lib/sanity/queries";
 
 export const revalidate = 60;
@@ -38,11 +38,14 @@ export default async function BlogPage({
   const end = offset + PAGE_SIZE;
 
   const [posts, total] = await Promise.all([
-    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end }, { cache: "force-cache" }),
-    sanityClient.fetch<number>(postsCountQuery, {}, { cache: "force-cache" }),
+    safeSanityServerFetch(paginatedPostsQuery, { offset, end }, { cache: "force-cache" }),
+    safeSanityServerFetch(postsCountQuery, {}, { cache: "force-cache" }),
   ]);
 
-  const totalPages = Math.max(1, Math.ceil((total as number) / PAGE_SIZE));
+  // Handle empty data gracefully
+  const safePosts = Array.isArray(posts) ? posts : [];
+  const safeTotal = typeof total === 'number' ? total : 0;
+  const totalPages = Math.max(1, Math.ceil(safeTotal / PAGE_SIZE));
 
   return (
     <main className="px-0">
@@ -61,8 +64,29 @@ export default async function BlogPage({
 
       {/* Grid */}
       <section className="mx-auto max-w-7xl px-6 py-12">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => {
+        {safePosts.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="mx-auto max-w-md">
+              <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Blog Coming Soon</h2>
+              <p className="text-gray-600 mb-6">
+                We're working on bringing you valuable insights and updates about logistics and shipping. Check back soon for our latest articles!
+              </p>
+              <Link 
+                href="/" 
+                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Back to Home
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {safePosts.map((post: Post) => {
             const img = post.mainImageUrl || "";
             const date = formatDate(post.publishedAt);
             const category = post.category;
@@ -148,10 +172,11 @@ export default async function BlogPage({
               </li>
             );
           })}
-        </ul>
+          </ul>
+        )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        {safePosts.length > 0 && totalPages > 1 && (
           <nav className="mt-10 flex flex-wrap items-center justify-center gap-2">
             {/* Prev */}
             <Link

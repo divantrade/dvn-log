@@ -1,4 +1,4 @@
-import { sanityClient } from "@/lib/sanity/client";
+import { safeSanityServerFetch } from "@/lib/sanity/client";
 import { postBySlugQuery, relatedPostsQuery } from "@/lib/sanity/queries";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
@@ -36,11 +36,15 @@ function formatDate(d?: string) {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const [post, related] = await Promise.all([
-    sanityClient.fetch<BlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" }),
-    sanityClient.fetch<BlogPost[]>(relatedPostsQuery, { slug }, { cache: "force-cache" })
+    safeSanityServerFetch(postBySlugQuery, { slug }, { cache: "force-cache" }),
+    safeSanityServerFetch(relatedPostsQuery, { slug }, { cache: "force-cache" })
   ]);
   
-  if (!post) {
+  // Handle empty data gracefully
+  const safePost = post && typeof post === 'object' && post._id ? post : null;
+  const safeRelated = Array.isArray(related) ? related : [];
+  
+  if (!safePost) {
     return (
       <main className="px-0">
         <NavHeightObserver />
@@ -54,8 +58,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
-  const publishedDate = formatDate(post.publishedAt);
-  const isRTL = /[\u0600-\u06FF]/.test(post.title ?? "");
+  const publishedDate = formatDate(safePost.publishedAt);
+  const isRTL = /[\u0600-\u06FF]/.test(safePost.title ?? "");
 
   return (
     <main className="px-0">
@@ -71,64 +75,62 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Back to Blog
           </Link>
           
-          <h1 
-            dir={isRTL ? "rtl" : "ltr"}
-            className="text-3xl md:text-4xl font-bold leading-tight mb-4"
-          >
-            {post.title}
+          <h1 className={`text-3xl font-bold sm:text-4xl mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+            {safePost.title}
           </h1>
-          
           <div className="flex items-center gap-4 text-slate-300">
-            {post.author?.name && (
-              <div className="flex items-center gap-2">
-                {post.author.imageUrl && (
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                    <Image
-                      src={post.author.imageUrl}
-                      alt={post.author.name}
-                      fill
-                      sizes="32px"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <span>{post.author.name}</span>
-              </div>
-            )}
-            {publishedDate && (
-              <>
-                <span>•</span>
-                <span>{publishedDate}</span>
-              </>
-            )}
+            <span>{publishedDate}</span>
+            {safePost.category && <span className="px-2 py-1 bg-blue-600 rounded text-sm">{safePost.category}</span>}
+            {safePost.author?.name && <span>By {safePost.author.name}</span>}
           </div>
         </div>
       </section>
 
-      {/* Article Content */}
-      <article className="mx-auto max-w-4xl px-6 py-12">
-        {post.mainImageUrl && (
-          <div className="relative aspect-[16/9] w-full mb-8 rounded-2xl overflow-hidden">
+      {/* Main Image */}
+      {safePost.mainImageUrl && (
+        <section className="mx-auto max-w-4xl px-6 py-8">
+          <div className="relative aspect-video overflow-hidden rounded-lg">
             <Image
-              src={post.mainImageUrl}
-              alt={post.title}
+              src={safePost.mainImageUrl}
+              alt={safePost.title || "Blog post image"}
               fill
-              sizes="(max-width: 768px) 100vw, 896px"
               className="object-cover"
-              priority
             />
           </div>
-        )}
-        
-        <div className="prose prose-lg prose-slate max-w-none">
-          <PortableText value={post.body} />
+        </section>
+      )}
+
+      {/* Content */}
+      <article className="mx-auto max-w-4xl px-6 py-8">
+        <div className={`prose prose-lg max-w-none ${isRTL ? 'prose-rtl' : ''}`}>
+          {safePost.body && (
+            <PortableText 
+              value={safePost.body} 
+              components={{
+                types: {
+                  image: ({ value }: { value: any }) => (
+                    <div className="my-8">
+                      <Image
+                        src={value.asset?.url || ''}
+                        alt={value.alt || ''}
+                        width={800}
+                        height={400}
+                        className="rounded-lg"
+                      />
+                    </div>
+                  ),
+                },
+              }}
+            />
+          )}
         </div>
-        
-        {post.tags && post.tags.length > 0 && (
+
+        {/* Tags */}
+        {safePost.tags && safePost.tags.length > 0 && (
           <div className="mt-8 pt-8 border-t border-slate-200">
-            <h3 className="text-sm font-semibold text-slate-900 mb-3">Tags</h3>
+            <h3 className="text-sm font-semibold text-slate-600 mb-3">Tags</h3>
             <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag, index) => (
+              {safePost.tags.map((tag: string, index: number) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full"
@@ -142,12 +144,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </article>
 
       {/* Related Posts */}
-      {related && related.length > 0 && (
-        <section className="bg-slate-50 py-12">
-          <div className="mx-auto max-w-7xl px-6">
-            <h2 className="text-2xl font-bold text-slate-900 mb-8">Related Articles</h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {related.map((relatedPost) => (
+      {safeRelated && safeRelated.length > 0 && (
+        <section className="mx-auto max-w-4xl px-6 py-12 border-t border-slate-200">
+          <h2 className="text-2xl font-bold text-slate-900 mb-8">Related Posts</h2>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {safeRelated.slice(0, 2).map((relatedPost: any) => (
                 <article key={relatedPost._id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
                   {relatedPost.mainImageUrl && (
                     <div className="relative aspect-[16/10] w-full">
@@ -184,7 +185,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </article>
               ))}
             </div>
-          </div>
         </section>
       )}
     </main>
