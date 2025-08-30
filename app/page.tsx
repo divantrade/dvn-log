@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
-import { safeSanityFetch } from '@/lib/sanity/client-side';
+import { sanityClientSide } from '@/lib/sanity/client-side';
 import { partnersQuery, clientFeedbackQuery } from '@/lib/sanity/queries';
 import { latestPostsQuery } from '@/lib/sanity/client-side';
 import { urlForClientSide } from '@/lib/sanity/client-side';
@@ -152,9 +152,9 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
         const [partnersData, postsData, feedbackData] = await Promise.all([
-          safeSanityFetch(partnersQuery, {}, { cache: "no-store" }),
-          safeSanityFetch(latestPostsQuery, {}, { cache: "no-store" }),
-          safeSanityFetch(clientFeedbackQuery, {}, { cache: "no-store" }),
+          sanityClientSide.fetch(partnersQuery, {}, { cache: "no-store" }),
+          sanityClientSide.fetch(latestPostsQuery, {}, { cache: "no-store" }),
+          sanityClientSide.fetch(clientFeedbackQuery, {}, { cache: "no-store" }),
         ]);
         setPartners(partnersData);
         setPosts(postsData);

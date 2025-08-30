@@ -97,3 +97,9 @@ export const testimonialsQuery = groq`
   featured
 }
 `;
+
+export const allPostSlugsQuery = groq`
+*[_type == "blogPost" && defined(slug.current)]{
+  "slug": slug.current
+}
+`;

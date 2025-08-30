@@ -3,26 +3,12 @@ import imageUrlBuilder from "@sanity/image-url";
 import { groq } from "next-sanity";
 
 export const sanityClientSide = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: "2024-07-01",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-07-01",
   useCdn: true, // Use CDN for client-side requests
   perspective: "published",
 });
-
-// Safe fetch wrapper that returns empty array on error
-export const safeSanityFetch = async (query: string, params = {}, options = {}) => {
-  try {
-    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
-      console.warn('Sanity project ID not configured, returning empty data');
-      return [];
-    }
-    return await sanityClientSide.fetch(query, params, options);
-  } catch (error) {
-    console.warn('Sanity fetch failed, returning empty data:', error);
-    return [];
-  }
-};
 
 const builder = imageUrlBuilder(sanityClientSide);
 export const urlForClientSide = (source: any) => builder.image(source);

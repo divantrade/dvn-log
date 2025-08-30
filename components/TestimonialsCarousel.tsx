@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { safeSanityFetch, urlForClientSide } from '@/lib/sanity/client-side';
+import { sanityClientSide, urlForClientSide } from '@/lib/sanity/client-side';
 import { testimonialsQuery } from '@/lib/sanity/queries';
 
 interface Testimonial {
@@ -28,7 +28,7 @@ const TestimonialsCarousel = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const data = await safeSanityFetch(testimonialsQuery);
+        const data = await sanityClientSide.fetch(testimonialsQuery);
         setTestimonials(data || []);
       } catch (error) {
         console.error('Error fetching testimonials:', error);

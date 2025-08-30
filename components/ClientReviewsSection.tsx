@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { safeSanityFetch, urlForClientSide } from '@/lib/sanity/client-side';
+import { sanityClientSide, urlForClientSide } from '@/lib/sanity/client-side';
 import { clientReviewsQuery } from '@/lib/sanity/queries';
 
 interface ClientReview {
@@ -22,7 +22,7 @@ const ClientReviewsSection = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const data = await safeSanityFetch(clientReviewsQuery);
+        const data = await sanityClientSide.fetch(clientReviewsQuery);
         setReviews(data || []);
       } catch (error) {
         console.error('Error fetching client reviews:', error);
