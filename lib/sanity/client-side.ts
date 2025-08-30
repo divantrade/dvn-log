@@ -3,9 +3,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import { groq } from "next-sanity";
 
 export const sanityClientSide = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-07-01",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: "2024-07-01",
   useCdn: true, // Use CDN for client-side requests
   perspective: "published",
 });

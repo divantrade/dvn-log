@@ -3,9 +3,9 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 export const sanityClient = createClient({
-  projectId: process.env.SANITY_PROJECT_ID || "",
-  dataset: process.env.SANITY_DATASET || "production",
-  apiVersion: process.env.SANITY_API_VERSION || "2024-07-01",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: "2024-07-01",
   useCdn: true,
   token: process.env.SANITY_READ_TOKEN, // optional for private datasets
   perspective: "published",
@@ -14,7 +14,7 @@ export const sanityClient = createClient({
 // Safe fetch wrapper for server-side that returns empty data on error
 export const safeSanityServerFetch = async (query: string, params = {}, options = {}) => {
   try {
-    if (!process.env.SANITY_PROJECT_ID) {
+    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
       console.warn('Sanity project ID not configured, returning empty data');
       return [];
     }
