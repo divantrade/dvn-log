@@ -6,7 +6,7 @@ import { schema } from "./sanity/schema";
 export default defineConfig({
   name: "default",
   title: "DVN LOG CMS",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "dummy-project-id",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   basePath: "/studio",
   plugins: [structureTool(), visionTool()],
