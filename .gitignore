@@ -16,3 +16,10 @@ pnpm-debug.log*
 .idea/
 .vscode/
 *.map
+# Logs & reports
+build-log.txt
+trace.log
+status-next*.txt
+
+# TypeScript incremental build
+*.tsbuildinfo
