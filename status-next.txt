@@ -1,0 +1,11 @@
+=== Node & pkg mgr ===
+v20.19.2
+10.8.2
+
+=== Next version ===
+15.5.0
+
+=== Scripts (package.json) ===
+dev, build, start, lint
+
+=== Lint ===

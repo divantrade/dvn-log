@@ -1,0 +1,35 @@
+════════════════════════════════════════════════════════
+                 📊 تقرير فحص مشروع Next.js
+                 التاريخ: Wed Sep  3 11:31:20 +03 2025
+════════════════════════════════════════════════════════
+
+=== 🖥️  بيئة التطوير ===
+Node.js: v20.19.2
+npm: 10.8.2
+yarn: ./health-check.sh: line 29: yarn: command not found
+غير مثبت
+pnpm: ./health-check.sh: line 30: pnpm: command not found
+غير مثبت
+
+=== ⚛️  Next.js ===
+Next.js v15.5.0
+
+=== 📦 Dependencies ===
+React: ├─┬ @portabletext/react@4.0.2
+TypeScript: │ │ │ └── typescript@5.9.2 deduped
+
+=== 📝 Scripts المتاحة ===
+  • dev: next dev
+  • build: next build
+  • start: next start
+  • lint: eslint
+
+=== 📁 هيكل المشروع ===
+الملفات الرئيسية:
+  ✓ app/ (App Router)
+  ✓ public/
+  ✓ components/
+  ✓ tsconfig.json (TypeScript)
+  ✓ .env.local
+
+=== 🔍 Lint Check ===

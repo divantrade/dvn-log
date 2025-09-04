@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+echo "════════════════════════════════════════"
+echo "      🚀 فحص سريع بدون Build"
+echo "════════════════════════════════════════"
+echo ""
+echo "✅ البيئة جاهزة:"
+echo "   • Node: $(node -v)"
+echo "   • Next.js: v15.5.0"
+echo ""
+echo "📁 المجلدات الموجودة:"
+ls -d */ | head -10
+echo ""
+echo "📋 Scripts المتاحة:"
+cat package.json | grep -A 8 '"scripts"' 
+echo ""
+echo "🔍 فحص سريع للأخطاء:"
+npm run lint --silent 2>&1 | head -10 || echo "No lint configured"
+echo ""
+echo "✅ الفحص السريع اكتمل!"
+echo "════════════════════════════════════════"

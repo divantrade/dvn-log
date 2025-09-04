@@ -1,0 +1,13 @@
++ set -o pipefail
++ echo '=== Node & npm ==='
++ node -v
++ npm -v
++ echo
++ echo '=== Next version ==='
++ npx next --version
++ echo
++ echo '=== Scripts (package.json) ==='
++ node -e 'try{const p=require('\''./package.json'\'');console.log(Object.keys(p.scripts||{}))}catch(e){console.log('\''Cannot read package.json'\'')}'
++ echo
++ echo '=== Lint ==='
++ npm run -s lint
