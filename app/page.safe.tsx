@@ -1,0 +1,8 @@
+export default function Page() {
+  return (
+    <div style={{padding:24}}>
+      <h1>Home OK</h1>
+      <p>Minimal homepage for isolation.</p>
+    </div>
+  );
+}
