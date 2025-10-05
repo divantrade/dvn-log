@@ -1,15 +1,15 @@
 import Hero from "./(home)/sections/Hero";
-import Features from "./(home)/sections/Features";
 import Services from "./(home)/sections/Services";
-import CTA from "./(home)/sections/CTA";
+import WhyChoose from "./(home)/sections/WhyChoose";
+import FinalCTA from "./(home)/sections/FinalCTA";
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <Features />
       <Services />
-      <CTA />
+      <WhyChoose />
+      <FinalCTA />
     </>
   );
 }
