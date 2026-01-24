@@ -294,13 +294,13 @@ export default function HomePage() {
             Array.from({ length: 9 }).map((_, i) => (
               <div key={i} className="group cursor-pointer">
                 {/* Top gray section skeleton */}
-                <div className="bg-gray-100 rounded-t-lg p-4 h-[60px] flex items-center gap-3 animate-pulse">
-                  <div className="w-10 h-10 bg-gray-200 rounded"></div>
-                  <div className="h-4 bg-gray-200 rounded w-24"></div>
+                <div className="bg-gray-100 dark:bg-slate-700 rounded-t-lg p-4 h-[60px] flex items-center gap-3 animate-pulse">
+                  <div className="w-10 h-10 bg-gray-200 dark:bg-slate-600 rounded"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-slate-600 rounded w-24"></div>
                 </div>
                 {/* Bottom white section skeleton */}
-                <div className="bg-white rounded-b-lg shadow-md h-[200px] animate-pulse">
-                  <div className="w-full h-full bg-gray-100 rounded-b-lg"></div>
+                <div className="bg-white dark:bg-slate-800 rounded-b-lg shadow-md h-[200px] animate-pulse">
+                  <div className="w-full h-full bg-gray-100 dark:bg-slate-700 rounded-b-lg"></div>
                 </div>
               </div>
             ))
@@ -309,13 +309,13 @@ export default function HomePage() {
             clientFeedback.map((feedback) => (
               <div key={feedback._id} className="group cursor-pointer transition-transform duration-300 hover:scale-105">
                 {/* Top gray section - Company logo + name */}
-                <div className="bg-[#f5f5f5] rounded-t-lg p-4 h-[60px] flex items-center gap-3">
+                <div className="bg-[#f5f5f5] dark:bg-slate-700 rounded-t-lg p-4 h-[60px] flex items-center gap-3">
                   <div className="w-10 h-10 rounded overflow-hidden flex-shrink-0">
                     {feedback.companyLogo ? (
                       feedback.companyWebsite ? (
-                        <a 
-                          href={feedback.companyWebsite} 
-                          target="_blank" 
+                        <a
+                          href={feedback.companyWebsite}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full h-full transition-transform duration-200 hover:scale-110 cursor-pointer"
                         >
@@ -337,18 +337,18 @@ export default function HomePage() {
                         />
                       )
                     ) : (
-                      <div className="w-full h-full bg-gray-300 flex items-center justify-center text-xs text-gray-600">
+                      <div className="w-full h-full bg-gray-300 dark:bg-slate-600 flex items-center justify-center text-xs text-gray-600 dark:text-slate-300">
                         {feedback.companyName.charAt(0)}
                       </div>
                     )}
                   </div>
-                  <h3 className="font-semibold text-[#1e40af] text-sm truncate">
+                  <h3 className="font-semibold text-[#1e40af] dark:text-blue-400 text-sm truncate">
                     {feedback.companyName}
                   </h3>
                 </div>
-                
+
                 {/* Bottom white section - Screenshot */}
-                <div className="bg-white rounded-b-lg shadow-md h-[200px] overflow-hidden group-hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white dark:bg-slate-800 rounded-b-lg shadow-md h-[200px] overflow-hidden group-hover:shadow-lg transition-shadow duration-300">
                   {feedback.testimonialScreenshot ? (
                     <Image
                       src={urlForClientSide(feedback.testimonialScreenshot).width(400).height(200).url()}
@@ -358,7 +358,7 @@ export default function HomePage() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+                    <div className="w-full h-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-gray-400 dark:text-slate-500">
                       <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
@@ -370,8 +370,8 @@ export default function HomePage() {
           ) : (
             // Empty State
             <div className="col-span-full text-center py-12">
-              <div className="text-slate-400 text-lg mb-2">No client feedback available</div>
-              <p className="text-slate-500 text-sm">Check back soon for client testimonials</p>
+              <div className="text-slate-400 dark:text-slate-500 text-lg mb-2">No client feedback available</div>
+              <p className="text-slate-500 dark:text-slate-600 text-sm">Check back soon for client testimonials</p>
             </div>
           )}
         </div>
@@ -549,13 +549,13 @@ export default function HomePage() {
               </div>
 
               {/* World Map Placeholder */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 mb-6 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl p-6 mb-6 relative overflow-hidden">
                 <div className="text-center">
-                  <svg className="w-24 h-16 mx-auto text-blue-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-24 h-16 mx-auto text-blue-300 dark:text-blue-500 mb-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
-                  <p className="text-sm text-blue-600 font-medium">Global Coverage Network</p>
-                  <p className="text-xs text-blue-500">Serving 50+ countries worldwide</p>
+                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">Global Coverage Network</p>
+                  <p className="text-xs text-blue-500 dark:text-blue-300">Serving 50+ countries worldwide</p>
                 </div>
                 {/* Decorative dots */}
                 <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
