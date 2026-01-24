@@ -1,13 +1,152 @@
 {
+  "metadata": {
+    "title": "DVN LOG - حلول لوجستية عالمية",
+    "description": "خدمات شحن ولوجستيات شاملة حول العالم"
+  },
   "nav": {
     "home": "الرئيسية",
-    "services": "الخدمات", 
-    "about": "من نحن",
+    "services": "الخدمات",
+    "allServices": "جميع الخدمات",
+    "aboutUs": "من نحن",
     "blog": "المدونة",
-    "contact": "اتصل بنا"
+    "contact": "تواصل معنا",
+    "trackShipment": "تتبع الشحنة"
+  },
+  "services": {
+    "oceanFreight": "الشحن البحري",
+    "airFreight": "الشحن الجوي",
+    "roadTransport": "النقل البري",
+    "railFreight": "الشحن بالسكك الحديدية",
+    "warehousing": "التخزين",
+    "projectCargo": "شحن المشاريع",
+    "multimodal": "النقل المتعدد",
+    "customs": "التخليص الجمركي"
   },
   "hero": {
-    "title": "DVN LOG - حلول لوجستية شاملة",
-    "subtitle": "نقدم خدمات الشحن والنقل حول العالم"
+    "badge": "شريكك الموثوق في اللوجستيات العالمية",
+    "title": "نقرّب العالم",
+    "titleHighlight": "إليك",
+    "subtitle1": "حلول شحن عالمية متكاملة",
+    "subtitle2": "خدمات شحن جوي سريعة",
+    "subtitle3": "شحن بحري موثوق",
+    "contactUs": "تواصل معنا",
+    "exploreServices": "استكشف خدماتنا"
+  },
+  "about": {
+    "sectionTitle": "عن DVN LOG",
+    "description": "منذ عام 2017، نقدم حلول لوجستية موثوقة عبر البحر والجو والبر والسكك الحديدية مع التركيز على الشفافية والسرعة والكفاءة. يجمع فريقنا بين الانتشار العالمي والخبرة المحلية للحفاظ على حركة شحناتك.",
+    "whyChoose": "لماذا تختار DVN LOG",
+    "globalCoverage": "تغطية عالمية",
+    "realTimeTracking": "تتبع فوري",
+    "dedicatedSupport": "دعم متخصص",
+    "customsCompliance": "الجمارك والامتثال",
+    "containerTracking": "تتبع الحاويات والسفن",
+    "operations247": "عمليات على مدار الساعة",
+    "trackYourShipment": "تتبع شحنتك",
+    "trackDescription": "تابع شحنتك من الاستلام حتى التسليم بالتتبع الفوري",
+    "since": "منذ",
+    "countries": "دولة",
+    "supportAvailable": "دعم متاح طوال الأسبوع",
+    "globalNetwork": "شبكة تغطية عالمية",
+    "servingCountries": "نخدم أكثر من 50 دولة حول العالم",
+    "startTracking": "ابدأ التتبع الآن"
+  },
+  "servicesSection": {
+    "title": "خدماتنا",
+    "subtitle": "حلول لوجستية شاملة مصممة لتلبية احتياجاتك",
+    "learnMore": "اعرف المزيد"
+  },
+  "testimonials": {
+    "title": "ماذا يقول عملاؤنا",
+    "noFeedback": "لا توجد آراء متاحة حالياً",
+    "checkBack": "تابعنا قريباً لمشاهدة آراء العملاء"
+  },
+  "cta": {
+    "title": "لنحسّن شحنتك القادمة",
+    "description": "احصل على عرض سعر مخصص واكتشف كيف يمكننا تبسيط عملياتك اللوجستية",
+    "getQuote": "احصل على عرض سعر",
+    "ourServices": "خدماتنا"
+  },
+  "contact": {
+    "heroTitle": "تواصل معنا",
+    "heroDescription": "هل أنت مستعد لتبسيط عملياتك اللوجستية؟ تواصل مع فريق الخبراء لدينا للحصول على حلول مخصصة.",
+    "sendMessage": "أرسل لنا رسالة",
+    "responseTime": "سنرد عليك خلال 24 ساعة.",
+    "fullName": "الاسم الكامل",
+    "emailAddress": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "companyName": "اسم الشركة",
+    "serviceType": "نوع الخدمة",
+    "selectService": "اختر خدمة",
+    "message": "الرسالة",
+    "messagePlaceholder": "أخبرنا عن احتياجاتك اللوجستية...",
+    "sendButton": "إرسال الرسالة",
+    "sending": "جاري الإرسال...",
+    "messageSent": "تم الإرسال!",
+    "thankYou": "شكراً لتواصلك معنا. سنرد خلال 24 ساعة.",
+    "contactInfo": "معلومات التواصل",
+    "address": "العنوان",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "officeHours": "ساعات العمل",
+    "workingHours": "أوقات العمل",
+    "mondaySunday": "الإثنين - الأحد",
+    "publicHolidays": "العطلات الرسمية",
+    "timezone": "توقيت تركيا (GMT+3)",
+    "emergencySupport": "دعم طوارئ متاح على مدار الساعة",
+    "whyChoose": "لماذا تختار DVN LOG",
+    "reliableService": "خدمة موثوقة",
+    "excellenceDelivery": "التميز في كل توصيل",
+    "globalCoverage": "تغطية عالمية",
+    "customerSatisfaction": "رضا العملاء",
+    "sevenDaySupport": "دعم 7 أيام",
+    "available": "متاح",
+    "findUs": "موقعنا",
+    "required": "مطلوب"
+  },
+  "tracking": {
+    "title": "تتبع شحنتك",
+    "subtitle": "أدخل رقم التتبع للحصول على تحديثات فورية عن شحنتك",
+    "placeholder": "أدخل رقم التتبع (مثال: DVN123456789)",
+    "trackButton": "تتبع",
+    "tracking": "جاري التتبع...",
+    "shipmentDetails": "تفاصيل الشحنة",
+    "status": "الحالة",
+    "origin": "المصدر",
+    "destination": "الوجهة",
+    "estimatedDelivery": "موعد التسليم المتوقع",
+    "trackingHistory": "سجل التتبع",
+    "newSearch": "بحث جديد",
+    "notFound": "الشحنة غير موجودة",
+    "notFoundDesc": "يرجى التحقق من رقم التتبع والمحاولة مرة أخرى",
+    "tryAgain": "حاول مجدداً"
+  },
+  "blog": {
+    "title": "المدونة",
+    "subtitle": "مقالات عملية في اللوجستيات وتحديثات السوق ونصائح لشحن أذكى.",
+    "insightsUpdates": "رؤى وتحديثات",
+    "readMore": "اقرأ المزيد",
+    "article": "مقال",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+  "footer": {
+    "description": "شريكك الموثوق في حلول اللوجستيات العالمية. نربط الشركات حول العالم بخدمات شحن موثوقة.",
+    "quickLinks": "روابط سريعة",
+    "ourServices": "خدماتنا",
+    "contactUs": "تواصل معنا",
+    "rights": "جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "cookies": "ملفات تعريف الارتباط"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "tryAgain": "حاول مجدداً",
+    "goBack": "رجوع",
+    "goHome": "الذهاب للرئيسية",
+    "notFound": "الصفحة غير موجودة",
+    "notFoundDesc": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها."
   }
 }

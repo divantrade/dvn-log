@@ -1,13 +1,152 @@
 {
+  "metadata": {
+    "title": "DVN LOG - Global Logistics Solutions",
+    "description": "Comprehensive freight forwarding and logistics services worldwide"
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
-    "about": "About Us", 
+    "allServices": "All Services",
+    "aboutUs": "About Us",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "trackShipment": "Track Shipment"
+  },
+  "services": {
+    "oceanFreight": "Ocean Freight",
+    "airFreight": "Air Freight",
+    "roadTransport": "Road Transport",
+    "railFreight": "Rail Freight",
+    "warehousing": "Warehousing",
+    "projectCargo": "Project Cargo",
+    "multimodal": "Multimodal",
+    "customs": "Customs Clearance"
   },
   "hero": {
-    "title": "DVN LOG - Complete Logistics Solutions",
-    "subtitle": "We provide shipping and transport services worldwide"
+    "badge": "Trusted global logistics partner",
+    "title": "We Bring the World",
+    "titleHighlight": "Closer",
+    "subtitle1": "Global freight forwarding solutions",
+    "subtitle2": "Express air cargo services",
+    "subtitle3": "Reliable ocean shipping",
+    "contactUs": "CONTACT US",
+    "exploreServices": "Explore Services"
+  },
+  "about": {
+    "sectionTitle": "About DVN LOG",
+    "description": "Since 2017, we've been providing reliable logistics solutions across ocean, air, road and rail with a focus on visibility, speed and cost-efficiency. Our team combines global reach with local expertise to keep your cargo moving.",
+    "whyChoose": "Why Choose DVN LOG",
+    "globalCoverage": "Global Coverage",
+    "realTimeTracking": "Real-time Tracking",
+    "dedicatedSupport": "Dedicated Support",
+    "customsCompliance": "Customs & Compliance",
+    "containerTracking": "Container & Vessel Tracking",
+    "operations247": "24/7 Operations",
+    "trackYourShipment": "Track Your Shipment",
+    "trackDescription": "Stay updated from pickup to delivery with real-time tracking",
+    "since": "Since",
+    "countries": "Countries",
+    "supportAvailable": "Support Available All Week",
+    "globalNetwork": "Global Coverage Network",
+    "servingCountries": "Serving 50+ countries worldwide",
+    "startTracking": "Start Tracking Now"
+  },
+  "servicesSection": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive logistics solutions tailored to your needs",
+    "learnMore": "Learn More"
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "noFeedback": "No client feedback available",
+    "checkBack": "Check back soon for client testimonials"
+  },
+  "cta": {
+    "title": "Let's optimize your next shipment",
+    "description": "Get a personalized quote and discover how we can streamline your logistics",
+    "getQuote": "Get Quote",
+    "ourServices": "Our Services"
+  },
+  "contact": {
+    "heroTitle": "Get In Touch",
+    "heroDescription": "Ready to streamline your logistics? Contact our expert team for personalized solutions.",
+    "sendMessage": "Send us a message",
+    "responseTime": "We'll get back to you within 24 hours.",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Phone Number",
+    "companyName": "Company Name",
+    "serviceType": "Service Type",
+    "selectService": "Select a service",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your logistics needs...",
+    "sendButton": "Send Message",
+    "sending": "Sending...",
+    "messageSent": "Message Sent!",
+    "thankYou": "Thank you for contacting us. We'll respond within 24 hours.",
+    "contactInfo": "Contact Information",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "officeHours": "Office Hours",
+    "workingHours": "Working Hours",
+    "mondaySunday": "Monday - Sunday",
+    "publicHolidays": "Public Holidays",
+    "timezone": "GMT+3 (Turkey Time)",
+    "emergencySupport": "Emergency Support Available 24/7",
+    "whyChoose": "Why Choose DVN LOG",
+    "reliableService": "Reliable Service",
+    "excellenceDelivery": "Excellence in every delivery",
+    "globalCoverage": "Global Coverage",
+    "customerSatisfaction": "Customer Satisfaction",
+    "sevenDaySupport": "7-Day Support",
+    "available": "Available",
+    "findUs": "Find Us",
+    "required": "required"
+  },
+  "tracking": {
+    "title": "Track Your Shipment",
+    "subtitle": "Enter your tracking number to get real-time updates on your shipment",
+    "placeholder": "Enter tracking number (e.g., DVN123456789)",
+    "trackButton": "Track",
+    "tracking": "Tracking...",
+    "shipmentDetails": "Shipment Details",
+    "status": "Status",
+    "origin": "Origin",
+    "destination": "Destination",
+    "estimatedDelivery": "Estimated Delivery",
+    "trackingHistory": "Tracking History",
+    "newSearch": "New Search",
+    "notFound": "Shipment not found",
+    "notFoundDesc": "Please check your tracking number and try again",
+    "tryAgain": "Try Again"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Practical logistics articles, market updates, and how-tos to help you ship smarter.",
+    "insightsUpdates": "Insights & Updates",
+    "readMore": "Read more",
+    "article": "Article",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "footer": {
+    "description": "Your trusted partner in global logistics solutions. Connecting businesses worldwide with reliable freight services.",
+    "quickLinks": "Quick Links",
+    "ourServices": "Our Services",
+    "contactUs": "Contact Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookies"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try again",
+    "goBack": "Go back",
+    "goHome": "Go to homepage",
+    "notFound": "Page not found",
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved."
   }
 }

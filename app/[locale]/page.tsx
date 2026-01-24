@@ -9,9 +9,9 @@ import { partnersQuery, clientFeedbackQuery } from '@/lib/sanity/queries';
 import { latestPostsQuery } from '@/lib/sanity/client-side';
 import { urlForClientSide } from '@/lib/sanity/client-side';
 import EnhancedHeroSlider from '@/components/EnhancedHeroSlider';
-import Counter from '@/app/_components/Counter';
-import NavHeightObserver from '@/app/_components/NavHeightObserver';
-import AnchorSmoothScroll from '@/app/_components/AnchorSmoothScroll';
+import Counter from './_components/Counter';
+import NavHeightObserver from './_components/NavHeightObserver';
+import AnchorSmoothScroll from './_components/AnchorSmoothScroll';
 
 // Import images
 import ShipImg from '@/images/718.jpg';
