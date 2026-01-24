@@ -55,7 +55,7 @@ export default function TrackingPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
       <NavHeightObserver />
       
       {/* Hero Section */}
@@ -74,20 +74,20 @@ export default function TrackingPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Tracking Form */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 mb-12">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-8 mb-12">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
               Enter Tracking Information
             </h2>
             
             {/* Tracking Type Selector */}
-            <div className="flex bg-slate-100 rounded-xl p-1 mb-6">
+            <div className="flex bg-slate-100 dark:bg-slate-700 rounded-xl p-1 mb-6">
               <button
                 onClick={() => setTrackingType('container')}
                 className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
                   trackingType === 'container'
-                    ? 'bg-white text-blue-600 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-600 text-blue-600 dark:text-blue-400 shadow-sm'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <div className="flex items-center justify-center space-x-2">
@@ -101,8 +101,8 @@ export default function TrackingPage() {
                 onClick={() => setTrackingType('ship')}
                 className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
                   trackingType === 'ship'
-                    ? 'bg-white text-blue-600 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-600 text-blue-600 dark:text-blue-400 shadow-sm'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <div className="flex items-center justify-center space-x-2">
@@ -116,7 +116,7 @@ export default function TrackingPage() {
 
             {/* Input Field */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 {trackingType === 'container' ? 'Container Number' : 'Ship Name'}
               </label>
               <input
@@ -124,7 +124,7 @@ export default function TrackingPage() {
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 placeholder={trackingType === 'container' ? 'e.g., MSKU1234567' : 'e.g., MSC OSCAR'}
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-lg"
+                className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-lg"
               />
             </div>
 

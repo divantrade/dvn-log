@@ -105,19 +105,19 @@ function TrustSignalsSection() {
       
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {trustSignals.map((signal, index) => (
-          <li 
+          <li
             key={signal.title}
-            className="group rounded-xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
+            className="group rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-md transition-all duration-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
           >
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-100 transition-colors duration-300">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors duration-300">
                 {signal.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 leading-tight">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 leading-tight">
                   {signal.title}
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {signal.description}
                 </p>
               </div>
@@ -202,14 +202,14 @@ export default function HomePage() {
       {/* Services Section */}
       <section
         id="services"
-        className="mx-auto max-w-[90rem] px-6 py-8 -mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24 relative z-10 bg-[linear-gradient(180deg,#eef2ff_0%,#ffffff_100%)] border-y border-slate-200/70 rounded-t-2xl shadow-lg"
+        className="mx-auto max-w-[90rem] px-6 py-8 -mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24 relative z-10 bg-[linear-gradient(180deg,#eef2ff_0%,#ffffff_100%)] dark:bg-[linear-gradient(180deg,#1e293b_0%,#0f172a_100%)] border-y border-slate-200/70 dark:border-slate-700 rounded-t-2xl shadow-lg"
       >
         <header className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="text-xs font-semibold tracking-wide text-[#ef4444]">SPECIAL SERVICES</div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1e3a8a]">FOR YOUR COMPANY</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1e3a8a] dark:text-white">FOR YOUR COMPANY</h2>
           </div>
-          <Link href="/services" className="inline-flex items-center justify-center rounded-md border border-[#1e40af] bg-white px-4 py-2 text-sm font-semibold text-[#1e40af] hover:bg-[#eff6ff]">
+          <Link href="/services" className="inline-flex items-center justify-center rounded-md border border-[#1e40af] dark:border-blue-400 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-[#1e40af] dark:text-blue-400 hover:bg-[#eff6ff] dark:hover:bg-slate-700">
             ALL SERVICES
           </Link>
         </header>
@@ -230,7 +230,7 @@ export default function HomePage() {
               href={`/services/${service.slug}`} 
               className="group block focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus:outline-none"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-md aspect-[4/3] flex flex-col h-full">
+              <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-md aspect-[4/3] flex flex-col h-full">
                 {/* Background Image - Always in DOM */}
                 <Image
                   src={service.img}
@@ -440,7 +440,7 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="bg-[#f8fafc] py-16">
+      <section id="about" className="bg-[#f8fafc] dark:bg-slate-800/50 py-16">
         <div className="mx-auto max-w-7xl px-6">
           {/* Section Header */}
           <div className="section-heading">
@@ -449,7 +449,7 @@ export default function HomePage() {
               <h2>About DVN LOG</h2>
               <div className="heading-accent"></div>
             </div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Since 2017, we've been providing reliable logistics solutions across ocean, air, road and rail with a focus on visibility, speed and cost-efficiency. Our team combines global reach with local expertise to keep your cargo moving.
             </p>
           </div>
@@ -457,7 +457,7 @@ export default function HomePage() {
           <div className="grid gap-12 lg:grid-cols-2 items-start">
             {/* Left Side - Service Cards */}
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Why Choose DVN LOG</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Why Choose DVN LOG</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
                   {
@@ -510,15 +510,15 @@ export default function HomePage() {
                     )
                   }
                 ].map((feature, index) => (
-                  <div 
+                  <div
                     key={index}
-                    className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-md group cursor-pointer"
+                    className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-md group cursor-pointer"
                   >
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="p-3 bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-300">
+                      <div className="p-3 bg-blue-50 dark:bg-blue-900/50 rounded-full group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors duration-300">
                         {feature.icon}
                       </div>
-                      <h4 className="font-semibold text-gray-900 text-sm leading-tight">{feature.title}</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm leading-tight">{feature.title}</h4>
                     </div>
                   </div>
                 ))}
@@ -526,25 +526,25 @@ export default function HomePage() {
             </div>
 
             {/* Right Side - Interactive Tracking Widget */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-slate-700">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Track Your Shipment</h3>
-                <p className="text-gray-600">Stay updated from pickup to delivery with real-time tracking</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Track Your Shipment</h3>
+                <p className="text-gray-600 dark:text-gray-300">Stay updated from pickup to delivery with real-time tracking</p>
               </div>
 
               {/* Company Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">2017</div>
-                  <div className="text-xs text-gray-500">Since</div>
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">2017</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Since</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">50+</div>
-                  <div className="text-xs text-gray-500">Countries</div>
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">50+</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Countries</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">24/7</div>
-                  <div className="text-xs text-gray-500">Support Available All Week</div>
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Support Available All Week</div>
                 </div>
               </div>
 
@@ -643,9 +643,9 @@ export default function HomePage() {
                           })
                         }}
                       />
-                      <article 
-                        key={post._id} 
-                        className={`group relative rounded-xl overflow-hidden bg-white shadow-lg border border-slate-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus-within:ring-4 focus-within:ring-blue-200 ${
+                      <article
+                        key={post._id}
+                        className={`group relative rounded-xl overflow-hidden bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus-within:ring-4 focus-within:ring-blue-200 ${
                           isFeatured ? 'lg:col-span-2 lg:row-span-2' : ''
                         }`}
                         style={{
@@ -709,15 +709,15 @@ export default function HomePage() {
                           </div>
                           
                           {/* Title */}
-                          <h3 className={`font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 ${
+                          <h3 className={`font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 ${
                             isFeatured ? 'text-xl lg:text-2xl mb-3' : 'text-lg mb-2'
                           }`}>
                             {post.title}
                           </h3>
-                          
+
                           {/* Excerpt */}
                           {excerpt && (
-                            <p className={`text-slate-600 line-clamp-1 ${isFeatured ? 'text-base' : 'text-sm'}`}>
+                            <p className={`text-slate-600 dark:text-slate-300 line-clamp-1 ${isFeatured ? 'text-base' : 'text-sm'}`}>
                               {excerpt}
                             </p>
                           )}
