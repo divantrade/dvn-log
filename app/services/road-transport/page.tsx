@@ -9,22 +9,22 @@ const serviceOptions = [
     key: "ftl",
     title: "Full Truckload",
     desc: "Dedicated vehicles for large shipments",
-    color: "bg-blue-50 border-blue-200",
-    textColor: "text-blue-700"
+    color: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-400"
   },
   {
     key: "ltl",
     title: "Less Than Truckload",
     desc: "Cost-effective shared trailer space",
-    color: "bg-green-50 border-green-200",
-    textColor: "text-green-700"
+    color: "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800",
+    textColor: "text-green-700 dark:text-green-400"
   },
   {
     key: "cross",
     title: "Cross-Border",
     desc: "International moves with full support",
-    color: "bg-orange-50 border-orange-200",
-    textColor: "text-orange-700"
+    color: "bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800",
+    textColor: "text-orange-700 dark:text-orange-400"
   },
 ];
 
@@ -38,7 +38,7 @@ const features = [
 
 export default function RoadTransportPage() {
   return (
-    <main className="px-0">
+    <main className="px-0 bg-white dark:bg-slate-900">
       <NavHeightObserver />
       <PageHero
         title={"Road Transport"}
@@ -49,17 +49,17 @@ export default function RoadTransportPage() {
 
       <div className="mx-auto max-w-7xl px-6 py-16">
         {/* Breadcrumb */}
-        <nav className="text-sm text-slate-600 mb-12" aria-label="Breadcrumb">
-          <Link href="/services" className="hover:underline hover:text-blue-600 transition-colors">
+        <nav className="text-sm text-slate-600 dark:text-slate-400 mb-12" aria-label="Breadcrumb">
+          <Link href="/services" className="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             Services
           </Link>
           <span className="mx-2" aria-hidden="true">/</span>
-          <span className="text-slate-900 font-medium">Road Transport</span>
+          <span className="text-slate-900 dark:text-white font-medium">Road Transport</span>
         </nav>
 
         {/* Main Content Layout */}
         <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
-          
+
           {/* Left: Primary Image */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
@@ -77,7 +77,7 @@ export default function RoadTransportPage() {
 
           {/* Right: Content */}
           <div className="text-right space-y-6">
-            
+
             {/* Prominent Quote Box */}
             <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 text-white shadow-2xl transform hover:scale-105 transition-all duration-300">
               <div className="text-4xl text-blue-200 mb-4">"</div>
@@ -88,34 +88,34 @@ export default function RoadTransportPage() {
             </div>
 
             {/* Grouped Text Content */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
-              <h1 className="text-3xl font-bold text-slate-900 mb-3 leading-tight">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-100 dark:border-slate-700">
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
                 Road Transport Solutions
               </h1>
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
+              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                 Flexible, reliable ground transportation across regional and international corridors.
               </p>
-              
+
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-slate-900">Service Options</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Service Options</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-end items-center">
-                    <span className="text-slate-600">Full Truckload (FTL)</span>
+                    <span className="text-slate-600 dark:text-slate-300">Full Truckload (FTL)</span>
                     <div className="w-3 h-3 bg-blue-500 rounded-full ml-3"></div>
                   </div>
                   <div className="flex justify-end items-center">
-                    <span className="text-slate-600">Less Than Truckload (LTL)</span>
+                    <span className="text-slate-600 dark:text-slate-300">Less Than Truckload (LTL)</span>
                     <div className="w-3 h-3 bg-green-500 rounded-full ml-3"></div>
                   </div>
                   <div className="flex justify-end items-center">
-                    <span className="text-slate-600">Cross-Border Transport</span>
+                    <span className="text-slate-600 dark:text-slate-300">Cross-Border Transport</span>
                     <div className="w-3 h-3 bg-orange-500 rounded-full ml-3"></div>
                   </div>
                 </div>
               </div>
-              
+
               <Link
-                href="/quote"
+                href="/contact"
                 className="inline-flex items-center justify-center w-full mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
               >
                 Get Quote
