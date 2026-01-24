@@ -162,13 +162,13 @@ export default function ServicesIndexPage() {
         {/* Header + Filters */}
         <section className="mx-auto max-w-[90rem] px-6 pb-4 pt-10">
           <header className="mb-8 text-center">
-            <p className="mb-2 text-xs font-semibold tracking-wide text-sky-600">
+            <p className="mb-2 text-xs font-semibold tracking-wide text-sky-600 dark:text-sky-400">
               PREMIUM LOGISTICS SOLUTIONS
             </p>
-            <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
               Professional Transport Services
             </h2>
-            <p className="mx-auto max-w-2xl text-slate-600">
+            <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300">
               Our core services keep your supply chain moving with clarity, speed and control.
             </p>
           </header>
@@ -185,7 +185,7 @@ export default function ServicesIndexPage() {
               <article
                 key={s.slug}
                 role="listitem"
-                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition will-change-transform hover:-translate-y-1 hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition will-change-transform hover:-translate-y-1 hover:shadow-lg"
                 style={{ ['--accent' as any]: s.accent }}
               >
                 {/* Image */}
@@ -211,15 +211,15 @@ export default function ServicesIndexPage() {
 
                 {/* Body */}
                 <div className="flex flex-col gap-3 p-5">
-                  <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
-                  <p className="line-clamp-2 text-sm leading-6 text-slate-600">{s.blurb}</p>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{s.title}</h3>
+                  <p className="line-clamp-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{s.blurb}</p>
 
                   {/* Tags (show stronger on hover) */}
                   <ul className="mt-1 flex flex-wrap gap-2">
                     {s.tags.map(t => (
                       <li
                         key={t}
-                        className="rounded-full border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 transition group-hover:border-[color:var(--accent)] group-hover:text-[color:var(--accent)]"
+                        className="rounded-full border border-slate-200 dark:border-slate-600 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-400 transition group-hover:border-[color:var(--accent)] group-hover:text-[color:var(--accent)]"
                       >
                         {t}
                       </li>
