@@ -61,21 +61,21 @@ export default function AboutValues() {
     <section className="py-16">
       {/* Who we are */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Who we are</h2>
-        <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Who we are</h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
           We serve manufacturers, retailers, and distributors who need reliable, compliant logistics solutions across ocean, air, road, and rail. Our core value is transforming supply chain complexity into predictable, transparent operations that drive your business forward.
         </p>
-        <ul className="mt-8 space-y-3 text-gray-700">
+        <ul className="mt-8 space-y-3 text-gray-700 dark:text-gray-300">
           <li className="flex items-start">
-            <span className="text-[#1e40af] mr-3">•</span>
+            <span className="text-[#1e40af] dark:text-blue-400 mr-3">•</span>
             <span>Complete visibility from origin to destination with real-time milestone tracking</span>
           </li>
           <li className="flex items-start">
-            <span className="text-[#1e40af] mr-3">•</span>
+            <span className="text-[#1e40af] dark:text-blue-400 mr-3">•</span>
             <span>Full compliance management across all regulatory requirements and trade lanes</span>
           </li>
           <li className="flex items-start">
-            <span className="text-[#1e40af] mr-3">•</span>
+            <span className="text-[#1e40af] dark:text-blue-400 mr-3">•</span>
             <span>Optimized speed and cost through strategic carrier partnerships and route planning</span>
           </li>
         </ul>
@@ -83,22 +83,22 @@ export default function AboutValues() {
 
       {/* What sets us apart */}
       <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">What sets us apart</h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12">What sets us apart</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-slate-700"
             >
               <div className="flex items-center mb-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#1e40af]/10 rounded-lg flex items-center justify-center text-[#1e40af]">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#1e40af]/10 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-[#1e40af] dark:text-blue-400">
                   {value.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 {value.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 {value.description}
               </p>
             </div>

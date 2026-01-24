@@ -8,7 +8,7 @@ import AboutCTA from './_components/AboutCTA';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-slate-900">
       <NavHeightObserver />
       <AboutHero />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 py-16">

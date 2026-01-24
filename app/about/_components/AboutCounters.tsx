@@ -46,14 +46,14 @@ export default function AboutCounters() {
     const animateCounter = (key: 'onTime' | 'countries' | 'tradeLanes', target: number) => {
       let current = 0;
       const increment = target / steps;
-      
+
       const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
           current = target;
           clearInterval(timer);
         }
-        
+
         setCounts(prev => ({
           ...prev,
           [key]: key === 'onTime' ? Number(current.toFixed(1)) : Math.floor(current)
@@ -63,7 +63,7 @@ export default function AboutCounters() {
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
+
     if (prefersReducedMotion) {
       setCounts({
         onTime: targetCounts.onTime,
@@ -118,29 +118,29 @@ export default function AboutCounters() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 bg-gradient-to-br from-[#1e40af]/5 to-[#3b82f6]/5 rounded-2xl">
+    <section ref={sectionRef} className="py-16 bg-gradient-to-br from-[#1e40af]/5 to-[#3b82f6]/5 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our impact in numbers</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our impact in numbers</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Trusted by global companies to deliver consistent, reliable logistics solutions
         </p>
       </div>
-      
+
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-[#1e40af]/10 rounded-full flex items-center justify-center text-[#1e40af]">
+              <div className="w-16 h-16 bg-[#1e40af]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-[#1e40af] dark:text-blue-400">
                 {stat.icon}
               </div>
             </div>
-            <div className="text-3xl lg:text-4xl font-bold text-[#1e40af] mb-2">
+            <div className="text-3xl lg:text-4xl font-bold text-[#1e40af] dark:text-blue-400 mb-2">
               {stat.value}
             </div>
-            <div className="text-sm lg:text-base text-gray-600 font-medium">
+            <div className="text-sm lg:text-base text-gray-600 dark:text-gray-400 font-medium">
               {stat.label}
             </div>
           </div>

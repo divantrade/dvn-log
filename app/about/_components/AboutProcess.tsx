@@ -56,8 +56,8 @@ export default function AboutProcess() {
   return (
     <section className="py-16">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">How we work</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">How we work</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Our streamlined 5-step process ensures your cargo moves efficiently from origin to destination
         </p>
       </div>
@@ -72,24 +72,24 @@ export default function AboutProcess() {
                   <div className="w-16 h-16 bg-[#1e40af] rounded-full flex items-center justify-center text-white font-bold text-lg mb-4">
                     {step.number}
                   </div>
-                  <div className="w-12 h-12 bg-[#1e40af]/10 rounded-full flex items-center justify-center text-[#1e40af] mb-4">
+                  <div className="w-12 h-12 bg-[#1e40af]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-[#1e40af] dark:text-blue-400 mb-4">
                     {step.icon}
                   </div>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="flex-1 h-0.5 bg-[#1e40af]/20 mx-4"></div>
+                  <div className="flex-1 h-0.5 bg-[#1e40af]/20 dark:bg-blue-900/40 mx-4"></div>
                 )}
               </div>
             ))}
           </div>
-          
+
           <div className="grid grid-cols-5 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -106,19 +106,19 @@ export default function AboutProcess() {
                   {step.number}
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="w-0.5 h-16 bg-[#1e40af]/20 mx-auto mt-4"></div>
+                  <div className="w-0.5 h-16 bg-[#1e40af]/20 dark:bg-blue-900/40 mx-auto mt-4"></div>
                 )}
               </div>
               <div className="flex-1 pt-1">
                 <div className="flex items-center mb-2">
-                  <div className="w-8 h-8 bg-[#1e40af]/10 rounded-full flex items-center justify-center text-[#1e40af] mr-3">
+                  <div className="w-8 h-8 bg-[#1e40af]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-[#1e40af] dark:text-blue-400 mr-3">
                     {step.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     {step.title}
                   </h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {step.description}
                 </p>
               </div>
