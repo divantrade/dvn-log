@@ -9,11 +9,9 @@
   --light-blue: #2ea3f2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
 }
 
 body {
@@ -337,7 +335,7 @@ body {
 }
 
 .section-heading .heading-wrapper h2 {
-  @apply text-3xl font-bold text-gray-900 whitespace-nowrap;
+  @apply text-3xl font-bold text-gray-900 dark:text-white whitespace-nowrap;
 }
 
 .section-heading .heading-accent {
@@ -345,7 +343,7 @@ body {
 }
 
 .section-heading p {
-  @apply text-gray-600 max-w-2xl mx-auto;
+  @apply text-gray-600 dark:text-gray-300 max-w-2xl mx-auto;
 }
 
 /* Staggered reveal animation for articles */
