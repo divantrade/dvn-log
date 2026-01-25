@@ -25,6 +25,14 @@ body {
   font-family: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
 }
 
+/* Better Arabic text rendering - more space for dots */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] .hero-title {
+  line-height: 1.4 !important;
+  letter-spacing: 0.02em;
+}
+
 /* RTL Support */
 [dir="rtl"] {
   text-align: right;
