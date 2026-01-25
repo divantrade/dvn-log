@@ -64,8 +64,8 @@ export default function EnhancedHeroSlider({
   };
 
   return (
-    <section 
-      className="relative h-[60vh] sm:h-[68vh] md:h-[76vh] lg:h-[80vh] overflow-hidden"
+    <section
+      className="relative h-[55vh] sm:h-[62vh] md:h-[70vh] lg:h-[74vh] overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
