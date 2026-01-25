@@ -45,7 +45,7 @@ export default function HeroSlider({ slides, intervalMs = 5500, transitionMs = 8
 
   return (
     <section
-      className="relative isolate w-full overflow-hidden bg-[#0b1730] text-white min-h-[50vh] sm:min-h-[55vh] md:min-h-[58vh] lg:min-h-[60vh]"
+      className="relative isolate w-full overflow-hidden bg-[#0b1730] text-white h-[75vh] max-h-[650px]"
       aria-label="Hero image carousel"
     >
       {/* Slides */}

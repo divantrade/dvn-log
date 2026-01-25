@@ -22,7 +22,7 @@ body {
 
 /* Arabic font family */
 .font-arabic {
-  font-family: var(--font-cairo), 'Segoe UI', Tahoma, sans-serif;
+  font-family: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
 }
 
 /* RTL Support */
