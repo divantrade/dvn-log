@@ -69,12 +69,12 @@ export default function EnhancedHeroSlider({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Background Images */}
+      {/* Background Images with Zoom Effect */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -82,7 +82,11 @@ export default function EnhancedHeroSlider({
               src={slide.src}
               alt={slide.alt}
               fill
-              className="object-cover"
+              className={`object-cover transition-transform ease-out ${
+                index === currentSlide
+                  ? 'scale-100 duration-[6000ms]'
+                  : 'scale-[1.15] duration-0'
+              }`}
               priority={index === 0}
               sizes="100vw"
               quality={90}
