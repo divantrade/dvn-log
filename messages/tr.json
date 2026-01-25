@@ -298,7 +298,11 @@
     "recentPosts": "Son Yazılar",
     "searchPlaceholder": "Makalelerde ara...",
     "noResults": "Makale bulunamadı",
-    "loadMore": "Daha Fazla Yükle"
+    "loadMore": "Daha Fazla Yükle",
+    "postNotFound": "Yazı bulunamadı",
+    "backToBlog": "Blog'a Dön",
+    "tags": "Etiketler",
+    "relatedArticles": "İlgili Makaleler"
   },
   "footer": {
     "description": "Güvenilir deniz, hava, kara ve demiryolu taşımacılığı hizmetleriyle küresel lojistik çözümler. Dünyanın her köşesine güvenli, hızlı teslimat.",

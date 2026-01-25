@@ -1,8 +1,9 @@
 // app/blog/page.tsx
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from '@/i18n/navigation';
 import { sanityClient } from "@/lib/sanity/client";
 import { paginatedPostsQuery, postsCountQuery } from "@/lib/sanity/queries";
+import { getTranslations, getLocale } from 'next-intl/server';
 
 export const revalidate = 60;
 const PAGE_SIZE = 9;
@@ -18,20 +19,23 @@ type Post = {
   author?: { name?: string; imageUrl?: string };
 };
 
-function formatDate(d?: string) {
-  if (!d) return "";
-  try {
-    return new Intl.DateTimeFormat("en", { month: "short", day: "2-digit" }).format(new Date(d));
-  } catch {
-    return "";
-  }
-}
-
 export default async function BlogPage({
   searchParams,
 }: {
   searchParams?: Promise<{ page?: string }>;
 }) {
+  const t = await getTranslations('blog');
+  const locale = await getLocale();
+
+  function formatDate(d?: string) {
+    if (!d) return "";
+    try {
+      return new Intl.DateTimeFormat(locale, { month: "short", day: "2-digit" }).format(new Date(d));
+    } catch {
+      return "";
+    }
+  }
+
   const resolvedSearchParams = await searchParams;
   const page = Math.max(1, Number(resolvedSearchParams?.page ?? 1));
   const offset = (page - 1) * PAGE_SIZE;
@@ -50,11 +54,11 @@ export default async function BlogPage({
       <section className="relative w-full bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] text-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <p className="text-xs/6 font-semibold uppercase tracking-[0.2em] opacity-80">
-            Insights & Updates
+            {t('insightsUpdates')}
           </p>
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">Blog</h1>
+          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{t('title')}</h1>
           <p className="mt-3 max-w-2xl text-white/80">
-            Practical logistics articles, market updates, and how-tos to help you ship smarter.
+            {t('subtitle')}
           </p>
         </div>
       </section>
@@ -89,7 +93,7 @@ export default async function BlogPage({
                   {(category || date) && (
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-3">
                       <span className="rounded-full bg-white/90 dark:bg-slate-800/90 px-2.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 backdrop-blur">
-                        {category ?? "Article"}
+                        {category ?? t('article')}
                       </span>
                       {date && (
                         <span className="rounded-full bg-black/60 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
@@ -138,8 +142,8 @@ export default async function BlogPage({
                       href={`/blog/${post.slug}`}
                       className="inline-flex items-center gap-1 text-sm font-medium text-[#1e3a8a] dark:text-blue-400 hover:underline"
                     >
-                      Read more
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      {t('readMore')}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="rtl:rotate-180">
                         <path d="M5 12h14M13 5l7 7-7 7" />
                       </svg>
                     </Link>
@@ -159,7 +163,7 @@ export default async function BlogPage({
               className={`rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-300 ${page === 1 ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700"}`}
               aria-disabled={page === 1}
             >
-              Prev
+              {t('prev')}
             </Link>
 
             {Array.from({ length: totalPages }).map((_, i) => {
@@ -184,7 +188,7 @@ export default async function BlogPage({
               className={`rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-300 ${page === totalPages ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700"}`}
               aria-disabled={page === totalPages}
             >
-              Next
+              {t('next')}
             </Link>
           </nav>
         )}

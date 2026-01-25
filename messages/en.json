@@ -298,7 +298,11 @@
     "recentPosts": "Recent Posts",
     "searchPlaceholder": "Search articles...",
     "noResults": "No articles found",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "postNotFound": "Post not found",
+    "backToBlog": "Back to Blog",
+    "tags": "Tags",
+    "relatedArticles": "Related Articles"
   },
   "footer": {
     "description": "Global logistics solutions with reliable ocean, air, road and rail transport services. Safe, fast delivery to every corner of the world.",
