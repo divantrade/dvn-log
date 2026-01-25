@@ -45,7 +45,7 @@ export default function HeroSlider({ slides, intervalMs = 5500, transitionMs = 8
 
   return (
     <section
-      className="relative isolate w-full overflow-hidden bg-[#0b1730] text-white h-[50vh] max-h-[450px]"
+      className="relative isolate w-full overflow-hidden bg-[#0b1730] text-white h-[45vh] max-h-[400px]"
       aria-label="Hero image carousel"
     >
       {/* Slides */}
@@ -72,7 +72,7 @@ export default function HeroSlider({ slides, intervalMs = 5500, transitionMs = 8
               fill
               sizes="100vw"
               priority={i === 0}
-              className={`object-cover object-center transition-transform duration-[7000ms] ease-linear ${i === index ? "scale-[1.15]" : "scale-100"}`}
+              className={`object-cover object-center transition-transform duration-[5000ms] ease-out ${i === index ? "scale-[1.2]" : "scale-100"}`}
             />
           </div>
         ))}
