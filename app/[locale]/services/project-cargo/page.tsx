@@ -1,73 +1,57 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import NavHeightObserver from "../../_components/NavHeightObserver";
 import PageHero from "../../_components/PageHero";
 import ServicePageLayout from "../_components/ServicePageLayout";
 import ProjectImg from "@/images/718.jpg";
 
 export default function ProjectCargoPage() {
+  const t = useTranslations('servicesPage.projectCargo');
+
   const serviceOptions = [
-    {
-      title: "Heavy Lift Operations",
-      desc: "Specialized equipment and engineering for oversized and overweight cargo movements."
-    },
-    {
-      title: "Route Planning & Surveys",
-      desc: "Comprehensive feasibility studies and route optimization for complex project moves."
-    },
-    {
-      title: "Regulatory Compliance",
-      desc: "Permits, escorts, and regulatory approvals for safe and legal transportation."
-    }
+    { title: t('serviceOptions.heavyLift.title'), desc: t('serviceOptions.heavyLift.desc') },
+    { title: t('serviceOptions.routePlanning.title'), desc: t('serviceOptions.routePlanning.desc') },
+    { title: t('serviceOptions.regulatory.title'), desc: t('serviceOptions.regulatory.desc') }
   ];
 
   const additionalCapabilities = [
-    {
-      title: "Engineering Solutions",
-      desc: "Custom lifting plans, load calculations, and structural analysis for complex cargo."
-    },
-    {
-      title: "Site Coordination",
-      desc: "End-to-end project management with on-site supervision and execution oversight."
-    },
-    {
-      title: "Specialized Equipment",
-      desc: "Access to heavy-duty trailers, cranes, and specialized handling equipment."
-    },
-    {
-      title: "Risk Management",
-      desc: "Comprehensive insurance coverage and risk assessment for high-value project cargo."
-    }
+    { title: t('additionalCapabilities.engineering.title'), desc: t('additionalCapabilities.engineering.desc') },
+    { title: t('additionalCapabilities.site.title'), desc: t('additionalCapabilities.site.desc') },
+    { title: t('additionalCapabilities.equipment.title'), desc: t('additionalCapabilities.equipment.desc') },
+    { title: t('additionalCapabilities.risk.title'), desc: t('additionalCapabilities.risk.desc') }
   ];
 
   const features = [
-    "Route surveys and feasibility studies",
-    "Special equipment and lifting plans",
-    "Permits, escorts and regulatory approvals",
-    "End-to-end execution and site coordination",
-    "Heavy lift and oversized cargo handling",
-    "Project management and supervision"
+    t('features.f1'),
+    t('features.f2'),
+    t('features.f3'),
+    t('features.f4'),
+    t('features.f5'),
+    t('features.f6')
   ];
 
   return (
     <main className="px-0">
       <NavHeightObserver />
-      <PageHero 
-        title="Project Cargo" 
-        subtitle="Engineering and route planning for heavy and oversized loads." 
-        image={ProjectImg} 
-        imageAlt="Heavy project cargo operations" 
+      <PageHero
+        title={t('title')}
+        subtitle={t('heroSubtitle')}
+        image={ProjectImg}
+        imageAlt="Heavy project cargo operations"
       />
       <ServicePageLayout
-        serviceName="Project Cargo"
+        serviceName={t('title')}
         heroImage={ProjectImg}
         heroImageAlt="Professional project cargo services"
-        serviceCategory="Project Cargo"
-        title="Move complex cargo with precision"
-        description="Specialized project cargo solutions for heavy, oversized, and complex shipments. Engineering expertise, route planning, and end-to-end execution for challenging logistics projects."
+        serviceCategory={t('category')}
+        title={t('mainTitle')}
+        description={t('description')}
         features={features}
         serviceOptions={serviceOptions}
         additionalCapabilities={additionalCapabilities}
-        ctaTitle="Ready to start your project?"
-        ctaDescription="Our team will design a safe and efficient move for your complex cargo."
+        ctaTitle={t('cta.title')}
+        ctaDescription={t('cta.description')}
       />
     </main>
   );

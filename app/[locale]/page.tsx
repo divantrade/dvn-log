@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Script from 'next/script';
+import { useTranslations } from 'next-intl';
 import { sanityClientSide } from '@/lib/sanity/client-side';
 import { partnersQuery, clientFeedbackQuery } from '@/lib/sanity/queries';
 import { latestPostsQuery } from '@/lib/sanity/client-side';
@@ -35,10 +36,12 @@ interface ClientFeedback {
 
 // Trust Signals Section Component
 function TrustSignalsSection() {
+  const t = useTranslations('homepage.trustSignals');
+  const tCommon = useTranslations('homepage');
+
   const trustSignals = [
     {
-      title: "Reliable by Design",
-      description: "ISO-aligned processes with documented SOPs.",
+      key: 'reliable',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -46,8 +49,7 @@ function TrustSignalsSection() {
       )
     },
     {
-      title: "Global Network",
-      description: "Coordinated routes across 50+ countries.",
+      key: 'globalNetwork',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -55,8 +57,7 @@ function TrustSignalsSection() {
       )
     },
     {
-      title: "Real-Time Visibility",
-      description: "Milestone tracking and proactive alerts.",
+      key: 'realTimeVisibility',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -65,8 +66,7 @@ function TrustSignalsSection() {
       )
     },
     {
-      title: "Customs & Compliance",
-      description: "Trade, security, and documentation handled end-to-end.",
+      key: 'customsCompliance',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -74,8 +74,7 @@ function TrustSignalsSection() {
       )
     },
     {
-      title: "Single Point of Contact",
-      description: "One dedicated team for every shipment.",
+      key: 'singleContact',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -83,8 +82,7 @@ function TrustSignalsSection() {
       )
     },
     {
-      title: "Risk & Exceptions",
-      description: "Early detection and clear escalation paths.",
+      key: 'riskExceptions',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -98,7 +96,7 @@ function TrustSignalsSection() {
       <div className="section-heading">
         <div className="heading-wrapper">
           <div className="heading-accent"></div>
-          <h2>Why shippers choose DVN</h2>
+          <h2>{t('title')}</h2>
           <div className="heading-accent"></div>
         </div>
       </div>
@@ -106,34 +104,34 @@ function TrustSignalsSection() {
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {trustSignals.map((signal, index) => (
           <li
-            key={signal.title}
+            key={signal.key}
             className="group rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-md transition-all duration-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
           >
-            <div className="flex items-start space-x-4">
+            <div className="flex items-start space-x-4 rtl:space-x-reverse">
               <div className="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors duration-300">
                 {signal.icon}
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 leading-tight">
-                  {signal.title}
+                  {t(`${signal.key}.title`)}
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {signal.description}
+                  {t(`${signal.key}.description`)}
                 </p>
               </div>
             </div>
           </li>
         ))}
       </ul>
-      
+
       {/* Optional CTA */}
       <div className="text-center mt-8">
-        <Link 
-          href="/contact" 
+        <Link
+          href="/contact"
           className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1"
         >
-          Talk to an expert
-          <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {tCommon('talkToExpert')}
+          <svg className="ms-1 w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </Link>
@@ -143,6 +141,14 @@ function TrustSignalsSection() {
 }
 
 export default function HomePage() {
+  const t = useTranslations();
+  const tHero = useTranslations('hero');
+  const tHomepage = useTranslations('homepage');
+  const tServices = useTranslations('services');
+  const tAbout = useTranslations('about');
+  const tTestimonials = useTranslations('testimonials');
+  const tCta = useTranslations('cta');
+
   const [partners, setPartners] = useState([]);
   const [posts, setPosts] = useState([]);
   const [clientFeedback, setClientFeedback] = useState<ClientFeedback[]>([]);
@@ -177,23 +183,23 @@ export default function HomePage() {
       {/* Enhanced Hero Slider */}
       <EnhancedHeroSlider
         slides={[
-          { 
-            src: ShipImg, 
+          {
+            src: ShipImg,
             alt: "Container ship at sea representing global ocean freight",
-            title: "We Bring the World Closer",
-            subtitle: "Maritime freight solutions worldwide"
+            title: `${tHero('title')} ${tHero('titleHighlight')}`,
+            subtitle: tHero('subtitle1')
           },
-          { 
-            src: PlaneImg, 
+          {
+            src: PlaneImg,
             alt: "Cargo airplane at sunset symbolizing fast global air freight",
-            title: "We Bring the World Closer", 
-            subtitle: "Express air cargo services"
+            title: `${tHero('title')} ${tHero('titleHighlight')}`,
+            subtitle: tHero('subtitle2')
           },
-          { 
-            src: TrucksImg, 
+          {
+            src: TrucksImg,
             alt: "Truck fleet on highway demonstrating reliable ground transportation",
-            title: "We Bring the World Closer",
-            subtitle: "Reliable ground transportation"
+            title: `${tHero('title')} ${tHero('titleHighlight')}`,
+            subtitle: tHero('subtitle3')
           },
         ]}
         intervalMs={5500}
@@ -206,24 +212,24 @@ export default function HomePage() {
       >
         <header className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="text-xs font-semibold tracking-wide text-[#ef4444]">SPECIAL SERVICES</div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1e3a8a] dark:text-white">FOR YOUR COMPANY</h2>
+            <div className="text-xs font-semibold tracking-wide text-[#ef4444]">{tHomepage('specialServices')}</div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1e3a8a] dark:text-white">{tHomepage('forYourCompany')}</h2>
           </div>
           <Link href="/services" className="inline-flex items-center justify-center rounded-md border border-[#1e40af] dark:border-blue-400 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-[#1e40af] dark:text-blue-400 hover:bg-[#eff6ff] dark:hover:bg-slate-700">
-            ALL SERVICES
+            {tHomepage('allServices')}
           </Link>
         </header>
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 items-stretch">
           {[
-            { title: "Ocean Freight", slug: "ocean-freight", img: ShipImg, alt: "Container ship at sea", desc: "Global maritime shipping solutions" },
-            { title: "Air Cargo", slug: "air-freight", img: PlaneImg, alt: "Cargo airplane at sunset", desc: "Fast express air freight services" },
-            { title: "Road Transport", slug: "road-transport", img: TrucksImg, alt: "Truck fleet on highway", desc: "Reliable ground transportation network" },
-            { title: "Rail Freight", slug: "rail-freight", img: TrainImg, alt: "Freight train with containers", desc: "Efficient railway cargo solutions" },
-            { title: "Warehousing", slug: "warehousing", img: WarehouseImg, alt: "Warehouse interior shelves", desc: "Secure storage and distribution" },
-            { title: "Multimodal", slug: "multimodal", img: RunwayImg, alt: "Combined transport runway", desc: "Integrated transport solutions" },
-            { title: "Project Cargo", slug: "project-cargo", img: IndustrialImg, alt: "Industrial heavy cargo", desc: "Specialized heavy cargo handling" },
-            { title: "Customs", slug: "customs", img: AboutImg, alt: "Customs documentation", desc: "Compliance and clearance services" },
+            { title: tServices('oceanFreight'), slug: "ocean-freight", img: ShipImg, alt: "Container ship at sea", desc: tHomepage('serviceDescriptions.oceanFreight') },
+            { title: tServices('airFreight'), slug: "air-freight", img: PlaneImg, alt: "Cargo airplane at sunset", desc: tHomepage('serviceDescriptions.airCargo') },
+            { title: tServices('roadTransport'), slug: "road-transport", img: TrucksImg, alt: "Truck fleet on highway", desc: tHomepage('serviceDescriptions.roadTransport') },
+            { title: tServices('railFreight'), slug: "rail-freight", img: TrainImg, alt: "Freight train with containers", desc: tHomepage('serviceDescriptions.railFreight') },
+            { title: tServices('warehousing'), slug: "warehousing", img: WarehouseImg, alt: "Warehouse interior shelves", desc: tHomepage('serviceDescriptions.warehousing') },
+            { title: tServices('multimodal'), slug: "multimodal", img: RunwayImg, alt: "Combined transport runway", desc: tHomepage('serviceDescriptions.multimodal') },
+            { title: tServices('projectCargo'), slug: "project-cargo", img: IndustrialImg, alt: "Industrial heavy cargo", desc: tHomepage('serviceDescriptions.projectCargo') },
+            { title: tServices('customs'), slug: "customs", img: AboutImg, alt: "Customs documentation", desc: tHomepage('serviceDescriptions.customs') },
           ].map((service, idx) => (
             <Link 
               key={service.title} 
@@ -284,7 +290,7 @@ export default function HomePage() {
         <div className="section-heading">
           <div className="heading-wrapper">
             <div className="heading-accent"></div>
-            <h2>What our clients say</h2>
+            <h2>{tTestimonials('title')}</h2>
             <div className="heading-accent"></div>
           </div>
         </div>
@@ -370,8 +376,8 @@ export default function HomePage() {
           ) : (
             // Empty State
             <div className="col-span-full text-center py-12">
-              <div className="text-slate-400 dark:text-slate-500 text-lg mb-2">No client feedback available</div>
-              <p className="text-slate-500 dark:text-slate-600 text-sm">Check back soon for client testimonials</p>
+              <div className="text-slate-400 dark:text-slate-500 text-lg mb-2">{tTestimonials('noFeedback')}</div>
+              <p className="text-slate-500 dark:text-slate-600 text-sm">{tTestimonials('checkBack')}</p>
             </div>
           )}
         </div>
@@ -388,15 +394,15 @@ export default function HomePage() {
           <div className="cta-shape-4"></div>
           <div className="cta-shape-5"></div>
           <div className="cta-shape-6"></div>
-          
-          <h2 className="text-3xl font-bold mb-4 relative z-10">Let's optimize your next shipment</h2>
-          <p className="text-xl mb-8 relative z-10">Get a personalized quote and discover how we can streamline your logistics</p>
+
+          <h2 className="text-3xl font-bold mb-4 relative z-10">{tCta('title')}</h2>
+          <p className="text-xl mb-8 relative z-10">{tCta('description')}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
             <Link href="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              Get Quote
+              {tCta('getQuote')}
             </Link>
             <Link href="/services" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-              Our Services
+              {tCta('ourServices')}
             </Link>
           </div>
         </div>
@@ -408,7 +414,7 @@ export default function HomePage() {
           <div className="section-heading">
             <div className="heading-wrapper">
               <div className="heading-accent"></div>
-              <h2>Our Partners</h2>
+              <h2>{tHomepage('partners.title')}</h2>
               <div className="heading-accent"></div>
             </div>
           </div>
@@ -434,7 +440,7 @@ export default function HomePage() {
               ))}
             </ul>
           ) : (
-            <div className="text-center text-sm text-slate-500">No partners yet.</div>
+            <div className="text-center text-sm text-slate-500">{tHomepage('partners.noPartners')}</div>
           )}
         </div>
       </section>
@@ -446,22 +452,22 @@ export default function HomePage() {
           <div className="section-heading">
             <div className="heading-wrapper">
               <div className="heading-accent"></div>
-              <h2>About DVN LOG</h2>
+              <h2>{tAbout('sectionTitle')}</h2>
               <div className="heading-accent"></div>
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Since 2017, we've been providing reliable logistics solutions across ocean, air, road and rail with a focus on visibility, speed and cost-efficiency. Our team combines global reach with local expertise to keep your cargo moving.
+              {tAbout('description')}
             </p>
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2 items-start">
             {/* Left Side - Service Cards */}
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Why Choose DVN LOG</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">{tAbout('whyChoose')}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
                   {
-                    title: "Global Coverage",
+                    title: tAbout('globalCoverage'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -469,7 +475,7 @@ export default function HomePage() {
                     )
                   },
                   {
-                    title: "Real-time Tracking",
+                    title: tAbout('realTimeTracking'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -478,7 +484,7 @@ export default function HomePage() {
                     )
                   },
                   {
-                    title: "Dedicated Support",
+                    title: tAbout('dedicatedSupport'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -486,7 +492,7 @@ export default function HomePage() {
                     )
                   },
                   {
-                    title: "Customs & Compliance",
+                    title: tAbout('customsCompliance'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -494,7 +500,7 @@ export default function HomePage() {
                     )
                   },
                   {
-                    title: "Container & Vessel Tracking",
+                    title: tAbout('containerTracking'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -502,7 +508,7 @@ export default function HomePage() {
                     )
                   },
                   {
-                    title: "24/7 Operations",
+                    title: tAbout('operations247'),
                     icon: (
                       <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -528,23 +534,23 @@ export default function HomePage() {
             {/* Right Side - Interactive Tracking Widget */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-slate-700">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Track Your Shipment</h3>
-                <p className="text-gray-600 dark:text-gray-300">Stay updated from pickup to delivery with real-time tracking</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{tAbout('trackYourShipment')}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{tAbout('trackDescription')}</p>
               </div>
 
               {/* Company Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">2017</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Since</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{tAbout('since')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">50+</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Countries</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{tAbout('countries')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Support Available All Week</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{tAbout('supportAvailable')}</div>
                 </div>
               </div>
 
@@ -554,8 +560,8 @@ export default function HomePage() {
                   <svg className="w-24 h-16 mx-auto text-blue-300 dark:text-blue-500 mb-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
-                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">Global Coverage Network</p>
-                  <p className="text-xs text-blue-500 dark:text-blue-300">Serving 50+ countries worldwide</p>
+                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">{tAbout('globalNetwork')}</p>
+                  <p className="text-xs text-blue-500 dark:text-blue-300">{tAbout('servingCountries')}</p>
                 </div>
                 {/* Decorative dots */}
                 <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
@@ -564,15 +570,15 @@ export default function HomePage() {
               </div>
 
               {/* Prominent Tracking Button */}
-              <Link 
-                href="/tracking" 
+              <Link
+                href="/tracking"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold text-center block transition-all duration-300 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-200"
               >
                 <div className="flex items-center justify-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
-                  Start Tracking Now
+                  {tAbout('startTracking')}
                 </div>
               </Link>
             </div>
@@ -585,11 +591,11 @@ export default function HomePage() {
         <div className="section-heading">
           <div className="heading-wrapper">
             <div className="heading-accent"></div>
-            <h2>Latest articles</h2>
+            <h2>{tHomepage('latestArticles.title')}</h2>
             <div className="heading-accent"></div>
           </div>
         </div>
-        
+
         {Array.isArray(posts) ? (
           posts.length ? (
             <div className="space-y-8">
@@ -747,12 +753,12 @@ export default function HomePage() {
               
               {/* View All Articles Button */}
               <div className="text-center">
-                <Link 
-                  href="/blog" 
+                <Link
+                  href="/blog"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-slate-200"
                 >
-                  View all articles
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {tHomepage('latestArticles.viewAll')}
+                  <svg className="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
@@ -760,14 +766,14 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <div className="text-slate-400 text-lg mb-2">No articles available</div>
-              <p className="text-slate-500 text-sm">Check back soon for the latest insights</p>
+              <div className="text-slate-400 text-lg mb-2">{tHomepage('latestArticles.noArticles')}</div>
+              <p className="text-slate-500 text-sm">{tHomepage('latestArticles.checkBack')}</p>
             </div>
           )
         ) : (
           <div className="text-center py-12">
             <div className="animate-pulse">
-              <div className="text-slate-400 text-lg">Loading articles...</div>
+              <div className="text-slate-400 text-lg">{tHomepage('latestArticles.loading')}</div>
             </div>
           </div>
         )}

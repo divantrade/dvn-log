@@ -1,73 +1,57 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import NavHeightObserver from "../../_components/NavHeightObserver";
 import PageHero from "../../_components/PageHero";
 import ServicePageLayout from "../_components/ServicePageLayout";
 import MultimodalImg from "@/images/aerial-view-container-cargo-ship-sea.jpg";
 
 export default function MultimodalPage() {
+  const t = useTranslations('servicesPage.multimodal');
+
   const serviceOptions = [
-    {
-      title: "Ocean-Road Combinations",
-      desc: "Seamless integration of sea and land transport for cost-effective long-distance shipping."
-    },
-    {
-      title: "Rail-Road Solutions",
-      desc: "Intermodal connections combining rail efficiency with road flexibility for optimal delivery."
-    },
-    {
-      title: "Air-Road Express",
-      desc: "Time-critical combinations leveraging air speed with road accessibility for urgent cargo."
-    }
+    { title: t('serviceOptions.oceanRoad.title'), desc: t('serviceOptions.oceanRoad.desc') },
+    { title: t('serviceOptions.railRoad.title'), desc: t('serviceOptions.railRoad.desc') },
+    { title: t('serviceOptions.airRoad.title'), desc: t('serviceOptions.airRoad.desc') }
   ];
 
   const additionalCapabilities = [
-    {
-      title: "Route Optimization",
-      desc: "Strategic mode selection and route design to balance speed, cost, and reliability across transport networks."
-    },
-    {
-      title: "Single-Window Operations",
-      desc: "Unified documentation and coordination across all transport modes for simplified logistics management."
-    },
-    {
-      title: "Handover Management",
-      desc: "Expert coordination of cargo transfers between modes with risk mitigation and quality control."
-    },
-    {
-      title: "End-to-End Visibility",
-      desc: "Complete shipment tracking across all transport modes with real-time updates and milestone reporting."
-    }
+    { title: t('additionalCapabilities.route.title'), desc: t('additionalCapabilities.route.desc') },
+    { title: t('additionalCapabilities.singleWindow.title'), desc: t('additionalCapabilities.singleWindow.desc') },
+    { title: t('additionalCapabilities.handover.title'), desc: t('additionalCapabilities.handover.desc') },
+    { title: t('additionalCapabilities.visibility.title'), desc: t('additionalCapabilities.visibility.desc') }
   ];
 
   const features = [
-    "Route design across transport modes",
-    "Single-window operations and documentation",
-    "Risk and handover management",
-    "End-to-end visibility and tracking",
-    "Cost and time optimization",
-    "Seamless mode transitions"
+    t('features.f1'),
+    t('features.f2'),
+    t('features.f3'),
+    t('features.f4'),
+    t('features.f5'),
+    t('features.f6')
   ];
 
   return (
     <main className="px-0">
       <NavHeightObserver />
-      <PageHero 
-        title="Multimodal" 
-        subtitle="Integrated ocean/road/rail/air for optimal cost and time." 
-        image={MultimodalImg} 
-        imageAlt="Multimodal transport operations" 
+      <PageHero
+        title={t('title')}
+        subtitle={t('heroSubtitle')}
+        image={MultimodalImg}
+        imageAlt="Multimodal transport operations"
       />
       <ServicePageLayout
-        serviceName="Multimodal"
+        serviceName={t('title')}
         heroImage={MultimodalImg}
         heroImageAlt="Professional multimodal transport services"
-        serviceCategory="Multimodal"
-        title="Connect modes for optimal efficiency"
-        description="Integrated transport solutions combining ocean, road, rail, and air modes. Strategic route design, seamless handovers, and end-to-end visibility for complex logistics requirements."
+        serviceCategory={t('category')}
+        title={t('mainTitle')}
+        description={t('description')}
         features={features}
         serviceOptions={serviceOptions}
         additionalCapabilities={additionalCapabilities}
-        ctaTitle="Ready to design your route?"
-        ctaDescription="We'll balance speed, cost and reliability for your specific lanes."
+        ctaTitle={t('cta.title')}
+        ctaDescription={t('cta.description')}
       />
     </main>
   );

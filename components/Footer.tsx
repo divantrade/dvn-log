@@ -1,17 +1,22 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import DVNLogo from '@/images/Untitled-1-01 (1).png';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+  const tServices = useTranslations('services');
+  const tNav = useTranslations('nav');
+
   return (
     <footer className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-white border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
               <Image
                 src={DVNLogo}
                 alt="DVN LOG"
@@ -21,8 +26,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-slate-600 dark:text-gray-400 mb-4">
-              Global logistics solutions with reliable ocean, air, road and rail transport services.
-              Safe, fast delivery to every corner of the world.
+              {t('description')}
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/DVNlog" target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors" aria-label="Follow us on Facebook">
@@ -45,35 +49,35 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('services')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/services/ocean-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Ocean Freight</Link></li>
-              <li><Link href="/services/air-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Air Freight</Link></li>
-              <li><Link href="/services/road-transport" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Road Transport</Link></li>
-              <li><Link href="/services/rail-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Rail Freight</Link></li>
-              <li><Link href="/services/warehousing" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Warehousing</Link></li>
-              <li><Link href="/services/customs" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Customs & Compliance</Link></li>
+              <li><Link href="/services/ocean-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('oceanFreight')}</Link></li>
+              <li><Link href="/services/air-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('airFreight')}</Link></li>
+              <li><Link href="/services/road-transport" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('roadTransport')}</Link></li>
+              <li><Link href="/services/rail-freight" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('railFreight')}</Link></li>
+              <li><Link href="/services/warehousing" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('warehousing')}</Link></li>
+              <li><Link href="/services/customs" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tServices('customs')}</Link></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('company')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/blog" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Blog</Link></li>
-              <li><Link href="/contact" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/tracking" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Track Shipment</Link></li>
-              <li><Link href="/careers" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">Careers</Link></li>
-              <li><Link href="/news" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">News</Link></li>
+              <li><Link href="/about" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tNav('aboutUs')}</Link></li>
+              <li><Link href="/blog" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tNav('blog')}</Link></li>
+              <li><Link href="/contact" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tNav('contact')}</Link></li>
+              <li><Link href="/tracking" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{tNav('trackShipment')}</Link></li>
+              <li><Link href="/careers" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{t('careers')}</Link></li>
+              <li><Link href="/news" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors">{t('news')}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('contactInfo')}</h3>
             <div className="space-y-3">
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start space-x-3 rtl:space-x-reverse">
                 <svg className="w-5 h-5 text-blue-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -84,23 +88,23 @@ export default function Footer() {
                   <p className="text-slate-600 dark:text-gray-400">İstanbul, Turkey</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <p className="text-slate-600 dark:text-gray-400">+90 501 064 40 68</p>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <p className="text-slate-600 dark:text-gray-400">info@dvnlog.com</p>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <p className="text-slate-600 dark:text-gray-400">Emergency Support Available 24/7</p>
+                <p className="text-slate-600 dark:text-gray-400">{t('emergencySupport')}</p>
               </div>
             </div>
           </div>
@@ -109,17 +113,17 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-200 dark:border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-500 dark:text-gray-400 text-sm">
-            © 2025 DVN LOG. All rights reserved.
+            © 2025 DVN LOG. {t('rights')}
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex space-x-6 rtl:space-x-reverse mt-4 md:mt-0">
             <Link href="/privacy" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white text-sm transition-colors">
-              Privacy Policy
+              {t('privacy')}
             </Link>
             <Link href="/terms" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white text-sm transition-colors">
-              Terms of Service
+              {t('terms')}
             </Link>
             <Link href="/cookies" className="text-slate-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white text-sm transition-colors">
-              Cookie Policy
+              {t('cookies')}
             </Link>
           </div>
         </div>

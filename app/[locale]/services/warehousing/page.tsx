@@ -1,73 +1,57 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import NavHeightObserver from "../../_components/NavHeightObserver";
 import PageHero from "../../_components/PageHero";
 import ServicePageLayout from "../_components/ServicePageLayout";
 import WarehouseImg from "@/images/distribution-warehouse-interior-with-workers-wearing-hardhats-reflective-jackets-walking-storage-area.jpg";
 
 export default function WarehousingPage() {
+  const t = useTranslations('servicesPage.warehousing');
+
   const serviceOptions = [
-    {
-      title: "Storage Solutions",
-      desc: "Short-term and long-term storage options with flexible capacity and scalable solutions."
-    },
-    {
-      title: "Pick & Pack Services",
-      desc: "Order fulfillment and custom packaging with advanced inventory management systems."
-    },
-    {
-      title: "Cross-Dock Services",
-      desc: "Consolidation and distribution optimization for streamlined supply chain operations."
-    }
+    { title: t('serviceOptions.storage.title'), desc: t('serviceOptions.storage.desc') },
+    { title: t('serviceOptions.pickPack.title'), desc: t('serviceOptions.pickPack.desc') },
+    { title: t('serviceOptions.crossDock.title'), desc: t('serviceOptions.crossDock.desc') }
   ];
 
   const additionalCapabilities = [
-    {
-      title: "Specialized Facilities",
-      desc: "Temperature-controlled and bonded storage for pharmaceuticals, food, and high-value goods."
-    },
-    {
-      title: "Value-Added Services",
-      desc: "Labeling, kitting, assembly, and custom packaging services to enhance your products."
-    },
-    {
-      title: "Inventory Management",
-      desc: "Real-time tracking and reporting with advanced WMS integration and visibility tools."
-    },
-    {
-      title: "Strategic Locations",
-      desc: "Optimally positioned facilities for efficient distribution and reduced transportation costs."
-    }
+    { title: t('additionalCapabilities.specialized.title'), desc: t('additionalCapabilities.specialized.desc') },
+    { title: t('additionalCapabilities.valueAdded.title'), desc: t('additionalCapabilities.valueAdded.desc') },
+    { title: t('additionalCapabilities.inventory.title'), desc: t('additionalCapabilities.inventory.desc') },
+    { title: t('additionalCapabilities.locations.title'), desc: t('additionalCapabilities.locations.desc') }
   ];
 
   const features = [
-    "Flexible storage solutions",
-    "Advanced inventory management",
-    "Pick & pack services",
-    "Cross-dock operations",
-    "Temperature-controlled facilities",
-    "Real-time tracking & reporting"
+    t('features.f1'),
+    t('features.f2'),
+    t('features.f3'),
+    t('features.f4'),
+    t('features.f5'),
+    t('features.f6')
   ];
 
   return (
     <main className="px-0">
       <NavHeightObserver />
-      <PageHero 
-        title="Warehousing" 
-        subtitle="Storage, consolidation and value‑added services across regions." 
-        image={WarehouseImg} 
-        imageAlt="Distribution warehouse interior" 
+      <PageHero
+        title={t('title')}
+        subtitle={t('heroSubtitle')}
+        image={WarehouseImg}
+        imageAlt="Distribution warehouse interior"
       />
       <ServicePageLayout
-        serviceName="Warehousing"
+        serviceName={t('title')}
         heroImage={WarehouseImg}
         heroImageAlt="Professional warehousing services"
-        serviceCategory="Warehousing"
-        title="Store and distribute with precision"
-        description="Strategic storage and fulfillment solutions with flexible capacity and value-added services. Advanced inventory management, pick & pack operations, and cross-dock capabilities."
+        serviceCategory={t('category')}
+        title={t('mainTitle')}
+        description={t('description')}
         features={features}
         serviceOptions={serviceOptions}
         additionalCapabilities={additionalCapabilities}
-        ctaTitle="Ready to optimize your storage?"
-        ctaDescription="Flexible warehousing solutions that scale with your business needs."
+        ctaTitle={t('cta.title')}
+        ctaDescription={t('cta.description')}
       />
     </main>
   );

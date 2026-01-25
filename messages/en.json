@@ -26,11 +26,66 @@
     "badge": "Trusted global logistics partner",
     "title": "We Bring the World",
     "titleHighlight": "Closer",
-    "subtitle1": "Global freight forwarding solutions",
+    "subtitle1": "Maritime freight solutions worldwide",
     "subtitle2": "Express air cargo services",
-    "subtitle3": "Reliable ocean shipping",
+    "subtitle3": "Reliable ground transportation",
     "contactUs": "CONTACT US",
     "exploreServices": "Explore Services"
+  },
+  "homepage": {
+    "specialServices": "SPECIAL SERVICES",
+    "forYourCompany": "FOR YOUR COMPANY",
+    "allServices": "ALL SERVICES",
+    "serviceDescriptions": {
+      "oceanFreight": "Global maritime shipping solutions",
+      "airCargo": "Fast express air freight services",
+      "roadTransport": "Reliable ground transportation network",
+      "railFreight": "Efficient railway cargo solutions",
+      "warehousing": "Secure storage and distribution",
+      "multimodal": "Integrated transport solutions",
+      "projectCargo": "Specialized heavy cargo handling",
+      "customs": "Compliance and clearance services"
+    },
+    "trustSignals": {
+      "title": "Why shippers choose DVN",
+      "reliable": {
+        "title": "Reliable by Design",
+        "description": "ISO-aligned processes with documented SOPs."
+      },
+      "globalNetwork": {
+        "title": "Global Network",
+        "description": "Coordinated routes across 50+ countries."
+      },
+      "realTimeVisibility": {
+        "title": "Real-Time Visibility",
+        "description": "Milestone tracking and proactive alerts."
+      },
+      "customsCompliance": {
+        "title": "Customs & Compliance",
+        "description": "Trade, security, and documentation handled end-to-end."
+      },
+      "singleContact": {
+        "title": "Single Point of Contact",
+        "description": "One dedicated team for every shipment."
+      },
+      "riskExceptions": {
+        "title": "Risk & Exceptions",
+        "description": "Early detection and clear escalation paths."
+      }
+    },
+    "talkToExpert": "Talk to an expert",
+    "partners": {
+      "title": "Our Partners",
+      "noPartners": "No partners yet."
+    },
+    "latestArticles": {
+      "title": "Latest articles",
+      "viewAll": "View all articles",
+      "noArticles": "No articles available",
+      "checkBack": "Check back soon for the latest insights",
+      "loading": "Loading articles...",
+      "minRead": "min read"
+    }
   },
   "about": {
     "sectionTitle": "About DVN LOG",
@@ -50,6 +105,112 @@
     "globalNetwork": "Global Coverage Network",
     "servingCountries": "Serving 50+ countries worldwide",
     "startTracking": "Start Tracking Now"
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "Logistics you can depend on — sea, air, road & rail",
+      "subtitle": "Real-time visibility, compliance, and proactive exception handling",
+      "contactUs": "Contact Us",
+      "trackShipment": "Track Shipment"
+    },
+    "whoWeAre": {
+      "title": "Who we are",
+      "description": "We serve manufacturers, retailers, and distributors who need reliable, compliant logistics solutions across ocean, air, road, and rail. Our core value is transforming supply chain complexity into predictable, transparent operations that drive your business forward.",
+      "bullet1": "Complete visibility from origin to destination with real-time milestone tracking",
+      "bullet2": "Full compliance management across all regulatory requirements and trade lanes",
+      "bullet3": "Optimized speed and cost through strategic carrier partnerships and route planning"
+    },
+    "values": {
+      "title": "What sets us apart",
+      "tracking": {
+        "title": "Real-time tracking",
+        "description": "Complete visibility from pickup to delivery with milestone updates and exception alerts."
+      },
+      "compliance": {
+        "title": "Documentation & compliance",
+        "description": "Expert handling of customs, permits, and regulatory requirements across all trade lanes."
+      },
+      "network": {
+        "title": "Global carrier network",
+        "description": "Strategic partnerships with 150+ carriers ensuring capacity and competitive rates worldwide."
+      },
+      "exception": {
+        "title": "24/7 exception handling",
+        "description": "Proactive monitoring and immediate response to delays, disruptions, or documentation issues."
+      },
+      "speed": {
+        "title": "Speed & efficiency",
+        "description": "Optimized routing and streamlined processes to minimize transit times and costs."
+      },
+      "insights": {
+        "title": "Data-driven insights",
+        "description": "Analytics and reporting to optimize your supply chain performance and reduce costs."
+      }
+    },
+    "counters": {
+      "title": "Our impact in numbers",
+      "subtitle": "Trusted by global companies to deliver consistent, reliable logistics solutions",
+      "onTime": "On-time delivery",
+      "countries": "Countries covered",
+      "tradeLanes": "Trade lanes",
+      "operations": "Operations"
+    },
+    "process": {
+      "title": "How we work",
+      "subtitle": "Our streamlined 5-step process ensures your cargo moves efficiently from origin to destination",
+      "step1": {
+        "title": "Quote & booking",
+        "description": "Get instant quotes and book shipments through our platform or dedicated account manager"
+      },
+      "step2": {
+        "title": "Documentation & compliance",
+        "description": "We handle all customs paperwork, permits, and regulatory requirements for your trade lane"
+      },
+      "step3": {
+        "title": "Pickup & consolidation",
+        "description": "Strategic pickup scheduling and cargo consolidation to optimize costs and transit times"
+      },
+      "step4": {
+        "title": "Real-time tracking",
+        "description": "Monitor your shipment with live updates, milestone notifications, and exception alerts"
+      },
+      "step5": {
+        "title": "Final delivery",
+        "description": "Coordinated last-mile delivery with proof of delivery and performance analytics"
+      }
+    },
+    "leadership": {
+      "title": "Leadership team",
+      "subtitle": "Experienced professionals dedicated to delivering exceptional logistics solutions",
+      "members": {
+        "ceo": {
+          "name": "Sarah Chen",
+          "title": "Chief Executive Officer",
+          "bio": "20+ years in global logistics, former VP at Maersk. Expert in digital transformation and sustainable supply chains.",
+          "initials": "SC"
+        },
+        "coo": {
+          "name": "Michael Rodriguez",
+          "title": "Chief Operations Officer",
+          "bio": "15+ years optimizing freight networks across Asia-Pacific. Specialized in multimodal transport solutions.",
+          "initials": "MR"
+        },
+        "compliance": {
+          "name": "Dr. Emma Thompson",
+          "title": "Head of Compliance",
+          "bio": "Former customs official with deep expertise in international trade regulations and risk management.",
+          "initials": "ET"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to streamline your logistics?",
+      "subtitle": "Join hundreds of companies who trust us with their global supply chain. Get started with a free consultation and quote.",
+      "getQuote": "Get Free Quote",
+      "trackShipment": "Track Shipment",
+      "contact": "Questions? Call us at",
+      "orEmail": "or email"
+    }
   },
   "servicesSection": {
     "title": "Our Services",
@@ -106,12 +267,25 @@
   },
   "tracking": {
     "title": "Track Your Shipment",
-    "subtitle": "Enter your tracking number to get real-time updates on your shipment",
-    "placeholder": "Enter tracking number (e.g., DVN123456789)",
-    "trackButton": "Track",
+    "subtitle": "Real-time tracking with satellite precision. Monitor containers and vessels worldwide with accurate location data.",
+    "enterInfo": "Enter Tracking Information",
+    "containerNumber": "Container Number",
+    "shipName": "Ship Name",
+    "containerPlaceholder": "e.g., MSKU1234567",
+    "shipPlaceholder": "e.g., MSC OSCAR",
+    "trackButton": "Track Shipment",
     "tracking": "Tracking...",
-    "shipmentDetails": "Shipment Details",
+    "shipmentStatus": "Shipment Status",
     "status": "Status",
+    "currentLocation": "Current Location",
+    "vessel": "Vessel",
+    "eta": "ETA",
+    "liveLocation": "Live Location",
+    "interactiveMap": "Interactive Map",
+    "routeTimeline": "Route Timeline",
+    "satelliteResources": "Advanced Satellite Tracking Resources",
+    "placeholder": "Enter tracking number (e.g., DVN123456789)",
+    "shipmentDetails": "Shipment Details",
     "origin": "Origin",
     "destination": "Destination",
     "estimatedDelivery": "Estimated Delivery",
@@ -119,7 +293,19 @@
     "newSearch": "New Search",
     "notFound": "Shipment not found",
     "notFoundDesc": "Please check your tracking number and try again",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "containerTracking": "Container Tracking",
+    "vesselTracking": "Vessel Tracking",
+    "shipTracking": "Ship Tracking",
+    "enterContainer": "Enter container number",
+    "enterVessel": "Enter vessel name or IMO",
+    "mapComingSoon": "Map coming soon (Mapbox)",
+    "showRoute": "will show route & port calls",
+    "showPosition": "will show live position & trail",
+    "inTransit": "In Transit",
+    "departed": "Departed",
+    "transited": "Transited",
+    "expected": "Expected"
   },
   "blog": {
     "title": "Blog",
@@ -128,17 +314,272 @@
     "readMore": "Read more",
     "article": "Article",
     "prev": "Prev",
-    "next": "Next"
+    "next": "Next",
+    "categories": "Categories",
+    "recentPosts": "Recent Posts",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found",
+    "loadMore": "Load More",
+    "postNotFound": "Post not found",
+    "backToBlog": "Back to Blog",
+    "tags": "Tags",
+    "relatedArticles": "Related Articles"
   },
   "footer": {
-    "description": "Your trusted partner in global logistics solutions. Connecting businesses worldwide with reliable freight services.",
+    "description": "Global logistics solutions with reliable ocean, air, road and rail transport services. Safe, fast delivery to every corner of the world.",
     "quickLinks": "Quick Links",
     "ourServices": "Our Services",
+    "services": "Services",
+    "company": "Company",
+    "contactInfo": "Contact Info",
     "contactUs": "Contact Us",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "cookies": "Cookies"
+    "cookies": "Cookie Policy",
+    "careers": "Careers",
+    "news": "News",
+    "emergencySupport": "Emergency Support Available 24/7"
+  },
+  "servicesPage": {
+    "title": "Services",
+    "subtitle": "End-to-end logistics across sea, air, road and rail—picked to fit your lane.",
+    "premiumSolutions": "PREMIUM LOGISTICS SOLUTIONS",
+    "professionalServices": "Professional Transport Services",
+    "coreServicesDesc": "Our core services keep your supply chain moving with clarity, speed and control.",
+    "learnMore": "Learn more",
+    "getQuote": "Get a Quote",
+    "breadcrumb": "Services",
+    "categories": {
+      "maritime": "Maritime",
+      "air": "Air",
+      "ground": "Ground",
+      "special": "Special"
+    },
+    "common": {
+      "getQuote": "Get a Quote",
+      "requestQuote": "Request Quote",
+      "exploreServices": "Explore Services",
+      "trackContainer": "Track Container",
+      "getTailoredQuote": "Get a tailored quotation",
+      "shareLanesVolumes": "Share lanes and volumes — we'll propose a simple, clear plan.",
+      "serviceOptions": "Service Options",
+      "additionalCapabilities": "Additional capabilities"
+    },
+    "oceanFreight": {
+      "title": "Ocean Freight",
+      "heroSubtitle": "Full-container & LCL solutions with global lanes, visibility and customs support.",
+      "category": "Ocean Freight",
+      "mainTitle": "Move by sea with clarity and control",
+      "description": "Reliable FCL/LCL on core trade lanes with documented processes and straightforward handoffs. We keep paperwork simple and milestones visible so your cargo keeps moving—without overselling.",
+      "features": {
+        "f1": "Door-to-door delivery & port handling",
+        "f2": "FCL and LCL options across major lanes",
+        "f3": "Reefer & special equipment (OT/FR/ISO)",
+        "f4": "Customs paperwork & documentation",
+        "f5": "Space & schedule optimization",
+        "f6": "Milestone visibility & support"
+      },
+      "serviceOptions": {
+        "fcl": { "title": "Full Container Load (FCL)", "desc": "Dedicated boxes for direct routes and predictable schedules—fewer handoffs, more control." },
+        "lcl": { "title": "Less than Container Load (LCL)", "desc": "Shared capacity for smaller consignments with regular cut-offs and consolidated handling." },
+        "special": { "title": "Special Equipment", "desc": "Reefer, open-top, flat-rack, and ISO tank with route checks and handling guidance." }
+      },
+      "additionalCapabilities": {
+        "drayage": { "title": "Port drayage & deconsolidation", "desc": "Smooth first/last-mile moves with clear handoffs to road/rail." },
+        "exception": { "title": "Exception handling", "desc": "Early signals for rollovers, docs, and inspections with clear actions." },
+        "dg": { "title": "Dangerous goods (on request)", "desc": "Route and line review with documentation guidance where applicable." },
+        "reporting": { "title": "Reporting", "desc": "Simple milestone tracking and on-request status summaries." }
+      },
+      "cta": { "title": "Planning an ocean shipment?", "description": "Share origin, destination, and estimated volumes — we'll outline a clear plan." },
+      "tags": ["Door-to-door", "Tracking", "Customs", "Insurance"]
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "heroSubtitle": "Express and economy air cargo for time‑critical shipments.",
+      "category": "Air Freight",
+      "mainTitle": "Move by air with speed and precision",
+      "description": "Time-critical cargo solutions with express and economy options across global routes. Reliable schedules, certified handling, and end-to-end visibility for urgent shipments.",
+      "features": {
+        "f1": "Express and economy air services",
+        "f2": "Global door-to-door coverage",
+        "f3": "Dangerous goods certification",
+        "f4": "Temperature-controlled transport",
+        "f5": "Real-time flight tracking",
+        "f6": "24/7 customer support"
+      },
+      "serviceOptions": {
+        "express": { "title": "Express Air Services", "desc": "Next-flight-out for urgent shipments with priority handling and expedited customs clearance." },
+        "economy": { "title": "Economy Air Freight", "desc": "Cost-effective deferred services for less time-sensitive cargo with reliable schedules." },
+        "dg": { "title": "Dangerous Goods Handling", "desc": "Certified handling of hazardous materials with full IATA compliance and safety protocols." }
+      },
+      "additionalCapabilities": {
+        "tempControl": { "title": "Temperature Control", "desc": "Climate-controlled cargo solutions for pharmaceuticals, perishables, and sensitive goods with real-time monitoring." },
+        "specialized": { "title": "Specialized Handling", "desc": "Expert care for fragile, valuable, and oversized cargo with custom packaging and handling procedures." },
+        "network": { "title": "Global Network", "desc": "Door-to-door coverage across 500+ destinations with local expertise and 24/7 customer support." },
+        "tracking": { "title": "Real-time Tracking", "desc": "Flight tracking and milestone updates with proactive communication and exception management." }
+      },
+      "cta": { "title": "Ready to ship by air?", "description": "Get competitive rates and reliable transit times for your air freight needs." },
+      "tags": ["24–48h", "Temp control", "DG", "Express"]
+    },
+    "roadTransport": {
+      "title": "Road Transport",
+      "heroSubtitle": "FTL/LTL across regions with optimized transit and coverage.",
+      "category": "Road Transport",
+      "mainTitle": "Road Transport Solutions",
+      "description": "Flexible, reliable ground transportation across regional and international corridors.",
+      "quote": "Delivering excellence across every mile, connecting businesses with reliable road transport solutions.",
+      "quoteAuthor": "DVN Logistics",
+      "features": {
+        "f1": "Real-time GPS tracking",
+        "f2": "24/7 monitoring",
+        "f3": "Flexible scheduling",
+        "f4": "Temperature control",
+        "f5": "Route optimization"
+      },
+      "serviceOptions": {
+        "ftl": { "title": "Full Truckload (FTL)", "desc": "Dedicated vehicles for large shipments" },
+        "ltl": { "title": "Less Than Truckload (LTL)", "desc": "Cost-effective shared trailer space" },
+        "crossBorder": { "title": "Cross-Border Transport", "desc": "International moves with full support" }
+      },
+      "tags": ["Last mile", "Cross-border", "Fleet", "Optimized routes"]
+    },
+    "railFreight": {
+      "title": "Rail Freight",
+      "heroSubtitle": "Efficient intermodal rail corridors and stable lead times.",
+      "category": "Rail Freight",
+      "mainTitle": "Move by rail with efficiency and sustainability",
+      "description": "Reliable rail transport across major corridors with intermodal connections. Predictable schedules, lower emissions, and cost-effective solutions for high-volume shipments.",
+      "features": {
+        "f1": "Block train and intermodal solutions",
+        "f2": "Secure routings and transit stability",
+        "f3": "Customs and terminal coordination",
+        "f4": "Door-to-door with first/last mile",
+        "f5": "Lower emissions and sustainability",
+        "f6": "Predictable lead times"
+      },
+      "serviceOptions": {
+        "block": { "title": "Block Train Services", "desc": "Dedicated train capacity for large volumes with direct routing and predictable schedules." },
+        "intermodal": { "title": "Intermodal Solutions", "desc": "Seamless rail-to-truck connections with optimized first and last mile delivery." },
+        "crossBorder": { "title": "Cross-Border Rail", "desc": "International rail corridors with customs coordination and documentation support." }
+      },
+      "additionalCapabilities": {
+        "sustainable": { "title": "Sustainable Transport", "desc": "Lower carbon footprint compared to road transport with environmentally conscious logistics solutions." },
+        "terminal": { "title": "Terminal Coordination", "desc": "Expert management of rail terminal operations, loading, and equipment positioning." },
+        "route": { "title": "Route Optimization", "desc": "Strategic routing through major rail corridors for maximum efficiency and cost savings." },
+        "equipment": { "title": "Equipment Management", "desc": "Specialized railcar types including flatcars, boxcars, and container chassis for diverse cargo needs." }
+      },
+      "cta": { "title": "Ready to optimize with rail?", "description": "Lower emissions and predictable lead times for your freight needs." },
+      "tags": ["Bulk", "Eco", "Long distance", "Containers"]
+    },
+    "warehousing": {
+      "title": "Warehousing",
+      "heroSubtitle": "Storage, consolidation and value‑added services across regions.",
+      "category": "Warehousing",
+      "mainTitle": "Store and distribute with precision",
+      "description": "Strategic storage and fulfillment solutions with flexible capacity and value-added services. Advanced inventory management, pick & pack operations, and cross-dock capabilities.",
+      "features": {
+        "f1": "Flexible storage solutions",
+        "f2": "Advanced inventory management",
+        "f3": "Pick & pack services",
+        "f4": "Cross-dock operations",
+        "f5": "Temperature-controlled facilities",
+        "f6": "Real-time tracking & reporting"
+      },
+      "serviceOptions": {
+        "storage": { "title": "Storage Solutions", "desc": "Short-term and long-term storage options with flexible capacity and scalable solutions." },
+        "pickPack": { "title": "Pick & Pack Services", "desc": "Order fulfillment and custom packaging with advanced inventory management systems." },
+        "crossDock": { "title": "Cross-Dock Services", "desc": "Consolidation and distribution optimization for streamlined supply chain operations." }
+      },
+      "additionalCapabilities": {
+        "specialized": { "title": "Specialized Facilities", "desc": "Temperature-controlled and bonded storage for pharmaceuticals, food, and high-value goods." },
+        "valueAdded": { "title": "Value-Added Services", "desc": "Labeling, kitting, assembly, and custom packaging services to enhance your products." },
+        "inventory": { "title": "Inventory Management", "desc": "Real-time tracking and reporting with advanced WMS integration and visibility tools." },
+        "locations": { "title": "Strategic Locations", "desc": "Optimally positioned facilities for efficient distribution and reduced transportation costs." }
+      },
+      "cta": { "title": "Ready to optimize your storage?", "description": "Flexible warehousing solutions that scale with your business needs." },
+      "tags": ["Inventory", "Pick & pack", "Climate", "Security"]
+    },
+    "multimodal": {
+      "title": "Multimodal Transport",
+      "heroSubtitle": "Integrated ocean/road/rail/air for optimal cost and time.",
+      "category": "Multimodal",
+      "mainTitle": "Connect modes for optimal efficiency",
+      "description": "Integrated transport solutions combining ocean, road, rail, and air modes. Strategic route design, seamless handovers, and end-to-end visibility for complex logistics requirements.",
+      "features": {
+        "f1": "Route design across transport modes",
+        "f2": "Single-window operations and documentation",
+        "f3": "Risk and handover management",
+        "f4": "End-to-end visibility and tracking",
+        "f5": "Cost and time optimization",
+        "f6": "Seamless mode transitions"
+      },
+      "serviceOptions": {
+        "oceanRoad": { "title": "Ocean-Road Combinations", "desc": "Seamless integration of sea and land transport for cost-effective long-distance shipping." },
+        "railRoad": { "title": "Rail-Road Solutions", "desc": "Intermodal connections combining rail efficiency with road flexibility for optimal delivery." },
+        "airRoad": { "title": "Air-Road Express", "desc": "Time-critical combinations leveraging air speed with road accessibility for urgent cargo." }
+      },
+      "additionalCapabilities": {
+        "route": { "title": "Route Optimization", "desc": "Strategic mode selection and route design to balance speed, cost, and reliability across transport networks." },
+        "singleWindow": { "title": "Single-Window Operations", "desc": "Unified documentation and coordination across all transport modes for simplified logistics management." },
+        "handover": { "title": "Handover Management", "desc": "Expert coordination of cargo transfers between modes with risk mitigation and quality control." },
+        "visibility": { "title": "End-to-End Visibility", "desc": "Complete shipment tracking across all transport modes with real-time updates and milestone reporting." }
+      },
+      "cta": { "title": "Ready to design your route?", "description": "We'll balance speed, cost and reliability for your specific lanes." },
+      "tags": ["Integrated", "Cost-optimized", "Single contact", "End-to-end"]
+    },
+    "projectCargo": {
+      "title": "Project Cargo",
+      "heroSubtitle": "Engineering and route planning for heavy and oversized loads.",
+      "category": "Project Cargo",
+      "mainTitle": "Move complex cargo with precision",
+      "description": "Specialized project cargo solutions for heavy, oversized, and complex shipments. Engineering expertise, route planning, and end-to-end execution for challenging logistics projects.",
+      "features": {
+        "f1": "Route surveys and feasibility studies",
+        "f2": "Special equipment and lifting plans",
+        "f3": "Permits, escorts and regulatory approvals",
+        "f4": "End-to-end execution and site coordination",
+        "f5": "Heavy lift and oversized cargo handling",
+        "f6": "Project management and supervision"
+      },
+      "serviceOptions": {
+        "heavyLift": { "title": "Heavy Lift Operations", "desc": "Specialized equipment and engineering for oversized and overweight cargo movements." },
+        "routePlanning": { "title": "Route Planning & Surveys", "desc": "Comprehensive feasibility studies and route optimization for complex project moves." },
+        "regulatory": { "title": "Regulatory Compliance", "desc": "Permits, escorts, and regulatory approvals for safe and legal transportation." }
+      },
+      "additionalCapabilities": {
+        "engineering": { "title": "Engineering Solutions", "desc": "Custom lifting plans, load calculations, and structural analysis for complex cargo." },
+        "site": { "title": "Site Coordination", "desc": "End-to-end project management with on-site supervision and execution oversight." },
+        "equipment": { "title": "Specialized Equipment", "desc": "Access to heavy-duty trailers, cranes, and specialized handling equipment." },
+        "risk": { "title": "Risk Management", "desc": "Comprehensive insurance coverage and risk assessment for high-value project cargo." }
+      },
+      "cta": { "title": "Ready to start your project?", "description": "Our team will design a safe and efficient move for your complex cargo." },
+      "tags": ["Heavy lift", "Custom plan", "Project mgmt", "Risk control"]
+    },
+    "customs": {
+      "title": "Customs & Compliance",
+      "heroSubtitle": "Navigate international trade regulations with expert customs clearance and compliance services",
+      "category": "Customs",
+      "mainTitle": "Our Customs Services",
+      "description": "Comprehensive customs solutions to keep your goods moving smoothly across borders.",
+      "services": {
+        "documentation": { "title": "Import/Export Documentation", "desc": "Complete preparation and processing of all customs documentation including commercial invoices, packing lists, and certificates of origin." },
+        "tariff": { "title": "Tariff Classification", "desc": "Accurate HS code classification to ensure proper duty rates and compliance with trade regulations." },
+        "brokerage": { "title": "Customs Brokerage", "desc": "Licensed customs brokers handling clearance procedures across all Turkish ports and borders." },
+        "compliance": { "title": "Trade Compliance", "desc": "Ensure compliance with international trade laws, sanctions, and export controls." },
+        "duty": { "title": "Duty & Tax Optimization", "desc": "Strategic advice to minimize customs duties and taxes while maintaining full compliance." },
+        "updates": { "title": "Regulatory Updates", "desc": "Stay informed about changing customs regulations and trade policy updates." }
+      },
+      "whyChoose": {
+        "title": "Why Choose DVN LOG for Customs?",
+        "r1": "Licensed customs brokers with years of experience",
+        "r2": "Deep knowledge of Turkish and international trade regulations",
+        "r3": "Fast clearance times to minimize delays",
+        "r4": "Transparent communication throughout the process",
+        "r5": "Competitive rates with no hidden fees"
+      },
+      "cta": { "title": "Need Customs Assistance?", "description": "Our customs experts are ready to help you navigate international trade regulations." }
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -147,6 +588,16 @@
     "goBack": "Go back",
     "goHome": "Go to homepage",
     "notFound": "Page not found",
-    "notFoundDesc": "The page you're looking for doesn't exist or has been moved."
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "yes": "Yes",
+    "no": "No"
   }
 }
