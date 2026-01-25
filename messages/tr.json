@@ -1,0 +1,152 @@
+{
+  "metadata": {
+    "title": "DVN LOG - Küresel Lojistik Çözümleri",
+    "description": "Dünya çapında kapsamlı navlun ve lojistik hizmetleri"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "allServices": "Tüm Hizmetler",
+    "aboutUs": "Hakkımızda",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "trackShipment": "Gönderi Takibi"
+  },
+  "services": {
+    "oceanFreight": "Deniz Taşımacılığı",
+    "airFreight": "Hava Taşımacılığı",
+    "roadTransport": "Kara Taşımacılığı",
+    "railFreight": "Demiryolu Taşımacılığı",
+    "warehousing": "Depolama",
+    "projectCargo": "Proje Kargo",
+    "multimodal": "Multimodal",
+    "customs": "Gümrük İşlemleri"
+  },
+  "hero": {
+    "badge": "Güvenilir küresel lojistik ortağınız",
+    "title": "Dünyayı Size",
+    "titleHighlight": "Yaklaştırıyoruz",
+    "subtitle1": "Küresel navlun çözümleri",
+    "subtitle2": "Ekspres hava kargo hizmetleri",
+    "subtitle3": "Güvenilir deniz taşımacılığı",
+    "contactUs": "BİZE ULAŞIN",
+    "exploreServices": "Hizmetleri Keşfedin"
+  },
+  "about": {
+    "sectionTitle": "DVN LOG Hakkında",
+    "description": "2017'den bu yana, görünürlük, hız ve maliyet verimliliğine odaklanarak deniz, hava, kara ve demiryolu üzerinden güvenilir lojistik çözümler sunuyoruz. Ekibimiz, kargonuzun hareket halinde kalması için küresel erişimi yerel uzmanlıkla birleştiriyor.",
+    "whyChoose": "Neden DVN LOG?",
+    "globalCoverage": "Küresel Kapsama",
+    "realTimeTracking": "Gerçek Zamanlı Takip",
+    "dedicatedSupport": "Özel Destek",
+    "customsCompliance": "Gümrük ve Uyumluluk",
+    "containerTracking": "Konteyner ve Gemi Takibi",
+    "operations247": "7/24 Operasyon",
+    "trackYourShipment": "Gönderinizi Takip Edin",
+    "trackDescription": "Alımdan teslimata gerçek zamanlı takip ile güncel kalın",
+    "since": "Yılından beri",
+    "countries": "Ülke",
+    "supportAvailable": "Hafta Boyu Destek",
+    "globalNetwork": "Küresel Kapsama Ağı",
+    "servingCountries": "Dünya çapında 50+ ülkeye hizmet",
+    "startTracking": "Takibe Başla"
+  },
+  "servicesSection": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "İhtiyaçlarınıza göre özelleştirilmiş kapsamlı lojistik çözümler",
+    "learnMore": "Daha Fazla"
+  },
+  "testimonials": {
+    "title": "Müşterilerimiz ne diyor",
+    "noFeedback": "Henüz müşteri yorumu yok",
+    "checkBack": "Müşteri referansları için yakında tekrar ziyaret edin"
+  },
+  "cta": {
+    "title": "Bir sonraki gönderinizi optimize edelim",
+    "description": "Kişiselleştirilmiş bir teklif alın ve lojistiğinizi nasıl kolaylaştırabileceğimizi keşfedin",
+    "getQuote": "Teklif Al",
+    "ourServices": "Hizmetlerimiz"
+  },
+  "contact": {
+    "heroTitle": "İletişime Geçin",
+    "heroDescription": "Lojistiğinizi kolaylaştırmaya hazır mısınız? Kişiselleştirilmiş çözümler için uzman ekibimizle iletişime geçin.",
+    "sendMessage": "Bize mesaj gönderin",
+    "responseTime": "24 saat içinde size geri döneceğiz.",
+    "fullName": "Ad Soyad",
+    "emailAddress": "E-posta Adresi",
+    "phoneNumber": "Telefon Numarası",
+    "companyName": "Şirket Adı",
+    "serviceType": "Hizmet Türü",
+    "selectService": "Bir hizmet seçin",
+    "message": "Mesaj",
+    "messagePlaceholder": "Lojistik ihtiyaçlarınızı bize anlatın...",
+    "sendButton": "Mesaj Gönder",
+    "sending": "Gönderiliyor...",
+    "messageSent": "Mesaj Gönderildi!",
+    "thankYou": "Bizimle iletişime geçtiğiniz için teşekkürler. 24 saat içinde yanıt vereceğiz.",
+    "contactInfo": "İletişim Bilgileri",
+    "address": "Adres",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "officeHours": "Çalışma Saatleri",
+    "workingHours": "Mesai Saatleri",
+    "mondaySunday": "Pazartesi - Pazar",
+    "publicHolidays": "Resmi Tatiller",
+    "timezone": "Türkiye Saati (GMT+3)",
+    "emergencySupport": "7/24 Acil Destek Mevcuttur",
+    "whyChoose": "Neden DVN LOG?",
+    "reliableService": "Güvenilir Hizmet",
+    "excellenceDelivery": "Her teslimatta mükemmellik",
+    "globalCoverage": "Küresel Kapsama",
+    "customerSatisfaction": "Müşteri Memnuniyeti",
+    "sevenDaySupport": "7 Gün Destek",
+    "available": "Mevcut",
+    "findUs": "Bizi Bulun",
+    "required": "zorunlu"
+  },
+  "tracking": {
+    "title": "Gönderinizi Takip Edin",
+    "subtitle": "Gönderiniz hakkında gerçek zamanlı güncellemeler almak için takip numaranızı girin",
+    "placeholder": "Takip numarası girin (örn: DVN123456789)",
+    "trackButton": "Takip Et",
+    "tracking": "Takip ediliyor...",
+    "shipmentDetails": "Gönderi Detayları",
+    "status": "Durum",
+    "origin": "Çıkış",
+    "destination": "Varış",
+    "estimatedDelivery": "Tahmini Teslimat",
+    "trackingHistory": "Takip Geçmişi",
+    "newSearch": "Yeni Arama",
+    "notFound": "Gönderi bulunamadı",
+    "notFoundDesc": "Lütfen takip numaranızı kontrol edip tekrar deneyin",
+    "tryAgain": "Tekrar Dene"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Daha akıllı gönderi yapmanıza yardımcı olacak pratik lojistik makaleleri, pazar güncellemeleri ve ipuçları.",
+    "insightsUpdates": "Görüşler ve Güncellemeler",
+    "readMore": "Devamını oku",
+    "article": "Makale",
+    "prev": "Önceki",
+    "next": "Sonraki"
+  },
+  "footer": {
+    "description": "Küresel lojistik çözümlerinde güvenilir ortağınız. Güvenilir navlun hizmetleriyle dünya çapında işletmeleri birbirine bağlıyoruz.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "ourServices": "Hizmetlerimiz",
+    "contactUs": "İletişim",
+    "rights": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "cookies": "Çerezler"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "tryAgain": "Tekrar dene",
+    "goBack": "Geri dön",
+    "goHome": "Ana sayfaya git",
+    "notFound": "Sayfa bulunamadı",
+    "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış."
+  }
+}
