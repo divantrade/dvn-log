@@ -254,40 +254,244 @@
     "emergencySupport": "7/24 Acil Destek Mevcuttur"
   },
   "servicesPage": {
-    "title": "Hizmetlerimiz",
-    "subtitle": "İşletmeniz için kapsamlı lojistik çözümler",
+    "title": "Hizmetler",
+    "subtitle": "Deniz, hava, kara ve demiryolu üzerinden uçtan uca lojistik - ihtiyaçlarınıza uygun şekilde tasarlanmış.",
+    "premiumSolutions": "PREMİUM LOJİSTİK ÇÖZÜMLERİ",
+    "professionalServices": "Profesyonel Taşımacılık Hizmetleri",
+    "coreServicesDesc": "Temel hizmetlerimiz tedarik zincirinizi netlik, hız ve kontrol ile hareket halinde tutar.",
+    "learnMore": "Daha fazla",
+    "getQuote": "Teklif Al",
+    "breadcrumb": "Hizmetler",
+    "categories": {
+      "maritime": "Denizcilik",
+      "air": "Hava",
+      "ground": "Kara",
+      "special": "Özel"
+    },
+    "common": {
+      "getQuote": "Teklif Al",
+      "requestQuote": "Teklif İste",
+      "exploreServices": "Hizmetleri Keşfedin",
+      "trackContainer": "Konteyner Takibi",
+      "getTailoredQuote": "Özel teklif alın",
+      "shareLanesVolumes": "Hat ve hacimleri paylaşın - size net ve basit bir plan sunacağız.",
+      "serviceOptions": "Hizmet Seçenekleri",
+      "additionalCapabilities": "Ek yetenekler"
+    },
     "oceanFreight": {
       "title": "Deniz Taşımacılığı",
-      "description": "Rekabetçi fiyatlar ve güvenilir tarifelerle küresel deniz taşımacılığı çözümleri",
-      "features": ["Tam Konteyner Yükü (FCL)", "Parsiyel Konteyner Yükü (LCL)", "Soğuk Zincir Taşımacılığı", "Dökme Yük", "Ro-Ro"]
+      "heroSubtitle": "Küresel hatlar, görünürlük ve gümrük desteği ile tam konteyner ve LCL çözümleri.",
+      "category": "Deniz Taşımacılığı",
+      "mainTitle": "Deniz yoluyla netlik ve kontrol ile taşıyın",
+      "description": "Ana ticaret hatlarında belgelenmiş süreçler ve basit teslimlerle güvenilir FCL/LCL. Evrak işlerini basit ve kilometre taşlarını görünür tutuyoruz - kargonuz hareket halinde kalsın.",
+      "features": {
+        "f1": "Kapıdan kapıya teslimat ve liman elleçleme",
+        "f2": "Ana hatlar boyunca FCL ve LCL seçenekleri",
+        "f3": "Soğutuculu ve özel ekipman (OT/FR/ISO)",
+        "f4": "Gümrük evrakları ve dokümantasyon",
+        "f5": "Alan ve program optimizasyonu",
+        "f6": "Kilometre taşı görünürlüğü ve destek"
+      },
+      "serviceOptions": {
+        "fcl": { "title": "Tam Konteyner Yükü (FCL)", "desc": "Direkt rotalar ve öngörülebilir programlar için özel konteynerler - daha az aktarma, daha fazla kontrol." },
+        "lcl": { "title": "Parsiyel Konteyner Yükü (LCL)", "desc": "Düzenli kesim tarihleri ve konsolide elleçleme ile küçük gönderiler için paylaşımlı kapasite." },
+        "special": { "title": "Özel Ekipman", "desc": "Rota kontrolleri ve elleçleme rehberliği ile soğutuculu, açık üst, düz taban ve ISO tank." }
+      },
+      "additionalCapabilities": {
+        "drayage": { "title": "Liman drayage ve dekonsolidasyon", "desc": "Kara/demiryoluna net aktarmalarla sorunsuz ilk/son mil hareketleri." },
+        "exception": { "title": "İstisna yönetimi", "desc": "Gecikmeler, belgeler ve denetimler için net eylemlerle erken uyarılar." },
+        "dg": { "title": "Tehlikeli maddeler (talep üzerine)", "desc": "Geçerli olduğunda dokümantasyon rehberliği ile rota ve hat incelemesi." },
+        "reporting": { "title": "Raporlama", "desc": "Basit kilometre taşı takibi ve talep üzerine durum özetleri." }
+      },
+      "cta": { "title": "Deniz gönderisi mi planlıyorsunuz?", "description": "Çıkış, varış ve tahmini hacimleri paylaşın - size net bir plan sunalım." },
+      "tags": ["Kapıdan kapıya", "Takip", "Gümrük", "Sigorta"]
     },
     "airFreight": {
       "title": "Hava Taşımacılığı",
-      "description": "Zamana duyarlı gönderiler için hızlı ve verimli hava kargo hizmetleri",
-      "features": ["Ekspres Teslimat", "Charter Hizmetleri", "Sıcaklık Kontrollü", "Tehlikeli Maddeler", "Kapıdan Kapıya"]
+      "heroSubtitle": "Zamana duyarlı gönderiler için ekspres ve ekonomik hava kargo.",
+      "category": "Hava Taşımacılığı",
+      "mainTitle": "Hava yoluyla hız ve hassasiyetle taşıyın",
+      "description": "Küresel rotalarda ekspres ve ekonomi seçenekleriyle zamana duyarlı kargo çözümleri. Güvenilir programlar, sertifikalı elleçleme ve acil gönderiler için uçtan uca görünürlük.",
+      "features": {
+        "f1": "Ekspres ve ekonomik hava hizmetleri",
+        "f2": "Küresel kapıdan kapıya kapsam",
+        "f3": "Tehlikeli madde sertifikası",
+        "f4": "Sıcaklık kontrollü taşımacılık",
+        "f5": "Gerçek zamanlı uçuş takibi",
+        "f6": "7/24 müşteri desteği"
+      },
+      "serviceOptions": {
+        "express": { "title": "Ekspres Hava Hizmetleri", "desc": "Öncelikli elleçleme ve hızlandırılmış gümrük işlemleriyle acil gönderiler için sonraki uçuş." },
+        "economy": { "title": "Ekonomik Hava Taşımacılığı", "desc": "Güvenilir programlarla daha az zamana duyarlı kargo için uygun maliyetli ertelenmiş hizmetler." },
+        "dg": { "title": "Tehlikeli Madde Elleçleme", "desc": "Tam IATA uyumu ve güvenlik protokolleriyle tehlikeli maddelerin sertifikalı elleçlemesi." }
+      },
+      "additionalCapabilities": {
+        "tempControl": { "title": "Sıcaklık Kontrolü", "desc": "Gerçek zamanlı izleme ile ilaçlar, bozulabilir ürünler ve hassas mallar için iklim kontrollü kargo çözümleri." },
+        "specialized": { "title": "Özel Elleçleme", "desc": "Özel ambalaj ve elleçleme prosedürleriyle kırılgan, değerli ve büyük boyutlu kargo için uzman bakım." },
+        "network": { "title": "Küresel Ağ", "desc": "Yerel uzmanlık ve 7/24 müşteri desteği ile 500+ destinasyonda kapıdan kapıya kapsam." },
+        "tracking": { "title": "Gerçek Zamanlı Takip", "desc": "Proaktif iletişim ve istisna yönetimi ile uçuş takibi ve kilometre taşı güncellemeleri." }
+      },
+      "cta": { "title": "Hava yoluyla gönderiye hazır mısınız?", "description": "Hava kargo ihtiyaçlarınız için rekabetçi fiyatlar ve güvenilir transit süreleri alın." },
+      "tags": ["24-48 saat", "Sıcaklık kontrolü", "Tehlikeli madde", "Ekspres"]
     },
     "roadTransport": {
       "title": "Kara Taşımacılığı",
-      "description": "Avrupa ve ötesinde güvenilir kara taşımacılığı",
-      "features": ["Komple Araç (FTL)", "Parsiyel Yük (LTL)", "Ekspres Teslimat", "Sınır Ötesi", "Son Kilometre"]
+      "heroSubtitle": "Optimize edilmiş transit ve kapsam ile bölgeler arası FTL/LTL.",
+      "category": "Kara Taşımacılığı",
+      "mainTitle": "Kara Taşımacılığı Çözümleri",
+      "description": "Bölgesel ve uluslararası koridorlarda esnek, güvenilir kara taşımacılığı.",
+      "quote": "Her kilometre boyunca mükemmellik sunarak işletmeleri güvenilir kara taşımacılığı çözümleriyle birbirine bağlıyoruz.",
+      "quoteAuthor": "DVN Lojistik",
+      "features": {
+        "f1": "Gerçek zamanlı GPS takibi",
+        "f2": "7/24 izleme",
+        "f3": "Esnek programlama",
+        "f4": "Sıcaklık kontrolü",
+        "f5": "Rota optimizasyonu"
+      },
+      "serviceOptions": {
+        "ftl": { "title": "Komple Araç (FTL)", "desc": "Büyük gönderiler için özel araçlar" },
+        "ltl": { "title": "Parsiyel Yük (LTL)", "desc": "Uygun maliyetli paylaşımlı römork alanı" },
+        "crossBorder": { "title": "Sınır Ötesi Taşımacılık", "desc": "Tam destekle uluslararası hareketler" }
+      },
+      "tags": ["Son kilometre", "Sınır ötesi", "Filo", "Optimize rotalar"]
     },
     "railFreight": {
       "title": "Demiryolu Taşımacılığı",
-      "description": "Kıtaları birbirine bağlayan uygun maliyetli demiryolu çözümleri",
-      "features": ["Konteyner Trenleri", "Intermodal Çözümler", "Çin-Avrupa Hatları", "Tarifeli Seferler", "Blok Trenler"]
+      "heroSubtitle": "Verimli intermodal demiryolu koridorları ve istikrarlı teslim süreleri.",
+      "category": "Demiryolu Taşımacılığı",
+      "mainTitle": "Demiryolu ile verimli ve sürdürülebilir taşıyın",
+      "description": "Intermodal bağlantılarla ana koridorlarda güvenilir demiryolu taşımacılığı. Öngörülebilir programlar, düşük emisyonlar ve yüksek hacimli gönderiler için uygun maliyetli çözümler.",
+      "features": {
+        "f1": "Blok tren ve intermodal çözümler",
+        "f2": "Güvenli rotalar ve transit istikrarı",
+        "f3": "Gümrük ve terminal koordinasyonu",
+        "f4": "İlk/son mil ile kapıdan kapıya",
+        "f5": "Düşük emisyonlar ve sürdürülebilirlik",
+        "f6": "Öngörülebilir teslim süreleri"
+      },
+      "serviceOptions": {
+        "block": { "title": "Blok Tren Hizmetleri", "desc": "Direkt rotalama ve öngörülebilir programlarla büyük hacimler için özel tren kapasitesi." },
+        "intermodal": { "title": "Intermodal Çözümler", "desc": "Optimize edilmiş ilk ve son kilometre teslimatı ile sorunsuz demiryolu-kamyon bağlantıları." },
+        "crossBorder": { "title": "Sınır Ötesi Demiryolu", "desc": "Gümrük koordinasyonu ve dokümantasyon desteği ile uluslararası demiryolu koridorları." }
+      },
+      "additionalCapabilities": {
+        "sustainable": { "title": "Sürdürülebilir Taşımacılık", "desc": "Çevre dostu lojistik çözümlerle kara taşımacılığına kıyasla daha düşük karbon ayak izi." },
+        "terminal": { "title": "Terminal Koordinasyonu", "desc": "Demiryolu terminal operasyonları, yükleme ve ekipman konumlandırma uzman yönetimi." },
+        "route": { "title": "Rota Optimizasyonu", "desc": "Maksimum verimlilik ve maliyet tasarrufu için ana demiryolu koridorlarından stratejik rotalama." },
+        "equipment": { "title": "Ekipman Yönetimi", "desc": "Çeşitli kargo ihtiyaçları için düz vagonlar, kapalı vagonlar ve konteyner şasileri dahil özel vagon türleri." }
+      },
+      "cta": { "title": "Demiryolu ile optimize etmeye hazır mısınız?", "description": "Yük ihtiyaçlarınız için düşük emisyonlar ve öngörülebilir teslim süreleri." },
+      "tags": ["Dökme", "Çevreci", "Uzun mesafe", "Konteynerler"]
     },
     "warehousing": {
       "title": "Depolama",
-      "description": "Güvenli depolama ve dağıtım çözümleri",
-      "features": ["Envanter Yönetimi", "Toplama ve Paketleme", "Cross-Docking", "Sıcaklık Kontrollü", "Katma Değerli Hizmetler"]
+      "heroSubtitle": "Bölgeler genelinde depolama, konsolidasyon ve katma değerli hizmetler.",
+      "category": "Depolama",
+      "mainTitle": "Hassasiyetle depolayın ve dağıtın",
+      "description": "Esnek kapasite ve katma değerli hizmetlerle stratejik depolama ve sipariş karşılama çözümleri. Gelişmiş envanter yönetimi, toplama ve paketleme operasyonları ve cross-dock yetenekleri.",
+      "features": {
+        "f1": "Esnek depolama çözümleri",
+        "f2": "Gelişmiş envanter yönetimi",
+        "f3": "Toplama ve paketleme hizmetleri",
+        "f4": "Cross-dock operasyonları",
+        "f5": "Sıcaklık kontrollü tesisler",
+        "f6": "Gerçek zamanlı takip ve raporlama"
+      },
+      "serviceOptions": {
+        "storage": { "title": "Depolama Çözümleri", "desc": "Esnek kapasite ve ölçeklenebilir çözümlerle kısa ve uzun vadeli depolama seçenekleri." },
+        "pickPack": { "title": "Toplama ve Paketleme Hizmetleri", "desc": "Gelişmiş envanter yönetim sistemleriyle sipariş karşılama ve özel ambalajlama." },
+        "crossDock": { "title": "Cross-Dock Hizmetleri", "desc": "Akıcı tedarik zinciri operasyonları için konsolidasyon ve dağıtım optimizasyonu." }
+      },
+      "additionalCapabilities": {
+        "specialized": { "title": "Özel Tesisler", "desc": "İlaçlar, gıda ve yüksek değerli mallar için sıcaklık kontrollü ve antrepo depolama." },
+        "valueAdded": { "title": "Katma Değerli Hizmetler", "desc": "Ürünlerinizi geliştirmek için etiketleme, kitleme, montaj ve özel ambalajlama hizmetleri." },
+        "inventory": { "title": "Envanter Yönetimi", "desc": "Gelişmiş WMS entegrasyonu ve görünürlük araçlarıyla gerçek zamanlı takip ve raporlama." },
+        "locations": { "title": "Stratejik Lokasyonlar", "desc": "Verimli dağıtım ve azaltılmış taşıma maliyetleri için optimal konumlandırılmış tesisler." }
+      },
+      "cta": { "title": "Depolamanızı optimize etmeye hazır mısınız?", "description": "İş ihtiyaçlarınızla birlikte ölçeklenen esnek depolama çözümleri." },
+      "tags": ["Envanter", "Toplama paketleme", "İklim", "Güvenlik"]
+    },
+    "multimodal": {
+      "title": "Multimodal Taşımacılık",
+      "heroSubtitle": "Optimal maliyet ve zaman için entegre deniz/kara/demiryolu/hava.",
+      "category": "Multimodal",
+      "mainTitle": "Optimal verimlilik için modları birleştirin",
+      "description": "Deniz, kara, demiryolu ve hava modlarını birleştiren entegre taşımacılık çözümleri. Karmaşık lojistik gereksinimleri için stratejik rota tasarımı, sorunsuz aktarmalar ve uçtan uca görünürlük.",
+      "features": {
+        "f1": "Taşıma modları arasında rota tasarımı",
+        "f2": "Tek pencere operasyonları ve dokümantasyon",
+        "f3": "Risk ve aktarma yönetimi",
+        "f4": "Uçtan uca görünürlük ve takip",
+        "f5": "Maliyet ve zaman optimizasyonu",
+        "f6": "Sorunsuz mod geçişleri"
+      },
+      "serviceOptions": {
+        "oceanRoad": { "title": "Deniz-Kara Kombinasyonları", "desc": "Uygun maliyetli uzun mesafe taşımacılık için deniz ve kara taşımacılığının sorunsuz entegrasyonu." },
+        "railRoad": { "title": "Demiryolu-Kara Çözümleri", "desc": "Optimal teslimat için demiryolu verimliliğini kara esnekliğiyle birleştiren intermodal bağlantılar." },
+        "airRoad": { "title": "Hava-Kara Ekspres", "desc": "Acil kargo için hava hızını kara erişilebilirliğiyle birleştiren zamana duyarlı kombinasyonlar." }
+      },
+      "additionalCapabilities": {
+        "route": { "title": "Rota Optimizasyonu", "desc": "Taşıma ağları genelinde hız, maliyet ve güvenilirliği dengelemek için stratejik mod seçimi ve rota tasarımı." },
+        "singleWindow": { "title": "Tek Pencere Operasyonları", "desc": "Basitleştirilmiş lojistik yönetimi için tüm taşıma modlarında birleşik dokümantasyon ve koordinasyon." },
+        "handover": { "title": "Aktarma Yönetimi", "desc": "Risk azaltma ve kalite kontrolü ile modlar arasında kargo transferlerinin uzman koordinasyonu." },
+        "visibility": { "title": "Uçtan Uca Görünürlük", "desc": "Gerçek zamanlı güncellemeler ve kilometre taşı raporlaması ile tüm taşıma modlarında tam gönderi takibi." }
+      },
+      "cta": { "title": "Rotanızı tasarlamaya hazır mısınız?", "description": "Belirli hatlarınız için hız, maliyet ve güvenilirliği dengeleyeceğiz." },
+      "tags": ["Entegre", "Maliyet optimize", "Tek iletişim", "Uçtan uca"]
+    },
+    "projectCargo": {
+      "title": "Proje Kargo",
+      "heroSubtitle": "Ağır ve büyük boyutlu yükler için mühendislik ve rota planlaması.",
+      "category": "Proje Kargo",
+      "mainTitle": "Karmaşık kargoyu hassasiyetle taşıyın",
+      "description": "Ağır, büyük boyutlu ve karmaşık gönderiler için özel proje kargo çözümleri. Zorlu lojistik projeleri için mühendislik uzmanlığı, rota planlaması ve uçtan uca yürütme.",
+      "features": {
+        "f1": "Rota anketleri ve fizibilite çalışmaları",
+        "f2": "Özel ekipman ve kaldırma planları",
+        "f3": "İzinler, eskortlar ve düzenleyici onaylar",
+        "f4": "Uçtan uca yürütme ve saha koordinasyonu",
+        "f5": "Ağır kaldırma ve büyük boyutlu kargo elleçleme",
+        "f6": "Proje yönetimi ve denetim"
+      },
+      "serviceOptions": {
+        "heavyLift": { "title": "Ağır Kaldırma Operasyonları", "desc": "Büyük boyutlu ve aşırı ağırlıklı kargo hareketleri için özel ekipman ve mühendislik." },
+        "routePlanning": { "title": "Rota Planlaması ve Anketler", "desc": "Karmaşık proje hareketleri için kapsamlı fizibilite çalışmaları ve rota optimizasyonu." },
+        "regulatory": { "title": "Düzenleyici Uyumluluk", "desc": "Güvenli ve yasal taşımacılık için izinler, eskortlar ve düzenleyici onaylar." }
+      },
+      "additionalCapabilities": {
+        "engineering": { "title": "Mühendislik Çözümleri", "desc": "Karmaşık kargo için özel kaldırma planları, yük hesaplamaları ve yapısal analiz." },
+        "site": { "title": "Saha Koordinasyonu", "desc": "Yerinde denetim ve yürütme gözetimi ile uçtan uca proje yönetimi." },
+        "equipment": { "title": "Özel Ekipman", "desc": "Ağır hizmet römorkları, vinçler ve özel elleçleme ekipmanlarına erişim." },
+        "risk": { "title": "Risk Yönetimi", "desc": "Yüksek değerli proje kargosu için kapsamlı sigorta kapsamı ve risk değerlendirmesi." }
+      },
+      "cta": { "title": "Projenize başlamaya hazır mısınız?", "description": "Ekibimiz karmaşık kargonuz için güvenli ve verimli bir hareket tasarlayacaktır." },
+      "tags": ["Ağır kaldırma", "Özel plan", "Proje yönetimi", "Risk kontrolü"]
     },
     "customs": {
-      "title": "Gümrük İşlemleri",
-      "description": "Uzman gümrük müşavirliği ve uyum hizmetleri",
-      "features": ["İthalat/İhracat Belgeleri", "Vergi Optimizasyonu", "Ticaret Uyumu", "AEO Sertifikası", "Düzenleyici Danışmanlık"]
-    },
-    "getQuote": "Teklif Al",
-    "learnMore": "Daha Fazla"
+      "title": "Gümrük ve Uyumluluk",
+      "heroSubtitle": "Uzman gümrük işlemleri ve uyumluluk hizmetleri ile uluslararası ticaret düzenlemelerinde yol alın",
+      "category": "Gümrük",
+      "mainTitle": "Gümrük Hizmetlerimiz",
+      "description": "Mallarınızın sınırlar arasında sorunsuz hareket etmesini sağlayan kapsamlı gümrük çözümleri.",
+      "services": {
+        "documentation": { "title": "İthalat/İhracat Dokümantasyonu", "desc": "Ticari faturalar, paketleme listeleri ve menşe sertifikaları dahil tüm gümrük belgelerinin tam hazırlanması ve işlenmesi." },
+        "tariff": { "title": "Tarife Sınıflandırması", "desc": "Doğru vergi oranlarını ve ticaret düzenlemelerine uyumu sağlamak için doğru HS kodu sınıflandırması." },
+        "brokerage": { "title": "Gümrük Müşavirliği", "desc": "Tüm Türkiye limanları ve sınırlarında gümrükleme prosedürlerini yürüten lisanslı gümrük müşavirleri." },
+        "compliance": { "title": "Ticaret Uyumu", "desc": "Uluslararası ticaret yasaları, yaptırımlar ve ihracat kontrollerine uyumu sağlama." },
+        "duty": { "title": "Vergi ve Gümrük Optimizasyonu", "desc": "Tam uyumu korurken gümrük vergilerini ve vergileri minimize etmek için stratejik tavsiye." },
+        "updates": { "title": "Düzenleyici Güncellemeler", "desc": "Değişen gümrük düzenlemeleri ve ticaret politikası güncellemeleri hakkında bilgi sahibi olun." }
+      },
+      "whyChoose": {
+        "title": "Gümrük için Neden DVN LOG?",
+        "r1": "Yıllarca deneyime sahip lisanslı gümrük müşavirleri",
+        "r2": "Türk ve uluslararası ticaret düzenlemeleri hakkında derin bilgi",
+        "r3": "Gecikmeleri minimize etmek için hızlı gümrükleme süreleri",
+        "r4": "Süreç boyunca şeffaf iletişim",
+        "r5": "Gizli ücretler olmadan rekabetçi fiyatlar"
+      },
+      "cta": { "title": "Gümrük Yardımına mı İhtiyacınız Var?", "description": "Gümrük uzmanlarımız uluslararası ticaret düzenlemelerinde size yardımcı olmaya hazır." }
+    }
   },
   "common": {
     "loading": "Yükleniyor...",

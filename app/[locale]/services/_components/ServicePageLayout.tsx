@@ -1,6 +1,9 @@
-import Link from 'next/link';
+'use client';
+
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface ServiceOption {
   title: string;
@@ -50,12 +53,14 @@ export default function ServicePageLayout({
   ctaTitle,
   ctaDescription,
 }: ServicePageLayoutProps) {
+  const t = useTranslations('servicesPage');
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-16 space-y-12 bg-white dark:bg-slate-900">
       {/* Breadcrumb */}
       <nav className="text-sm text-slate-600 dark:text-slate-400 mb-8" aria-label="Breadcrumb">
         <Link href="/services" className="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-          Services
+          {t('breadcrumb')}
         </Link>
         <span className="mx-2" aria-hidden="true">/</span>
         <span className="text-slate-900 dark:text-white font-medium">{serviceName}</span>
@@ -81,21 +86,21 @@ export default function ServicePageLayout({
               <div className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h3 className="font-semibold text-slate-900 dark:text-white">Get a tailored quotation</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">Share lanes and volumes — we'll propose a simple, clear plan.</p>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">{t('common.getTailoredQuote')}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{t('common.shareLanesVolumes')}</p>
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Link
                       href="/contact"
                       className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-white font-semibold hover:bg-blue-700 transition-colors"
                     >
-                      Get a Quote
+                      {t('common.getQuote')}
                     </Link>
                     <Link
                       href="/services"
                       className="inline-flex items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
                     >
-                      Explore Services
+                      {t('common.exploreServices')}
                     </Link>
                   </div>
                 </div>
@@ -133,13 +138,13 @@ export default function ServicePageLayout({
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700 transition-colors"
               >
-                Get a Quote
+                {t('common.getQuote')}
               </Link>
               <Link
                 href="/tracking"
                 className="inline-flex items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 px-5 py-3 font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
               >
-                Track Container
+                {t('common.trackContainer')}
               </Link>
             </div>
           </div>
@@ -148,7 +153,7 @@ export default function ServicePageLayout({
 
       {/* Service Options — same 3-card pattern as road page */}
       <section className="mx-auto max-w-7xl px-6 pb-4">
-        <h2 className="mb-6 text-xl font-bold text-slate-900 dark:text-white">Service Options</h2>
+        <h2 className="mb-6 text-xl font-bold text-slate-900 dark:text-white">{t('common.serviceOptions')}</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {serviceOptions.map((c) => (
             <div
@@ -165,7 +170,7 @@ export default function ServicePageLayout({
 
       {/* Additional capabilities — mirrors road "extra" section */}
       <section className="mx-auto max-w-7xl px-6 py-10">
-        <h2 className="mb-6 text-xl font-bold text-slate-900 dark:text-white">Additional capabilities</h2>
+        <h2 className="mb-6 text-xl font-bold text-slate-900 dark:text-white">{t('common.additionalCapabilities')}</h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {additionalCapabilities.map((capability) => (
             <div
@@ -193,13 +198,13 @@ export default function ServicePageLayout({
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50 transition-colors"
               >
-                Request Quote
+                {t('common.requestQuote')}
               </Link>
               <Link
                 href="/tracking"
                 className="inline-flex items-center justify-center rounded-lg border border-white/70 px-5 py-3 font-semibold text-white hover:bg-white/10 transition-colors"
               >
-                Track Container
+                {t('common.trackContainer')}
               </Link>
             </div>
           </div>

@@ -1,48 +1,23 @@
-import Link from "next/link";
+'use client';
+
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
+import { useTranslations } from 'next-intl';
 import PageHero from "../../_components/PageHero";
 import NavHeightObserver from "../../_components/NavHeightObserver";
 import TruckImg from "@/images/full-shot-man-walking-by-trucks-fleet.jpg";
 
-const serviceOptions = [
-  {
-    key: "ftl",
-    title: "Full Truckload",
-    desc: "Dedicated vehicles for large shipments",
-    color: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-400"
-  },
-  {
-    key: "ltl",
-    title: "Less Than Truckload",
-    desc: "Cost-effective shared trailer space",
-    color: "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800",
-    textColor: "text-green-700 dark:text-green-400"
-  },
-  {
-    key: "cross",
-    title: "Cross-Border",
-    desc: "International moves with full support",
-    color: "bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800",
-    textColor: "text-orange-700 dark:text-orange-400"
-  },
-];
-
-const features = [
-  "Real-time GPS tracking",
-  "24/7 monitoring",
-  "Flexible scheduling",
-  "Temperature control",
-  "Route optimization",
-];
-
 export default function RoadTransportPage() {
+  const t = useTranslations('servicesPage.roadTransport');
+  const tCommon = useTranslations('servicesPage.common');
+  const tBreadcrumb = useTranslations('servicesPage');
+
   return (
     <main className="px-0 bg-white dark:bg-slate-900">
       <NavHeightObserver />
       <PageHero
-        title={"Road Transport"}
-        subtitle={"FTL/LTL across regions with optimized transit and coverage."}
+        title={t('title')}
+        subtitle={t('heroSubtitle')}
         image={TruckImg}
         imageAlt="Truck fleet on the road"
       />
@@ -51,10 +26,10 @@ export default function RoadTransportPage() {
         {/* Breadcrumb */}
         <nav className="text-sm text-slate-600 dark:text-slate-400 mb-12" aria-label="Breadcrumb">
           <Link href="/services" className="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            Services
+            {tBreadcrumb('breadcrumb')}
           </Link>
           <span className="mx-2" aria-hidden="true">/</span>
-          <span className="text-slate-900 dark:text-white font-medium">Road Transport</span>
+          <span className="text-slate-900 dark:text-white font-medium">{t('title')}</span>
         </nav>
 
         {/* Main Content Layout */}
@@ -76,40 +51,40 @@ export default function RoadTransportPage() {
           </div>
 
           {/* Right: Content */}
-          <div className="text-right space-y-6">
+          <div className="text-right space-y-6 rtl:text-left">
 
             {/* Prominent Quote Box */}
             <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 text-white shadow-2xl transform hover:scale-105 transition-all duration-300">
               <div className="text-4xl text-blue-200 mb-4">"</div>
               <blockquote className="text-xl font-medium leading-relaxed mb-4">
-                Delivering excellence across every mile, connecting businesses with reliable road transport solutions.
+                {t('quote')}
               </blockquote>
-              <div className="text-blue-200 text-sm font-medium">— DVN Logistics</div>
+              <div className="text-blue-200 text-sm font-medium">— {t('quoteAuthor')}</div>
             </div>
 
             {/* Grouped Text Content */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-100 dark:border-slate-700">
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
-                Road Transport Solutions
+                {t('mainTitle')}
               </h1>
               <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                Flexible, reliable ground transportation across regional and international corridors.
+                {t('description')}
               </p>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Service Options</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{tCommon('serviceOptions')}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-end items-center">
-                    <span className="text-slate-600 dark:text-slate-300">Full Truckload (FTL)</span>
-                    <div className="w-3 h-3 bg-blue-500 rounded-full ml-3"></div>
+                  <div className="flex justify-end rtl:justify-start items-center">
+                    <span className="text-slate-600 dark:text-slate-300">{t('serviceOptions.ftl.title')}</span>
+                    <div className="w-3 h-3 bg-blue-500 rounded-full ms-3"></div>
                   </div>
-                  <div className="flex justify-end items-center">
-                    <span className="text-slate-600 dark:text-slate-300">Less Than Truckload (LTL)</span>
-                    <div className="w-3 h-3 bg-green-500 rounded-full ml-3"></div>
+                  <div className="flex justify-end rtl:justify-start items-center">
+                    <span className="text-slate-600 dark:text-slate-300">{t('serviceOptions.ltl.title')}</span>
+                    <div className="w-3 h-3 bg-green-500 rounded-full ms-3"></div>
                   </div>
-                  <div className="flex justify-end items-center">
-                    <span className="text-slate-600 dark:text-slate-300">Cross-Border Transport</span>
-                    <div className="w-3 h-3 bg-orange-500 rounded-full ml-3"></div>
+                  <div className="flex justify-end rtl:justify-start items-center">
+                    <span className="text-slate-600 dark:text-slate-300">{t('serviceOptions.crossBorder.title')}</span>
+                    <div className="w-3 h-3 bg-orange-500 rounded-full ms-3"></div>
                   </div>
                 </div>
               </div>
@@ -118,8 +93,8 @@ export default function RoadTransportPage() {
                 href="/contact"
                 className="inline-flex items-center justify-center w-full mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
               >
-                Get Quote
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {tCommon('getQuote')}
+                <svg className="w-4 h-4 ms-2 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
