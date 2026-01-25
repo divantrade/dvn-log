@@ -9,6 +9,13 @@ export const localeNames: Record<Locale, string> = {
   tr: 'Türkçe'
 };
 
+// Short names for compact display
+export const localeShortNames: Record<Locale, string> = {
+  en: 'EN',
+  ar: 'عربي',
+  tr: 'TR'
+};
+
 export const localeFlags: Record<Locale, string> = {
   en: '🇬🇧',
   ar: '🇸🇦',

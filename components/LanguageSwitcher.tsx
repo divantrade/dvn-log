@@ -3,7 +3,7 @@
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useState, useRef, useEffect } from 'react';
-import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
+import { locales, localeNames, localeShortNames, localeFlags, type Locale } from '@/i18n/config';
 
 export default function LanguageSwitcher() {
   const locale = useLocale() as Locale;
@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
         aria-label="Change language"
       >
         <span className="text-base">{localeFlags[locale]}</span>
-        <span className="hidden sm:inline">{localeNames[locale].slice(0, 2).toUpperCase()}</span>
+        <span className="hidden sm:inline">{localeShortNames[locale]}</span>
         <svg 
           className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
           fill="none" 
