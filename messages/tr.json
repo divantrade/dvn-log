@@ -26,11 +26,66 @@
     "badge": "Güvenilir küresel lojistik ortağınız",
     "title": "Dünyayı Size",
     "titleHighlight": "Yaklaştırıyoruz",
-    "subtitle1": "Küresel navlun çözümleri",
+    "subtitle1": "Küresel deniz taşımacılığı çözümleri",
     "subtitle2": "Ekspres hava kargo hizmetleri",
-    "subtitle3": "Güvenilir deniz taşımacılığı",
+    "subtitle3": "Güvenilir kara taşımacılığı",
     "contactUs": "BİZE ULAŞIN",
     "exploreServices": "Hizmetleri Keşfedin"
+  },
+  "homepage": {
+    "specialServices": "ÖZEL HİZMETLER",
+    "forYourCompany": "ŞİRKETİNİZ İÇİN",
+    "allServices": "TÜM HİZMETLER",
+    "serviceDescriptions": {
+      "oceanFreight": "Küresel deniz taşımacılığı çözümleri",
+      "airCargo": "Hızlı ekspres hava kargo hizmetleri",
+      "roadTransport": "Güvenilir kara taşımacılığı ağı",
+      "railFreight": "Verimli demiryolu kargo çözümleri",
+      "warehousing": "Güvenli depolama ve dağıtım",
+      "multimodal": "Entegre taşımacılık çözümleri",
+      "projectCargo": "Özel ağır yük taşımacılığı",
+      "customs": "Gümrük ve uyum hizmetleri"
+    },
+    "trustSignals": {
+      "title": "Nakliyeciler neden DVN'yi seçiyor",
+      "reliable": {
+        "title": "Tasarımla Güvenilir",
+        "description": "Belgelenmiş SOP'lar ile ISO uyumlu süreçler"
+      },
+      "globalNetwork": {
+        "title": "Küresel Ağ",
+        "description": "50+ ülke genelinde koordineli rotalar"
+      },
+      "realTimeVisibility": {
+        "title": "Gerçek Zamanlı Görünürlük",
+        "description": "Aşama takibi ve proaktif uyarılar"
+      },
+      "customsCompliance": {
+        "title": "Gümrük ve Uyumluluk",
+        "description": "Ticaret, güvenlik ve belgeler uçtan uca"
+      },
+      "singleContact": {
+        "title": "Tek İletişim Noktası",
+        "description": "Her gönderi için özel bir ekip"
+      },
+      "riskExceptions": {
+        "title": "Risk ve İstisnalar",
+        "description": "Erken tespit ve net yükseltme yolları"
+      }
+    },
+    "talkToExpert": "Bir uzmanla konuşun",
+    "partners": {
+      "title": "Ortaklarımız",
+      "noPartners": "Henüz ortak yok"
+    },
+    "latestArticles": {
+      "title": "Son makaleler",
+      "viewAll": "Tüm makaleleri görüntüle",
+      "noArticles": "Makale bulunamadı",
+      "checkBack": "En son haberler için yakında tekrar ziyaret edin",
+      "loading": "Makaleler yükleniyor...",
+      "minRead": "dk okuma"
+    }
   },
   "about": {
     "sectionTitle": "DVN LOG Hakkında",
@@ -50,6 +105,49 @@
     "globalNetwork": "Küresel Kapsama Ağı",
     "servingCountries": "Dünya çapında 50+ ülkeye hizmet",
     "startTracking": "Takibe Başla"
+  },
+  "aboutPage": {
+    "heroTitle": "DVN LOG Hakkında",
+    "heroSubtitle": "2017'den Bu Yana Güvenilir Küresel Lojistik Ortağınız",
+    "ourStory": "Hikayemiz",
+    "storyText": "2017 yılında İstanbul'da kurulan DVN LOG, yerel bir navlun ekspedicisinden kapsamlı bir küresel lojistik sağlayıcısına dönüştü. Yolculuğumuz sürekli inovasyon, stratejik ortaklıklar ve müşteri memnuniyetine olan sarsılmaz bağlılığımızla şekillendi.",
+    "mission": "Misyonumuz",
+    "missionText": "İşletmelerin küresel pazarlara güvenle ulaşmasını sağlayan kesintisiz, güvenilir ve uygun maliyetli lojistik çözümler sunmak.",
+    "vision": "Vizyonumuz",
+    "visionText": "Dünya çapında işletmeler için inovasyon, güvenilirlik ve olağanüstü müşteri hizmetleriyle tanınan en güvenilir lojistik ortağı olmak.",
+    "values": {
+      "title": "Değerlerimiz",
+      "reliability": "Güvenilirlik",
+      "reliabilityDesc": "Sözlerimizi her zaman tutarız",
+      "innovation": "İnovasyon",
+      "innovationDesc": "Teknoloji ile sürekli gelişim",
+      "transparency": "Şeffaflık",
+      "transparencyDesc": "Her adımda açık iletişim",
+      "excellence": "Mükemmellik",
+      "excellenceDesc": "En yüksek standartlar için çaba"
+    },
+    "leadership": {
+      "title": "Yönetim Ekibi",
+      "ceo": "CEO ve Kurucu",
+      "coo": "Operasyon Direktörü",
+      "cfo": "Finans Direktörü"
+    },
+    "process": {
+      "title": "Sürecimiz",
+      "step1": "Danışmanlık",
+      "step1Desc": "Lojistik ihtiyaçlarınızı anlama",
+      "step2": "Planlama",
+      "step2Desc": "Optimal rotalar ve çözümler tasarlama",
+      "step3": "Uygulama",
+      "step3Desc": "Kesintisiz kargo elleçleme ve taşıma",
+      "step4": "Teslimat",
+      "step4Desc": "Güvenli ve zamanında teslimat"
+    },
+    "cta": {
+      "title": "DVN LOG ile Gönderime Hazır mısınız?",
+      "subtitle": "Lojistik ihtiyaçlarınız için kişiselleştirilmiş teklif alın",
+      "button": "Bugün Bize Ulaşın"
+    }
   },
   "servicesSection": {
     "title": "Hizmetlerimiz",
@@ -119,7 +217,11 @@
     "newSearch": "Yeni Arama",
     "notFound": "Gönderi bulunamadı",
     "notFoundDesc": "Lütfen takip numaranızı kontrol edip tekrar deneyin",
-    "tryAgain": "Tekrar Dene"
+    "tryAgain": "Tekrar Dene",
+    "containerTracking": "Konteyner Takibi",
+    "vesselTracking": "Gemi Takibi",
+    "enterContainer": "Konteyner numarası girin",
+    "enterVessel": "Gemi adı veya IMO girin"
   },
   "blog": {
     "title": "Blog",
@@ -128,17 +230,64 @@
     "readMore": "Devamını oku",
     "article": "Makale",
     "prev": "Önceki",
-    "next": "Sonraki"
+    "next": "Sonraki",
+    "categories": "Kategoriler",
+    "recentPosts": "Son Yazılar",
+    "searchPlaceholder": "Makalelerde ara...",
+    "noResults": "Makale bulunamadı",
+    "loadMore": "Daha Fazla Yükle"
   },
   "footer": {
-    "description": "Küresel lojistik çözümlerinde güvenilir ortağınız. Güvenilir navlun hizmetleriyle dünya çapında işletmeleri birbirine bağlıyoruz.",
+    "description": "Güvenilir deniz, hava, kara ve demiryolu taşımacılığı hizmetleriyle küresel lojistik çözümler. Dünyanın her köşesine güvenli, hızlı teslimat.",
     "quickLinks": "Hızlı Bağlantılar",
     "ourServices": "Hizmetlerimiz",
+    "services": "Hizmetler",
+    "company": "Şirket",
+    "contactInfo": "İletişim Bilgileri",
     "contactUs": "İletişim",
     "rights": "Tüm hakları saklıdır.",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
-    "cookies": "Çerezler"
+    "cookies": "Çerez Politikası",
+    "careers": "Kariyer",
+    "news": "Haberler",
+    "emergencySupport": "7/24 Acil Destek Mevcuttur"
+  },
+  "servicesPage": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "İşletmeniz için kapsamlı lojistik çözümler",
+    "oceanFreight": {
+      "title": "Deniz Taşımacılığı",
+      "description": "Rekabetçi fiyatlar ve güvenilir tarifelerle küresel deniz taşımacılığı çözümleri",
+      "features": ["Tam Konteyner Yükü (FCL)", "Parsiyel Konteyner Yükü (LCL)", "Soğuk Zincir Taşımacılığı", "Dökme Yük", "Ro-Ro"]
+    },
+    "airFreight": {
+      "title": "Hava Taşımacılığı",
+      "description": "Zamana duyarlı gönderiler için hızlı ve verimli hava kargo hizmetleri",
+      "features": ["Ekspres Teslimat", "Charter Hizmetleri", "Sıcaklık Kontrollü", "Tehlikeli Maddeler", "Kapıdan Kapıya"]
+    },
+    "roadTransport": {
+      "title": "Kara Taşımacılığı",
+      "description": "Avrupa ve ötesinde güvenilir kara taşımacılığı",
+      "features": ["Komple Araç (FTL)", "Parsiyel Yük (LTL)", "Ekspres Teslimat", "Sınır Ötesi", "Son Kilometre"]
+    },
+    "railFreight": {
+      "title": "Demiryolu Taşımacılığı",
+      "description": "Kıtaları birbirine bağlayan uygun maliyetli demiryolu çözümleri",
+      "features": ["Konteyner Trenleri", "Intermodal Çözümler", "Çin-Avrupa Hatları", "Tarifeli Seferler", "Blok Trenler"]
+    },
+    "warehousing": {
+      "title": "Depolama",
+      "description": "Güvenli depolama ve dağıtım çözümleri",
+      "features": ["Envanter Yönetimi", "Toplama ve Paketleme", "Cross-Docking", "Sıcaklık Kontrollü", "Katma Değerli Hizmetler"]
+    },
+    "customs": {
+      "title": "Gümrük İşlemleri",
+      "description": "Uzman gümrük müşavirliği ve uyum hizmetleri",
+      "features": ["İthalat/İhracat Belgeleri", "Vergi Optimizasyonu", "Ticaret Uyumu", "AEO Sertifikası", "Düzenleyici Danışmanlık"]
+    },
+    "getQuote": "Teklif Al",
+    "learnMore": "Daha Fazla"
   },
   "common": {
     "loading": "Yükleniyor...",
@@ -147,6 +296,16 @@
     "goBack": "Geri dön",
     "goHome": "Ana sayfaya git",
     "notFound": "Sayfa bulunamadı",
-    "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış."
+    "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "readMore": "Devamını Oku",
+    "viewAll": "Tümünü Gör",
+    "submit": "Gönder",
+    "cancel": "İptal",
+    "close": "Kapat",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "sort": "Sırala",
+    "yes": "Evet",
+    "no": "Hayır"
   }
 }

@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 interface Slide {
   src: any;
@@ -17,11 +18,12 @@ interface EnhancedHeroSliderProps {
   children?: React.ReactNode;
 }
 
-export default function EnhancedHeroSlider({ 
-  slides, 
+export default function EnhancedHeroSlider({
+  slides,
   intervalMs = 4500,
-  children 
+  children
 }: EnhancedHeroSliderProps) {
+  const t = useTranslations('hero');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -99,15 +101,15 @@ export default function EnhancedHeroSlider({
           <div className={`mb-6 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white/90 animate-pulse">
               <div className="h-2 w-2 rounded-full bg-green-400 animate-ping"></div>
-              Trusted global logistics partner
+              {t('badge')}
             </span>
           </div>
 
           {/* Main Heading */}
           <h1 className={`mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl transition-all duration-1000 delay-200 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            We Bring the World
+            {t('title')}
             <span className="block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Closer
+              {t('titleHighlight')}
             </span>
           </h1>
 
@@ -135,18 +137,18 @@ export default function EnhancedHeroSlider({
               href="/contact"
               className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105"
             >
-              <span className="relative z-10">CONTACT US</span>
+              <span className="relative z-10">{t('contactUs')}</span>
               <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
-            <Link
+            <a
               href="#services"
               className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 border-2 border-white/30 rounded-lg hover:border-white/60 hover:bg-white/10 backdrop-blur-sm transform hover:scale-105"
             >
-              Explore Services
-              <svg className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {t('exploreServices')}
+              <svg className="ms-2 h-5 w-5 transition-transform group-hover:translate-x-1 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </a>
           </div>
 
           {/* Navigation Dots */}

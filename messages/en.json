@@ -26,11 +26,66 @@
     "badge": "Trusted global logistics partner",
     "title": "We Bring the World",
     "titleHighlight": "Closer",
-    "subtitle1": "Global freight forwarding solutions",
+    "subtitle1": "Maritime freight solutions worldwide",
     "subtitle2": "Express air cargo services",
-    "subtitle3": "Reliable ocean shipping",
+    "subtitle3": "Reliable ground transportation",
     "contactUs": "CONTACT US",
     "exploreServices": "Explore Services"
+  },
+  "homepage": {
+    "specialServices": "SPECIAL SERVICES",
+    "forYourCompany": "FOR YOUR COMPANY",
+    "allServices": "ALL SERVICES",
+    "serviceDescriptions": {
+      "oceanFreight": "Global maritime shipping solutions",
+      "airCargo": "Fast express air freight services",
+      "roadTransport": "Reliable ground transportation network",
+      "railFreight": "Efficient railway cargo solutions",
+      "warehousing": "Secure storage and distribution",
+      "multimodal": "Integrated transport solutions",
+      "projectCargo": "Specialized heavy cargo handling",
+      "customs": "Compliance and clearance services"
+    },
+    "trustSignals": {
+      "title": "Why shippers choose DVN",
+      "reliable": {
+        "title": "Reliable by Design",
+        "description": "ISO-aligned processes with documented SOPs."
+      },
+      "globalNetwork": {
+        "title": "Global Network",
+        "description": "Coordinated routes across 50+ countries."
+      },
+      "realTimeVisibility": {
+        "title": "Real-Time Visibility",
+        "description": "Milestone tracking and proactive alerts."
+      },
+      "customsCompliance": {
+        "title": "Customs & Compliance",
+        "description": "Trade, security, and documentation handled end-to-end."
+      },
+      "singleContact": {
+        "title": "Single Point of Contact",
+        "description": "One dedicated team for every shipment."
+      },
+      "riskExceptions": {
+        "title": "Risk & Exceptions",
+        "description": "Early detection and clear escalation paths."
+      }
+    },
+    "talkToExpert": "Talk to an expert",
+    "partners": {
+      "title": "Our Partners",
+      "noPartners": "No partners yet."
+    },
+    "latestArticles": {
+      "title": "Latest articles",
+      "viewAll": "View all articles",
+      "noArticles": "No articles available",
+      "checkBack": "Check back soon for the latest insights",
+      "loading": "Loading articles...",
+      "minRead": "min read"
+    }
   },
   "about": {
     "sectionTitle": "About DVN LOG",
@@ -50,6 +105,49 @@
     "globalNetwork": "Global Coverage Network",
     "servingCountries": "Serving 50+ countries worldwide",
     "startTracking": "Start Tracking Now"
+  },
+  "aboutPage": {
+    "heroTitle": "About DVN LOG",
+    "heroSubtitle": "Your Trusted Global Logistics Partner Since 2017",
+    "ourStory": "Our Story",
+    "storyText": "Founded in 2017 in Istanbul, DVN LOG has grown from a local freight forwarder to a comprehensive global logistics provider. Our journey has been marked by continuous innovation, strategic partnerships, and an unwavering commitment to customer satisfaction.",
+    "mission": "Our Mission",
+    "missionText": "To provide seamless, reliable, and cost-effective logistics solutions that empower businesses to reach global markets with confidence.",
+    "vision": "Our Vision",
+    "visionText": "To be the most trusted logistics partner for businesses worldwide, known for our innovation, reliability, and exceptional customer service.",
+    "values": {
+      "title": "Our Values",
+      "reliability": "Reliability",
+      "reliabilityDesc": "We deliver on our promises, every time",
+      "innovation": "Innovation",
+      "innovationDesc": "Continuously improving through technology",
+      "transparency": "Transparency",
+      "transparencyDesc": "Clear communication at every step",
+      "excellence": "Excellence",
+      "excellenceDesc": "Striving for the highest standards"
+    },
+    "leadership": {
+      "title": "Leadership Team",
+      "ceo": "CEO & Founder",
+      "coo": "Chief Operations Officer",
+      "cfo": "Chief Financial Officer"
+    },
+    "process": {
+      "title": "Our Process",
+      "step1": "Consultation",
+      "step1Desc": "Understanding your logistics needs",
+      "step2": "Planning",
+      "step2Desc": "Designing optimal routes and solutions",
+      "step3": "Execution",
+      "step3Desc": "Seamless cargo handling and transport",
+      "step4": "Delivery",
+      "step4Desc": "Safe and timely delivery to destination"
+    },
+    "cta": {
+      "title": "Ready to Ship with DVN LOG?",
+      "subtitle": "Get a personalized quote for your logistics needs",
+      "button": "Contact Us Today"
+    }
   },
   "servicesSection": {
     "title": "Our Services",
@@ -119,7 +217,11 @@
     "newSearch": "New Search",
     "notFound": "Shipment not found",
     "notFoundDesc": "Please check your tracking number and try again",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "containerTracking": "Container Tracking",
+    "vesselTracking": "Vessel Tracking",
+    "enterContainer": "Enter container number",
+    "enterVessel": "Enter vessel name or IMO"
   },
   "blog": {
     "title": "Blog",
@@ -128,17 +230,64 @@
     "readMore": "Read more",
     "article": "Article",
     "prev": "Prev",
-    "next": "Next"
+    "next": "Next",
+    "categories": "Categories",
+    "recentPosts": "Recent Posts",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found",
+    "loadMore": "Load More"
   },
   "footer": {
-    "description": "Your trusted partner in global logistics solutions. Connecting businesses worldwide with reliable freight services.",
+    "description": "Global logistics solutions with reliable ocean, air, road and rail transport services. Safe, fast delivery to every corner of the world.",
     "quickLinks": "Quick Links",
     "ourServices": "Our Services",
+    "services": "Services",
+    "company": "Company",
+    "contactInfo": "Contact Info",
     "contactUs": "Contact Us",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "cookies": "Cookies"
+    "cookies": "Cookie Policy",
+    "careers": "Careers",
+    "news": "News",
+    "emergencySupport": "Emergency Support Available 24/7"
+  },
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive logistics solutions for your business",
+    "oceanFreight": {
+      "title": "Ocean Freight",
+      "description": "Global maritime shipping solutions with competitive rates and reliable schedules",
+      "features": ["Full Container Load (FCL)", "Less than Container Load (LCL)", "Refrigerated Cargo", "Break Bulk", "Roll-on/Roll-off"]
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "description": "Fast and efficient air cargo services for time-sensitive shipments",
+      "features": ["Express Delivery", "Charter Services", "Temperature Controlled", "Dangerous Goods", "Door-to-Door"]
+    },
+    "roadTransport": {
+      "title": "Road Transport",
+      "description": "Reliable ground transportation across Europe and beyond",
+      "features": ["Full Truck Load (FTL)", "Less than Truck Load (LTL)", "Express Delivery", "Cross-Border", "Last Mile"]
+    },
+    "railFreight": {
+      "title": "Rail Freight",
+      "description": "Cost-effective rail solutions connecting continents",
+      "features": ["Container Trains", "Intermodal Solutions", "China-Europe Routes", "Scheduled Services", "Block Trains"]
+    },
+    "warehousing": {
+      "title": "Warehousing",
+      "description": "Secure storage and distribution solutions",
+      "features": ["Inventory Management", "Pick and Pack", "Cross-Docking", "Temperature Controlled", "Value Added Services"]
+    },
+    "customs": {
+      "title": "Customs Clearance",
+      "description": "Expert customs brokerage and compliance services",
+      "features": ["Import/Export Documentation", "Duty Optimization", "Trade Compliance", "AEO Certification", "Regulatory Advisory"]
+    },
+    "getQuote": "Get a Quote",
+    "learnMore": "Learn More"
   },
   "common": {
     "loading": "Loading...",
@@ -147,6 +296,16 @@
     "goBack": "Go back",
     "goHome": "Go to homepage",
     "notFound": "Page not found",
-    "notFoundDesc": "The page you're looking for doesn't exist or has been moved."
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "yes": "Yes",
+    "no": "No"
   }
 }
