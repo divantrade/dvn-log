@@ -79,13 +79,14 @@ export default function EnhancedHeroSlider({
             }`}
           >
             <Image
+              key={index === currentSlide ? `zoom-${currentSlide}` : index}
               src={slide.src}
               alt={slide.alt}
               fill
-              className={`object-cover transition-transform ease-out ${
+              className={`object-cover ${
                 index === currentSlide
-                  ? 'scale-100 duration-[6000ms]'
-                  : 'scale-[1.15] duration-0'
+                  ? 'animate-hero-zoom-out'
+                  : 'scale-[1.15]'
               }`}
               priority={index === 0}
               sizes="100vw"
