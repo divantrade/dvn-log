@@ -107,46 +107,109 @@
     "startTracking": "Start Tracking Now"
   },
   "aboutPage": {
-    "heroTitle": "About DVN LOG",
-    "heroSubtitle": "Your Trusted Global Logistics Partner Since 2017",
-    "ourStory": "Our Story",
-    "storyText": "Founded in 2017 in Istanbul, DVN LOG has grown from a local freight forwarder to a comprehensive global logistics provider. Our journey has been marked by continuous innovation, strategic partnerships, and an unwavering commitment to customer satisfaction.",
-    "mission": "Our Mission",
-    "missionText": "To provide seamless, reliable, and cost-effective logistics solutions that empower businesses to reach global markets with confidence.",
-    "vision": "Our Vision",
-    "visionText": "To be the most trusted logistics partner for businesses worldwide, known for our innovation, reliability, and exceptional customer service.",
-    "values": {
-      "title": "Our Values",
-      "reliability": "Reliability",
-      "reliabilityDesc": "We deliver on our promises, every time",
-      "innovation": "Innovation",
-      "innovationDesc": "Continuously improving through technology",
-      "transparency": "Transparency",
-      "transparencyDesc": "Clear communication at every step",
-      "excellence": "Excellence",
-      "excellenceDesc": "Striving for the highest standards"
+    "hero": {
+      "title": "Logistics you can depend on — sea, air, road & rail",
+      "subtitle": "Real-time visibility, compliance, and proactive exception handling",
+      "contactUs": "Contact Us",
+      "trackShipment": "Track Shipment"
     },
-    "leadership": {
-      "title": "Leadership Team",
-      "ceo": "CEO & Founder",
-      "coo": "Chief Operations Officer",
-      "cfo": "Chief Financial Officer"
+    "whoWeAre": {
+      "title": "Who we are",
+      "description": "We serve manufacturers, retailers, and distributors who need reliable, compliant logistics solutions across ocean, air, road, and rail. Our core value is transforming supply chain complexity into predictable, transparent operations that drive your business forward.",
+      "bullet1": "Complete visibility from origin to destination with real-time milestone tracking",
+      "bullet2": "Full compliance management across all regulatory requirements and trade lanes",
+      "bullet3": "Optimized speed and cost through strategic carrier partnerships and route planning"
+    },
+    "values": {
+      "title": "What sets us apart",
+      "tracking": {
+        "title": "Real-time tracking",
+        "description": "Complete visibility from pickup to delivery with milestone updates and exception alerts."
+      },
+      "compliance": {
+        "title": "Documentation & compliance",
+        "description": "Expert handling of customs, permits, and regulatory requirements across all trade lanes."
+      },
+      "network": {
+        "title": "Global carrier network",
+        "description": "Strategic partnerships with 150+ carriers ensuring capacity and competitive rates worldwide."
+      },
+      "exception": {
+        "title": "24/7 exception handling",
+        "description": "Proactive monitoring and immediate response to delays, disruptions, or documentation issues."
+      },
+      "speed": {
+        "title": "Speed & efficiency",
+        "description": "Optimized routing and streamlined processes to minimize transit times and costs."
+      },
+      "insights": {
+        "title": "Data-driven insights",
+        "description": "Analytics and reporting to optimize your supply chain performance and reduce costs."
+      }
+    },
+    "counters": {
+      "title": "Our impact in numbers",
+      "subtitle": "Trusted by global companies to deliver consistent, reliable logistics solutions",
+      "onTime": "On-time delivery",
+      "countries": "Countries covered",
+      "tradeLanes": "Trade lanes",
+      "operations": "Operations"
     },
     "process": {
-      "title": "Our Process",
-      "step1": "Consultation",
-      "step1Desc": "Understanding your logistics needs",
-      "step2": "Planning",
-      "step2Desc": "Designing optimal routes and solutions",
-      "step3": "Execution",
-      "step3Desc": "Seamless cargo handling and transport",
-      "step4": "Delivery",
-      "step4Desc": "Safe and timely delivery to destination"
+      "title": "How we work",
+      "subtitle": "Our streamlined 5-step process ensures your cargo moves efficiently from origin to destination",
+      "step1": {
+        "title": "Quote & booking",
+        "description": "Get instant quotes and book shipments through our platform or dedicated account manager"
+      },
+      "step2": {
+        "title": "Documentation & compliance",
+        "description": "We handle all customs paperwork, permits, and regulatory requirements for your trade lane"
+      },
+      "step3": {
+        "title": "Pickup & consolidation",
+        "description": "Strategic pickup scheduling and cargo consolidation to optimize costs and transit times"
+      },
+      "step4": {
+        "title": "Real-time tracking",
+        "description": "Monitor your shipment with live updates, milestone notifications, and exception alerts"
+      },
+      "step5": {
+        "title": "Final delivery",
+        "description": "Coordinated last-mile delivery with proof of delivery and performance analytics"
+      }
+    },
+    "leadership": {
+      "title": "Leadership team",
+      "subtitle": "Experienced professionals dedicated to delivering exceptional logistics solutions",
+      "members": {
+        "ceo": {
+          "name": "Sarah Chen",
+          "title": "Chief Executive Officer",
+          "bio": "20+ years in global logistics, former VP at Maersk. Expert in digital transformation and sustainable supply chains.",
+          "initials": "SC"
+        },
+        "coo": {
+          "name": "Michael Rodriguez",
+          "title": "Chief Operations Officer",
+          "bio": "15+ years optimizing freight networks across Asia-Pacific. Specialized in multimodal transport solutions.",
+          "initials": "MR"
+        },
+        "compliance": {
+          "name": "Dr. Emma Thompson",
+          "title": "Head of Compliance",
+          "bio": "Former customs official with deep expertise in international trade regulations and risk management.",
+          "initials": "ET"
+        }
+      }
     },
     "cta": {
-      "title": "Ready to Ship with DVN LOG?",
-      "subtitle": "Get a personalized quote for your logistics needs",
-      "button": "Contact Us Today"
+      "title": "Ready to streamline your logistics?",
+      "subtitle": "Join hundreds of companies who trust us with their global supply chain. Get started with a free consultation and quote.",
+      "getQuote": "Get Free Quote",
+      "trackShipment": "Track Shipment",
+      "contact": "Questions? Call us at",
+      "orEmail": "or email"
     }
   },
   "servicesSection": {

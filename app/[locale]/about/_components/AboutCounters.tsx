@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function AboutCounters() {
+  const t = useTranslations('aboutPage.counters');
   const [isVisible, setIsVisible] = useState(false);
   const [counts, setCounts] = useState({
     onTime: 0,
@@ -81,7 +83,7 @@ export default function AboutCounters() {
   const stats = [
     {
       value: `${counts.onTime}%`,
-      label: 'On-time delivery',
+      label: t('onTime'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -90,7 +92,7 @@ export default function AboutCounters() {
     },
     {
       value: `${counts.countries}+`,
-      label: 'Countries covered',
+      label: t('countries'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -99,7 +101,7 @@ export default function AboutCounters() {
     },
     {
       value: `${counts.tradeLanes}+`,
-      label: 'Trade lanes',
+      label: t('tradeLanes'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -108,7 +110,7 @@ export default function AboutCounters() {
     },
     {
       value: counts.operations,
-      label: 'Operations',
+      label: t('operations'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 15a4 4 0 01-4 4H8l-5 3V7a4 4 0 014-4h10a4 4 0 014 4z" />
@@ -120,9 +122,9 @@ export default function AboutCounters() {
   return (
     <section ref={sectionRef} className="py-16 bg-gradient-to-br from-[#1e40af]/5 to-[#3b82f6]/5 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our impact in numbers</h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('title')}</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Trusted by global companies to deliver consistent, reliable logistics solutions
+          {t('subtitle')}
         </p>
       </div>
 
