@@ -123,8 +123,8 @@ export async function generateMetadata({
   const excerpt = getLocalizedContent<string>(post, 'excerpt', locale);
 
   // Get SEO-specific titles/descriptions or fall back to content
-  const seoTitle = getLocalizedValue(post.seo, 'metaTitle', locale) || title;
-  const seoDescription = getLocalizedValue(post.seo, 'metaDescription', locale) || excerpt || '';
+  const seoTitle: string = getLocalizedValue<string>(post.seo as Record<string, string | undefined>, 'metaTitle', locale) || title;
+  const seoDescription: string = getLocalizedValue<string>(post.seo as Record<string, string | undefined>, 'metaDescription', locale) || excerpt || '';
   const ogImage = post.seo?.ogImageUrl || post.mainImageUrl;
   const twitterCard = post.seo?.twitterCardType || 'summary_large_image';
   const canonical = post.seo?.canonicalUrl;
