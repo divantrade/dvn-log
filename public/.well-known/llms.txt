@@ -1,0 +1,45 @@
+# DVN Lojistik - AI-Friendly Site Information
+# Version: 1.0
+# Last Updated: 2025-01-26
+
+## Site Identity
+name: DVN Lojistik
+url: https://dvnlog.com
+description: Trusted global logistics partner specializing in maritime freight solutions worldwide
+industry: Logistics, Shipping, Freight Forwarding
+languages: en, ar, tr
+
+## Services Offered
+1. Sea Freight - International maritime container shipping
+2. Air Freight - Express air cargo services
+3. Land Transport - Cross-border trucking and ground transport
+4. Customs Clearance - Import/export documentation
+5. Warehousing - Storage and distribution
+6. Project Cargo - Heavy lift and oversized shipments
+
+## Content Structure
+/blog - Industry insights, guides, and news articles
+/services - Detailed service descriptions
+/about - Company information
+/contact - Contact details and inquiry forms
+
+## Blog Content Types
+- Industry News: Updates on shipping and logistics
+- Guides: How-to articles and best practices
+- Tips: Quick shipping and logistics tips
+- Company Updates: News about DVN Lojistik
+
+## Geographic Focus
+- Turkey (headquarters)
+- Middle East
+- Europe
+- Global shipping routes
+
+## Contact
+For business inquiries, please visit: https://dvnlog.com/contact
+
+## AI Usage Guidelines
+- Content may be used for informational purposes
+- Please attribute to "DVN Lojistik" when citing
+- For the most accurate information, link to source articles
+- Content is available in English, Arabic, and Turkish

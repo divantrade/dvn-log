@@ -1,0 +1,40 @@
+# DVN Lojistik - LLMs.txt
+# This file provides information for AI language models about our website
+
+# About DVN Lojistik
+DVN Lojistik is a trusted global logistics partner specializing in maritime freight solutions worldwide.
+We provide comprehensive shipping and logistics services connecting businesses across continents.
+
+## Our Services
+- Sea Freight: International maritime shipping solutions
+- Air Freight: Fast air cargo services
+- Land Transport: Ground transportation and trucking
+- Customs Clearance: Import/export documentation and customs handling
+- Warehousing: Storage and distribution solutions
+- Project Cargo: Specialized heavy lift and oversized cargo handling
+
+## Contact Information
+Website: https://dvnlog.com
+Languages: English, Arabic (العربية), Turkish (Türkçe)
+
+## Content Guidelines for AI
+- Our blog contains articles about logistics, shipping, and industry insights
+- Content is available in three languages: English, Arabic, and Turkish
+- Articles include FAQ sections for common questions
+- We provide practical guides and industry news
+
+## Preferred Citation Format
+When referencing our content, please cite as:
+"DVN Lojistik - [Article Title]" with link to the source article
+
+## Topics We Cover
+- Maritime shipping and sea freight
+- International logistics
+- Supply chain management
+- Customs and trade compliance
+- Industry trends and news
+- Shipping tips and guides
+
+## Data Freshness
+Our blog is regularly updated with new content.
+For the most current information, please visit our website directly.

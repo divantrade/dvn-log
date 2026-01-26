@@ -8,7 +8,9 @@ export default defineType({
     { name: "english", title: "🇬🇧 English", default: true },
     { name: "arabic", title: "🇸🇦 العربية" },
     { name: "turkish", title: "🇹🇷 Türkçe" },
-    { name: "media", title: "📷 Media & SEO" },
+    { name: "media", title: "📷 Media" },
+    { name: "faq", title: "❓ FAQ" },
+    { name: "seo", title: "🔍 SEO" },
   ],
   fields: [
     // English Fields
@@ -105,12 +107,28 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
       group: "media",
+      description: "Recommended: 1200x630px for optimal social sharing",
     }),
     defineField({
       name: "author",
       title: "Author",
       type: "reference",
       to: [{ type: "author" }],
+      group: "media",
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Logistics", value: "logistics" },
+          { title: "Shipping", value: "shipping" },
+          { title: "Industry News", value: "news" },
+          { title: "Tips & Guides", value: "guides" },
+          { title: "Company Updates", value: "updates" },
+        ],
+      },
       group: "media",
     }),
     defineField({
@@ -122,17 +140,37 @@ export default defineType({
       group: "media",
     }),
     defineField({
+      name: "readingTime",
+      title: "Reading Time (minutes)",
+      type: "number",
+      description: "Estimated reading time in minutes",
+      initialValue: 5,
+      group: "media",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published At",
       type: "datetime",
       initialValue: () => new Date().toISOString(),
       group: "media",
     }),
+
+    // FAQ Section - Great for SEO rich snippets
+    defineField({
+      name: "faq",
+      title: "Frequently Asked Questions",
+      description: "Add FAQ items to appear as rich snippets in Google search results",
+      type: "array",
+      of: [{ type: "faqItem" }],
+      group: "faq",
+    }),
+
+    // SEO
     defineField({
       name: "seo",
-      title: "SEO",
+      title: "SEO & Social Media Settings",
       type: "seo",
-      group: "media",
+      group: "seo",
     }),
   ],
   preview: {
