@@ -16,6 +16,7 @@ type BlogPost = {
   mainImageUrl?: string;
   body: any[];
   publishedAt?: string;
+  language?: string;
   author?: { name?: string; imageUrl?: string };
   tags?: string[];
   seo?: any;
@@ -24,7 +25,8 @@ type BlogPost = {
 // Generate static params for all blog posts at build time
 export async function generateStaticParams() {
   try {
-    const posts = await sanityClient.fetch<{ slug: string }[]>(allPostSlugsQuery);
+    const posts = await sanityClient.fetch<{ slug: string; language: string }[]>(allPostSlugsQuery);
+    // Generate params for each post - the locale is handled by next-intl
     return posts.map((post) => ({
       slug: post.slug,
     }));
@@ -52,10 +54,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   }
 
-  const [post, related] = await Promise.all([
-    sanityClient.fetch<BlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" }),
-    sanityClient.fetch<BlogPost[]>(relatedPostsQuery, { slug }, { cache: "force-cache" })
-  ]);
+  // Fetch post first to get its language and tags for related posts query
+  const post = await sanityClient.fetch<BlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" });
+
+  // Fetch related posts based on post's language and tags
+  const related = post ? await sanityClient.fetch<BlogPost[]>(
+    relatedPostsQuery,
+    { slug, language: post.language || locale, tags: post.tags || [] },
+    { cache: "force-cache" }
+  ) : [];
 
   if (!post) {
     return (

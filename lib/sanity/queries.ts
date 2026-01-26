@@ -1,13 +1,15 @@
 // lib/sanity/queries.ts
 import { groq } from "next-sanity";
 
+// Query for posts filtered by language
 export const paginatedPostsQuery = groq`
-*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
+*[_type == "blogPost" && language == $language] | order(publishedAt desc) [$offset...$end]{
   _id,
   title,
   "slug": slug.current,
   excerpt,
   publishedAt,
+  language,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   "author": author->{
     name,
@@ -17,7 +19,28 @@ export const paginatedPostsQuery = groq`
 }
 `;
 
-export const postsCountQuery = groq`count(*[_type == "blogPost"])`;
+// Count posts by language
+export const postsCountQuery = groq`count(*[_type == "blogPost" && language == $language])`;
+
+// Query for all posts (all languages) - for admin/fallback
+export const allPaginatedPostsQuery = groq`
+*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  language,
+  "mainImageUrl": coalesce(coverImage.asset->url, ""),
+  "author": author->{
+    name,
+    "imageUrl": coalesce(avatar.asset->url, "")
+  },
+  tags
+}
+`;
+
+export const allPostsCountQuery = groq`count(*[_type == "blogPost"])`;
 
 export const postBySlugQuery = groq`
 *[_type == "blogPost" && slug.current == $slug][0]{
@@ -25,6 +48,7 @@ export const postBySlugQuery = groq`
   title,
   "slug": slug.current,
   excerpt,
+  language,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   body,
   publishedAt,
@@ -37,11 +61,13 @@ export const postBySlugQuery = groq`
 }
 `;
 
+// Related posts - same language and shared tags
 export const relatedPostsQuery = groq`
-*[_type == "blogPost" && slug.current != $slug && count((tags[])[@ in ^.^.tags]) > 0] | order(publishedAt desc)[0...3]{
+*[_type == "blogPost" && slug.current != $slug && language == $language && count((tags[])[@ in $tags]) > 0] | order(publishedAt desc)[0...3]{
   _id,
   title,
   "slug": slug.current,
+  language,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   excerpt,
   publishedAt,
@@ -100,6 +126,7 @@ export const testimonialsQuery = groq`
 
 export const allPostSlugsQuery = groq`
 *[_type == "blogPost" && defined(slug.current)]{
-  "slug": slug.current
+  "slug": slug.current,
+  language
 }
 `;

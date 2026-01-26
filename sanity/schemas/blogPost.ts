@@ -5,6 +5,21 @@ export default defineType({
   title: "Blog Post",
   type: "document",
   fields: [
+    defineField({
+      name: "language",
+      title: "Language",
+      type: "string",
+      options: {
+        list: [
+          { title: "English", value: "en" },
+          { title: "العربية", value: "ar" },
+          { title: "Türkçe", value: "tr" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "en",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "title", type: "string", validation: (r) => r.required() }),
     defineField({ name: "slug", type: "slug", options: { source: "title", maxLength: 96 }, validation: (r) => r.required() }),
     defineField({ name: "excerpt", type: "text" }),
@@ -20,5 +35,20 @@ export default defineType({
     defineField({ name: "publishedAt", type: "datetime", initialValue: () => new Date().toISOString() }),
     defineField({ name: "seo", type: "seo" }),
   ],
-  preview: { select: { title: "title", media: "coverImage", subtitle: "author.name" } },
+  preview: {
+    select: {
+      title: "title",
+      media: "coverImage",
+      language: "language",
+      authorName: "author.name"
+    },
+    prepare({ title, media, language, authorName }) {
+      const langLabels: Record<string, string> = { en: "🇬🇧", ar: "🇸🇦", tr: "🇹🇷" };
+      return {
+        title: `${langLabels[language] || ""} ${title}`,
+        subtitle: authorName,
+        media,
+      };
+    },
+  },
 });
