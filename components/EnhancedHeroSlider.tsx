@@ -74,7 +74,7 @@ export default function EnhancedHeroSlider({
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden ${
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out overflow-hidden ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -157,7 +157,7 @@ export default function EnhancedHeroSlider({
           </div>
 
           {/* Navigation Dots */}
-          <div className="flex justify-center space-x-3">
+          <div className="flex justify-center gap-3">
             {slides.map((_, index) => (
               <button
                 key={index}

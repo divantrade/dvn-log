@@ -202,7 +202,7 @@ export default function HomePage() {
             subtitle: tHero('subtitle3')
           },
         ]}
-        intervalMs={5500}
+        intervalMs={8000}
       />
 
       {/* Services Section */}
