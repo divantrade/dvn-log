@@ -8,28 +8,62 @@ import { getTranslations, getLocale } from 'next-intl/server';
 
 export const revalidate = 60;
 
-type BlogPost = {
+type LocalizedBlogPost = {
   _id: string;
-  title: string;
-  slug: string;
-  excerpt?: string;
+  title_en?: string;
+  title_ar?: string;
+  title_tr?: string;
+  slug_en?: string;
+  slug_ar?: string;
+  slug_tr?: string;
+  excerpt_en?: string;
+  excerpt_ar?: string;
+  excerpt_tr?: string;
+  body_en?: any[];
+  body_ar?: any[];
+  body_tr?: any[];
   mainImageUrl?: string;
-  body: any[];
   publishedAt?: string;
-  language?: string;
   author?: { name?: string; imageUrl?: string };
   tags?: string[];
   seo?: any;
 };
 
+type RelatedPost = {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  mainImageUrl?: string;
+};
+
+// Helper to get localized content
+function getLocalizedContent<T>(
+  post: LocalizedBlogPost,
+  field: 'title' | 'slug' | 'excerpt' | 'body',
+  locale: string
+): T | undefined {
+  const langKey = `${field}_${locale}` as keyof LocalizedBlogPost;
+  const enKey = `${field}_en` as keyof LocalizedBlogPost;
+  const arKey = `${field}_ar` as keyof LocalizedBlogPost;
+  const trKey = `${field}_tr` as keyof LocalizedBlogPost;
+
+  return (post[langKey] || post[enKey] || post[arKey] || post[trKey]) as T | undefined;
+}
+
 // Generate static params for all blog posts at build time
 export async function generateStaticParams() {
   try {
-    const posts = await sanityClient.fetch<{ slug: string; language: string }[]>(allPostSlugsQuery);
-    // Generate params for each post - the locale is handled by next-intl
-    return posts.map((post) => ({
-      slug: post.slug,
-    }));
+    const posts = await sanityClient.fetch<{ slugs: (string | null)[] }[]>(allPostSlugsQuery);
+    // Flatten all slugs and filter out nulls
+    const allSlugs = posts
+      .flatMap(post => post.slugs)
+      .filter((slug): slug is string => slug !== null && slug !== undefined);
+
+    // Remove duplicates
+    const uniqueSlugs = [...new Set(allSlugs)];
+
+    return uniqueSlugs.map((slug) => ({ slug }));
   } catch (error) {
     console.error('Error generating static params:', error);
     return [];
@@ -54,15 +88,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   }
 
-  // Fetch post first to get its language and tags for related posts query
-  const post = await sanityClient.fetch<BlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" });
-
-  // Fetch related posts based on post's language and tags
-  const related = post ? await sanityClient.fetch<BlogPost[]>(
-    relatedPostsQuery,
-    { slug, language: post.language || locale, tags: post.tags || [] },
-    { cache: "force-cache" }
-  ) : [];
+  // Fetch post - query checks all language slugs
+  const post = await sanityClient.fetch<LocalizedBlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" });
 
   if (!post) {
     return (
@@ -78,8 +105,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
+  // Get localized content
+  const title = getLocalizedContent<string>(post, 'title', locale) || 'Untitled';
+  const excerpt = getLocalizedContent<string>(post, 'excerpt', locale);
+  const body = getLocalizedContent<any[]>(post, 'body', locale) || [];
+
+  // Fetch related posts
+  const related = await sanityClient.fetch<RelatedPost[]>(
+    relatedPostsQuery,
+    { slug, language: locale, tags: post.tags || [] },
+    { cache: "force-cache" }
+  );
+
   const publishedDate = formatDate(post.publishedAt);
-  const isRTL = /[\u0600-\u06FF]/.test(post.title ?? "");
+  const isRTL = locale === 'ar' || /[\u0600-\u06FF]/.test(title);
 
   return (
     <main className="px-0">
@@ -99,7 +138,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             dir={isRTL ? "rtl" : "ltr"}
             className="text-3xl md:text-4xl font-bold leading-tight mb-4"
           >
-            {post.title}
+            {title}
           </h1>
 
           <div className="flex items-center gap-4 text-slate-300">
@@ -135,7 +174,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="relative aspect-[16/9] w-full mb-8 rounded-2xl overflow-hidden">
             <Image
               src={post.mainImageUrl}
-              alt={post.title}
+              alt={title}
               fill
               sizes="(max-width: 768px) 100vw, 896px"
               className="object-cover"
@@ -144,8 +183,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
-        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
-          <PortableText value={post.body} />
+        <div className={`prose prose-lg prose-slate dark:prose-invert max-w-none ${isRTL ? 'text-right' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+          {body.length > 0 ? (
+            <PortableText value={body} />
+          ) : (
+            <p className="text-slate-500 italic">{excerpt || t('postNotFound')}</p>
+          )}
         </div>
 
         {post.tags && post.tags.length > 0 && (

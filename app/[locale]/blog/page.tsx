@@ -16,7 +16,7 @@ type Post = {
   publishedAt?: string;
   mainImageUrl?: string;
   category?: string;
-  language?: string;
+  tags?: string[];
   author?: { name?: string; imageUrl?: string };
 };
 
@@ -73,7 +73,7 @@ export default async function BlogPage({
             const category = post.category;
             const authorName = post.author?.name;
             const authorImg = post.author?.imageUrl;
-            const isRTL = /[\u0600-\u06FF]/.test(post.title ?? "");
+            const isRTL = locale === 'ar' || /[\u0600-\u06FF]/.test(post.title ?? "");
 
             return (
               <li key={post._id} className="group overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md">
