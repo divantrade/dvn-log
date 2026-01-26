@@ -29,6 +29,8 @@ export const paginatedPostsQuery = groq`
     excerpt_en, excerpt_ar, excerpt_tr
   ),
   publishedAt,
+  category,
+  readingTime,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   "author": author->{
     name,
@@ -92,12 +94,38 @@ export const postBySlugQuery = groq`
   body_tr,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   publishedAt,
+  _updatedAt,
+  category,
+  readingTime,
   "author": author->{
     name,
+    bio,
+    "slug": slug.current,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
   tags,
-  seo
+  faq[]{
+    question_en,
+    question_ar,
+    question_tr,
+    answer_en,
+    answer_ar,
+    answer_tr
+  },
+  seo{
+    metaTitle_en,
+    metaTitle_ar,
+    metaTitle_tr,
+    metaDescription_en,
+    metaDescription_ar,
+    metaDescription_tr,
+    focusKeyword,
+    "ogImageUrl": ogImage.asset->url,
+    twitterCardType,
+    canonicalUrl,
+    noIndex,
+    noFollow
+  }
 }
 `;
 
