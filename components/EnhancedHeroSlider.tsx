@@ -20,7 +20,7 @@ interface EnhancedHeroSliderProps {
 
 export default function EnhancedHeroSlider({
   slides,
-  intervalMs = 4500,
+  intervalMs = 7000,
   children
 }: EnhancedHeroSliderProps) {
   const t = useTranslations('hero');
@@ -74,7 +74,7 @@ export default function EnhancedHeroSlider({
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden ${
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out overflow-hidden ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -123,7 +123,7 @@ export default function EnhancedHeroSlider({
             {slides.map((slide, index) => (
               <p
                 key={index}
-                className={`absolute text-lg sm:text-xl md:text-2xl text-white/90 font-medium transition-all duration-700 ${
+                className={`absolute text-lg sm:text-xl md:text-2xl text-white/90 font-medium transition-all duration-1000 ease-in-out ${
                   index === currentSlide 
                     ? 'translate-y-0 opacity-100' 
                     : index < currentSlide 
@@ -157,7 +157,7 @@ export default function EnhancedHeroSlider({
           </div>
 
           {/* Navigation Dots */}
-          <div className="flex justify-center space-x-3">
+          <div className="flex justify-center gap-3">
             {slides.map((_, index) => (
               <button
                 key={index}
