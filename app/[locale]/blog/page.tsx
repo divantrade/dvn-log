@@ -16,6 +16,7 @@ type Post = {
   publishedAt?: string;
   mainImageUrl?: string;
   category?: string;
+  language?: string;
   author?: { name?: string; imageUrl?: string };
 };
 
@@ -42,8 +43,8 @@ export default async function BlogPage({
   const end = offset + PAGE_SIZE;
 
   const [posts, total] = await Promise.all([
-    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end }, { cache: "force-cache" }),
-    sanityClient.fetch<number>(postsCountQuery, {}, { cache: "force-cache" }),
+    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end, language: locale }, { cache: "force-cache" }),
+    sanityClient.fetch<number>(postsCountQuery, { language: locale }, { cache: "force-cache" }),
   ]);
 
   const totalPages = Math.max(1, Math.ceil((total as number) / PAGE_SIZE));
