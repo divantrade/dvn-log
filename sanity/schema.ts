@@ -4,7 +4,8 @@ import author from "./schemas/author";
 import blogPost from "./schemas/blogPost";
 import seo from "./schemas/seo";
 import clientFeedback from "./schemas/testimonial";
+import { localeString, localeText, localeSlug, localeBlock } from "./schemas/localeTypes";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [partner, author, blogPost, seo, clientFeedback],
+  types: [partner, author, blogPost, seo, clientFeedback, localeString, localeText, localeSlug, localeBlock],
 };

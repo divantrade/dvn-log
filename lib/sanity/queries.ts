@@ -1,15 +1,34 @@
 // lib/sanity/queries.ts
 import { groq } from "next-sanity";
 
-// Query for posts filtered by language
+// Query for posts that have content in the specified language
+// Falls back to showing posts with any language content
 export const paginatedPostsQuery = groq`
-*[_type == "blogPost" && language == $language] | order(publishedAt desc) [$offset...$end]{
+*[_type == "blogPost" && defined(coalesce(
+  select($language == "en" => title_en),
+  select($language == "ar" => title_ar),
+  select($language == "tr" => title_tr)
+))] | order(publishedAt desc) [$offset...$end]{
   _id,
-  title,
-  "slug": slug.current,
-  excerpt,
+  "title": coalesce(
+    select($language == "en" => title_en),
+    select($language == "ar" => title_ar),
+    select($language == "tr" => title_tr),
+    title_en, title_ar, title_tr
+  ),
+  "slug": coalesce(
+    select($language == "en" => slug_en.current),
+    select($language == "ar" => slug_ar.current),
+    select($language == "tr" => slug_tr.current),
+    slug_en.current, slug_ar.current, slug_tr.current
+  ),
+  "excerpt": coalesce(
+    select($language == "en" => excerpt_en),
+    select($language == "ar" => excerpt_ar),
+    select($language == "tr" => excerpt_tr),
+    excerpt_en, excerpt_ar, excerpt_tr
+  ),
   publishedAt,
-  language,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   "author": author->{
     name,
@@ -19,18 +38,27 @@ export const paginatedPostsQuery = groq`
 }
 `;
 
-// Count posts by language
-export const postsCountQuery = groq`count(*[_type == "blogPost" && language == $language])`;
+// Count posts that have content in the specified language
+export const postsCountQuery = groq`count(*[_type == "blogPost" && defined(coalesce(
+  select($language == "en" => title_en),
+  select($language == "ar" => title_ar),
+  select($language == "tr" => title_tr)
+))])`;
 
 // Query for all posts (all languages) - for admin/fallback
 export const allPaginatedPostsQuery = groq`
 *[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
   _id,
-  title,
-  "slug": slug.current,
-  excerpt,
+  title_en,
+  title_ar,
+  title_tr,
+  "slug_en": slug_en.current,
+  "slug_ar": slug_ar.current,
+  "slug_tr": slug_tr.current,
+  excerpt_en,
+  excerpt_ar,
+  excerpt_tr,
   publishedAt,
-  language,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   "author": author->{
     name,
@@ -42,15 +70,27 @@ export const allPaginatedPostsQuery = groq`
 
 export const allPostsCountQuery = groq`count(*[_type == "blogPost"])`;
 
+// Get post by slug - checks all language slugs
 export const postBySlugQuery = groq`
-*[_type == "blogPost" && slug.current == $slug][0]{
+*[_type == "blogPost" && (
+  slug_en.current == $slug ||
+  slug_ar.current == $slug ||
+  slug_tr.current == $slug
+)][0]{
   _id,
-  title,
-  "slug": slug.current,
-  excerpt,
-  language,
+  title_en,
+  title_ar,
+  title_tr,
+  "slug_en": slug_en.current,
+  "slug_ar": slug_ar.current,
+  "slug_tr": slug_tr.current,
+  excerpt_en,
+  excerpt_ar,
+  excerpt_tr,
+  body_en,
+  body_ar,
+  body_tr,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
-  body,
   publishedAt,
   "author": author->{
     name,
@@ -61,21 +101,52 @@ export const postBySlugQuery = groq`
 }
 `;
 
-// Related posts - same language and shared tags
+// Related posts - has content in the same language and shares tags
 export const relatedPostsQuery = groq`
-*[_type == "blogPost" && slug.current != $slug && language == $language && count((tags[])[@ in $tags]) > 0] | order(publishedAt desc)[0...3]{
+*[_type == "blogPost" &&
+  slug_en.current != $slug &&
+  slug_ar.current != $slug &&
+  slug_tr.current != $slug &&
+  defined(coalesce(
+    select($language == "en" => title_en),
+    select($language == "ar" => title_ar),
+    select($language == "tr" => title_tr)
+  )) &&
+  count((tags[])[@ in $tags]) > 0
+] | order(publishedAt desc)[0...3]{
   _id,
-  title,
-  "slug": slug.current,
-  language,
+  "title": coalesce(
+    select($language == "en" => title_en),
+    select($language == "ar" => title_ar),
+    select($language == "tr" => title_tr),
+    title_en, title_ar, title_tr
+  ),
+  "slug": coalesce(
+    select($language == "en" => slug_en.current),
+    select($language == "ar" => slug_ar.current),
+    select($language == "tr" => slug_tr.current),
+    slug_en.current, slug_ar.current, slug_tr.current
+  ),
+  "excerpt": coalesce(
+    select($language == "en" => excerpt_en),
+    select($language == "ar" => excerpt_ar),
+    select($language == "tr" => excerpt_tr),
+    excerpt_en, excerpt_ar, excerpt_tr
+  ),
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
-  excerpt,
   publishedAt,
   "author": author->{
     name,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
   tags
+}
+`;
+
+// Get all post slugs for static generation (all languages)
+export const allPostSlugsQuery = groq`
+*[_type == "blogPost" && (defined(slug_en.current) || defined(slug_ar.current) || defined(slug_tr.current))]{
+  "slugs": [slug_en.current, slug_ar.current, slug_tr.current]
 }
 `;
 
@@ -121,12 +192,5 @@ export const testimonialsQuery = groq`
   testimonialText,
   rating,
   featured
-}
-`;
-
-export const allPostSlugsQuery = groq`
-*[_type == "blogPost" && defined(slug.current)]{
-  "slug": slug.current,
-  language
 }
 `;
