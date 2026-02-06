@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import Script from 'next/script';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { sanityClientSide } from '@/lib/sanity/client-side';
 import { partnersQuery, clientFeedbackQuery } from '@/lib/sanity/queries';
-import { latestPostsQuery } from '@/lib/sanity/client-side';
+import { latestPostsQuery, getLocalizedPostField } from '@/lib/sanity/client-side';
 import { urlForClientSide } from '@/lib/sanity/client-side';
 import EnhancedHeroSlider from '@/components/EnhancedHeroSlider';
 import Counter from './_components/Counter';
@@ -148,6 +148,7 @@ export default function HomePage() {
   const tAbout = useTranslations('about');
   const tTestimonials = useTranslations('testimonials');
   const tCta = useTranslations('cta');
+  const locale = useLocale();
 
   const [partners, setPartners] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -602,17 +603,22 @@ export default function HomePage() {
               {/* Featured + Grid Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {posts.slice(0, 3).map((post: any, index: number) => {
-                  const href = `/blog/${post.slug}`;
+                  // Get localized content based on current locale
+                  const postTitle = getLocalizedPostField(post, 'title', locale);
+                  const postSlug = getLocalizedPostField(post, 'slug', locale);
+                  const postExcerpt = getLocalizedPostField(post, 'excerpt', locale);
+
+                  const href = `/blog/${postSlug}`;
                   const dateStr = post?.publishedAt
-                    ? new Intl.DateTimeFormat(undefined, { day: '2-digit', month: 'short' }).format(new Date(post.publishedAt))
+                    ? new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short' }).format(new Date(post.publishedAt))
                     : '';
-                  const excerpt = typeof post?.excerpt === 'string' && post.excerpt.length > 0
-                    ? (post.excerpt.length > 80 ? post.excerpt.slice(0, 70).trim() + '…' : post.excerpt)
+                  const excerpt = postExcerpt.length > 0
+                    ? (postExcerpt.length > 80 ? postExcerpt.slice(0, 70).trim() + '…' : postExcerpt)
                     : '';
                   const coverUrl = post?.cover?.src || null;
                   const isFeatured = index === 0;
                   // Calculate reading time based on content length (average 200 words per minute)
-                  const wordCount = (post.title?.length || 0) + (post.excerpt?.length || 0) + 500; // Estimate content
+                  const wordCount = (postTitle?.length || 0) + (postExcerpt?.length || 0) + 500; // Estimate content
                   const readingTime = `${Math.max(1, Math.ceil(wordCount / 1000))} min read`;
                   const tag = post.category || 'Logistics';
 
@@ -625,8 +631,8 @@ export default function HomePage() {
                           __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Article",
-                            "headline": post.title,
-                            "description": excerpt || post.title,
+                            "headline": postTitle,
+                            "description": excerpt || postTitle,
                             "image": coverUrl || "https://dvnlog.com/logo.png",
                             "author": {
                               "@type": "Organization",
@@ -668,7 +674,7 @@ export default function HomePage() {
                               src={post.cover.src}
                               width={post.cover?.w || 800}
                               height={post.cover?.h || 450}
-                              alt={post.title}
+                              alt={postTitle}
                               sizes={isFeatured ? "(min-width:1024px) 640px, 100vw" : "(min-width:1024px) 640px, 100vw"}
                               priority={index === 0}
                               loading={index === 0 ? 'eager' : 'lazy'}
@@ -718,7 +724,7 @@ export default function HomePage() {
                           <h3 className={`font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 ${
                             isFeatured ? 'text-xl lg:text-2xl mb-3' : 'text-lg mb-2'
                           }`}>
-                            {post.title}
+                            {postTitle}
                           </h3>
 
                           {/* Excerpt */}
