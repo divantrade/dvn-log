@@ -2,8 +2,14 @@
 import { groq } from "next-sanity";
 
 // Query for posts - fetches all language fields, application handles selection
+// Filters to ensure posts have at least one valid slug
 export const paginatedPostsQuery = groq`
-*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
+*[_type == "blogPost" && (
+  defined(slug.current) ||
+  defined(slug_en.current) ||
+  defined(slug_ar.current) ||
+  defined(slug_tr.current)
+)] | order(publishedAt desc) [$offset...$end]{
   _id,
   // All title fields (old + new)
   title,
@@ -33,12 +39,22 @@ export const paginatedPostsQuery = groq`
 }
 `;
 
-// Count all posts
-export const postsCountQuery = groq`count(*[_type == "blogPost"])`;
+// Count all posts with valid slugs
+export const postsCountQuery = groq`count(*[_type == "blogPost" && (
+  defined(slug.current) ||
+  defined(slug_en.current) ||
+  defined(slug_ar.current) ||
+  defined(slug_tr.current)
+)])`;
 
 // Query for all posts (all languages) - for admin/fallback
 export const allPaginatedPostsQuery = groq`
-*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
+*[_type == "blogPost" && (
+  defined(slug.current) ||
+  defined(slug_en.current) ||
+  defined(slug_ar.current) ||
+  defined(slug_tr.current)
+)] | order(publishedAt desc) [$offset...$end]{
   _id,
   title,
   title_en,
