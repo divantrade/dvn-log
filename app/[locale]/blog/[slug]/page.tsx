@@ -320,79 +320,86 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {faqItems.length > 0 && <FAQJsonLd items={faqItems} />}
 
-      {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="mx-auto max-w-4xl px-6 py-16">
-          <Link href="/blog" className="inline-flex items-center text-slate-300 hover:text-white mb-6 transition-colors">
-            <svg className="w-4 h-4 me-2 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            {t('backToBlog')}
-          </Link>
+      {/* Hero Section with Cover Image Background */}
+      <section className="relative w-full min-h-[50vh] md:min-h-[60vh] flex items-end">
+        {/* Background Image */}
+        {post.mainImageUrl ? (
+          <Image
+            src={post.mainImageUrl}
+            alt={title}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-800" />
+        )}
 
-          {/* Category & Reading Time */}
-          <div className="flex items-center gap-3 mb-4">
-            {post.category && (
-              <span className="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full uppercase">
-                {post.category}
-              </span>
-            )}
-            {post.readingTime && (
-              <span className="text-slate-400 text-sm flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {post.readingTime} {locale === 'ar' ? 'دقائق قراءة' : locale === 'tr' ? 'dk okuma' : 'min read'}
-              </span>
-            )}
-          </div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
 
-          <h1
-            dir={isRTL ? "rtl" : "ltr"}
-            className="text-3xl md:text-4xl font-bold leading-tight mb-4"
-          >
-            {title}
-          </h1>
+        {/* Content */}
+        <div className="relative z-10 w-full">
+          <div className="mx-auto max-w-4xl px-6 py-8 md:py-12">
+            <Link href="/blog" className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors text-sm">
+              <svg className="w-4 h-4 me-2 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {t('backToBlog')}
+            </Link>
 
-          <div className="flex items-center gap-4 text-slate-300">
-            {post.author?.name && (
-              <div className="flex items-center gap-2">
-                {post.author.imageUrl && (
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
-                    <Image
-                      src={post.author.imageUrl}
-                      alt={post.author.name}
-                      fill
-                      sizes="40px"
-                      className="object-cover"
-                    />
+            {/* Category & Reading Time */}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              {post.category && (
+                <span className="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full uppercase">
+                  {post.category}
+                </span>
+              )}
+              {post.readingTime && (
+                <span className="text-white/70 text-sm flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {post.readingTime} {locale === 'ar' ? 'دقائق قراءة' : locale === 'tr' ? 'dk okuma' : 'min read'}
+                </span>
+              )}
+            </div>
+
+            <h1
+              dir={isRTL ? "rtl" : "ltr"}
+              className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 text-white drop-shadow-lg"
+            >
+              {title}
+            </h1>
+
+            <div className="flex items-center gap-4 text-white/80">
+              {post.author?.name && (
+                <div className="flex items-center gap-3">
+                  {post.author.imageUrl && (
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/30 shadow-lg">
+                      <Image
+                        src={post.author.imageUrl}
+                        alt={post.author.name}
+                        fill
+                        sizes="40px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <span className="block font-medium text-white">{post.author.name}</span>
+                    {publishedDate && <span className="text-sm text-white/60">{publishedDate}</span>}
                   </div>
-                )}
-                <div>
-                  <span className="block font-medium">{post.author.name}</span>
-                  {publishedDate && <span className="text-sm text-slate-400">{publishedDate}</span>}
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Article Content */}
-      <article className="mx-auto max-w-4xl px-6 py-12">
-        {post.mainImageUrl && (
-          <div className="relative aspect-[16/9] w-full mb-8 rounded-2xl overflow-hidden">
-            <Image
-              src={post.mainImageUrl}
-              alt={title}
-              fill
-              sizes="(max-width: 768px) 100vw, 896px"
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
-
+      <article className="mx-auto max-w-4xl px-6 py-10 md:py-12">
         <div className={`prose prose-lg prose-slate dark:prose-invert max-w-none ${isRTL ? 'text-right' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
           {body.length > 0 ? (
             <PortableText value={body} />
