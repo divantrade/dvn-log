@@ -46,6 +46,20 @@ export default defineType({
       group: "legacy",
       description: "Old posts only - use English tab for new posts",
     }),
+    defineField({
+      name: "language",
+      title: "Language (Legacy)",
+      type: "string",
+      group: "legacy",
+      description: "Old posts only - no longer used",
+      options: {
+        list: [
+          { title: "English", value: "en" },
+          { title: "العربية", value: "ar" },
+          { title: "Türkçe", value: "tr" },
+        ],
+      },
+    }),
 
     // English Fields
     defineField({
@@ -209,21 +223,24 @@ export default defineType({
   ],
   preview: {
     select: {
+      title: "title", // Legacy field
       title_en: "title_en",
       title_ar: "title_ar",
       title_tr: "title_tr",
       media: "coverImage",
       authorName: "author.name",
     },
-    prepare({ title_en, title_ar, title_tr, media, authorName }) {
+    prepare({ title, title_en, title_ar, title_tr, media, authorName }) {
       const flags = [];
       if (title_en) flags.push("🇬🇧");
       if (title_ar) flags.push("🇸🇦");
       if (title_tr) flags.push("🇹🇷");
-      const title = title_en || title_ar || title_tr || "Untitled";
+      // Legacy posts have `title` field, new posts have `title_en/ar/tr`
+      const displayTitle = title_en || title_ar || title_tr || title || "Untitled";
+      const isLegacy = title && !title_en && !title_ar && !title_tr;
       return {
-        title: `${flags.join("")} ${title}`,
-        subtitle: authorName,
+        title: isLegacy ? `⚙️ ${displayTitle}` : `${flags.join("")} ${displayTitle}`,
+        subtitle: isLegacy ? `Legacy Post • ${authorName || ''}` : authorName,
         media,
       };
     },
