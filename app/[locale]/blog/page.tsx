@@ -10,15 +10,49 @@ const PAGE_SIZE = 9;
 
 type Post = {
   _id: string;
-  title: string;
-  slug: string;
+  // Old schema
+  title?: string;
+  slug?: string;
   excerpt?: string;
+  // New localized schema
+  title_en?: string;
+  title_ar?: string;
+  title_tr?: string;
+  slug_en?: string;
+  slug_ar?: string;
+  slug_tr?: string;
+  excerpt_en?: string;
+  excerpt_ar?: string;
+  excerpt_tr?: string;
+  // Common
   publishedAt?: string;
   mainImageUrl?: string;
   category?: string;
   tags?: string[];
   author?: { name?: string; imageUrl?: string };
 };
+
+// Helper function to get localized content with fallbacks
+function getLocalizedField(
+  post: Post,
+  field: 'title' | 'slug' | 'excerpt',
+  locale: string
+): string {
+  const langKey = `${field}_${locale}` as keyof Post;
+  const enKey = `${field}_en` as keyof Post;
+  const arKey = `${field}_ar` as keyof Post;
+  const trKey = `${field}_tr` as keyof Post;
+  const oldKey = field as keyof Post;
+
+  return (
+    (post[langKey] as string) ||
+    (post[enKey] as string) ||
+    (post[arKey] as string) ||
+    (post[trKey] as string) ||
+    (post[oldKey] as string) ||
+    ''
+  );
+}
 
 export default async function BlogPage({
   searchParams,
@@ -43,8 +77,8 @@ export default async function BlogPage({
   const end = offset + PAGE_SIZE;
 
   const [posts, total] = await Promise.all([
-    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end, language: locale }, { cache: "force-cache" }),
-    sanityClient.fetch<number>(postsCountQuery, { language: locale }, { cache: "force-cache" }),
+    sanityClient.fetch<Post[]>(paginatedPostsQuery, { offset, end }, { cache: "force-cache" }),
+    sanityClient.fetch<number>(postsCountQuery, {}, { cache: "force-cache" }),
   ]);
 
   const totalPages = Math.max(1, Math.ceil((total as number) / PAGE_SIZE));
@@ -68,12 +102,15 @@ export default async function BlogPage({
       <section className="mx-auto max-w-7xl px-6 py-12">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => {
+            const postTitle = getLocalizedField(post, 'title', locale);
+            const postSlug = getLocalizedField(post, 'slug', locale);
+            const postExcerpt = getLocalizedField(post, 'excerpt', locale);
             const img = post.mainImageUrl || "";
             const date = formatDate(post.publishedAt);
             const category = post.category;
             const authorName = post.author?.name;
             const authorImg = post.author?.imageUrl;
-            const isRTL = locale === 'ar' || /[\u0600-\u06FF]/.test(post.title ?? "");
+            const isRTL = locale === 'ar' || /[\u0600-\u06FF]/.test(postTitle);
 
             return (
               <li key={post._id} className="group overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md">
@@ -82,7 +119,7 @@ export default async function BlogPage({
                   {img ? (
                     <Image
                       src={img}
-                      alt={post.title}
+                      alt={postTitle}
                       fill
                       sizes="(min-width:1024px) 360px, 92vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -107,17 +144,17 @@ export default async function BlogPage({
 
                 {/* النص */}
                 <div className="p-4">
-                  <Link href={`/blog/${post.slug}`} className="block">
+                  <Link href={`/blog/${postSlug}`} className="block">
                     <h2
                       dir={isRTL ? "rtl" : "ltr"}
                       className="line-clamp-2 text-lg font-semibold leading-snug text-slate-900 dark:text-white hover:underline"
                     >
-                      {post.title}
+                      {postTitle}
                     </h2>
                   </Link>
 
-                  {post.excerpt && (
-                    <p className="mt-2 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">{post.excerpt}</p>
+                  {postExcerpt && (
+                    <p className="mt-2 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">{postExcerpt}</p>
                   )}
 
                   {/* الكاتب */}
@@ -140,7 +177,7 @@ export default async function BlogPage({
 
                   <div className="mt-4">
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={`/blog/${postSlug}`}
                       className="inline-flex items-center gap-1 text-sm font-medium text-[#1e3a8a] dark:text-blue-400 hover:underline"
                     >
                       {t('readMore')}

@@ -1,32 +1,26 @@
 // lib/sanity/queries.ts
 import { groq } from "next-sanity";
 
-// Query for posts - supports both old schema (title, slug) and new schema (title_en, slug_en, etc.)
-// Falls back to old fields if new localized fields don't exist
+// Query for posts - fetches all language fields, application handles selection
 export const paginatedPostsQuery = groq`
 *[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
   _id,
-  "title": coalesce(
-    select($language == "en" => title_en),
-    select($language == "ar" => title_ar),
-    select($language == "tr" => title_tr),
-    title_en, title_ar, title_tr,
-    title
-  ),
-  "slug": coalesce(
-    select($language == "en" => slug_en.current),
-    select($language == "ar" => slug_ar.current),
-    select($language == "tr" => slug_tr.current),
-    slug_en.current, slug_ar.current, slug_tr.current,
-    slug.current
-  ),
-  "excerpt": coalesce(
-    select($language == "en" => excerpt_en),
-    select($language == "ar" => excerpt_ar),
-    select($language == "tr" => excerpt_tr),
-    excerpt_en, excerpt_ar, excerpt_tr,
-    excerpt
-  ),
+  // All title fields (old + new)
+  title,
+  title_en,
+  title_ar,
+  title_tr,
+  // All slug fields
+  "slug": slug.current,
+  "slug_en": slug_en.current,
+  "slug_ar": slug_ar.current,
+  "slug_tr": slug_tr.current,
+  // All excerpt fields
+  excerpt,
+  excerpt_en,
+  excerpt_ar,
+  excerpt_tr,
+  // Common fields
   publishedAt,
   category,
   readingTime,
@@ -106,6 +100,8 @@ export const postBySlugQuery = groq`
   "author": author->{
     name,
     bio,
+    bio_ar,
+    bio_tr,
     "slug": slug.current,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
@@ -139,7 +135,7 @@ export const postBySlugQuery = groq`
 }
 `;
 
-// Related posts - supports both old and new schema
+// Related posts - fetches all language fields
 export const relatedPostsQuery = groq`
 *[_type == "blogPost" &&
   slug.current != $slug &&
@@ -149,27 +145,18 @@ export const relatedPostsQuery = groq`
   count((tags[])[@ in $tags]) > 0
 ] | order(publishedAt desc)[0...3]{
   _id,
-  "title": coalesce(
-    select($language == "en" => title_en),
-    select($language == "ar" => title_ar),
-    select($language == "tr" => title_tr),
-    title_en, title_ar, title_tr,
-    title
-  ),
-  "slug": coalesce(
-    select($language == "en" => slug_en.current),
-    select($language == "ar" => slug_ar.current),
-    select($language == "tr" => slug_tr.current),
-    slug_en.current, slug_ar.current, slug_tr.current,
-    slug.current
-  ),
-  "excerpt": coalesce(
-    select($language == "en" => excerpt_en),
-    select($language == "ar" => excerpt_ar),
-    select($language == "tr" => excerpt_tr),
-    excerpt_en, excerpt_ar, excerpt_tr,
-    excerpt
-  ),
+  title,
+  title_en,
+  title_ar,
+  title_tr,
+  "slug": slug.current,
+  "slug_en": slug_en.current,
+  "slug_ar": slug_ar.current,
+  "slug_tr": slug_tr.current,
+  excerpt,
+  excerpt_en,
+  excerpt_ar,
+  excerpt_tr,
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   publishedAt,
   "author": author->{
