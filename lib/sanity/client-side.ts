@@ -13,7 +13,7 @@ export const sanityClientSide = createClient({
 const builder = imageUrlBuilder(sanityClientSide);
 export const urlForClientSide = (source: any) => builder.image(source);
 
-// Query supports both old schema (slug.current) and new multi-language schema (slug_en.current, etc.)
+// Query returns all language fields - application handles selection based on locale
 export const latestPostsQuery = groq`
 *[_type == "blogPost" && (
   defined(slug.current) ||
@@ -22,12 +22,23 @@ export const latestPostsQuery = groq`
   defined(slug_tr.current)
 )] | order(publishedAt desc)[0...4]{
   _id,
-  // Old schema fields
-  "title": coalesce(title_en, title_ar, title_tr, title),
-  "slug": coalesce(slug_en.current, slug_ar.current, slug_tr.current, slug.current),
-  "excerpt": coalesce(excerpt_en, excerpt_ar, excerpt_tr, excerpt),
+  // All title fields
+  title,
+  title_en,
+  title_ar,
+  title_tr,
+  // All slug fields
+  "slug": slug.current,
+  "slug_en": slug_en.current,
+  "slug_ar": slug_ar.current,
+  "slug_tr": slug_tr.current,
+  // All excerpt fields
+  excerpt,
+  excerpt_en,
+  excerpt_ar,
+  excerpt_tr,
   // Common fields
-  "date": coalesce(publishedAt, _createdAt),
+  publishedAt,
   category,
   // Cover (support mainImage or coverImage)
   "cover": {
@@ -42,3 +53,24 @@ export const latestPostsQuery = groq`
     "avatar": author->image.asset->url
   }
 }`;
+
+// Helper function to get localized field from post object
+export function getLocalizedPostField(
+  post: Record<string, any>,
+  field: 'title' | 'slug' | 'excerpt',
+  locale: string
+): string {
+  const langKey = `${field}_${locale}`;
+  const enKey = `${field}_en`;
+  const arKey = `${field}_ar`;
+  const trKey = `${field}_tr`;
+
+  return (
+    post[langKey] ||
+    post[enKey] ||
+    post[arKey] ||
+    post[trKey] ||
+    post[field] ||
+    ''
+  );
+}
