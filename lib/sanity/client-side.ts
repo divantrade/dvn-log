@@ -40,6 +40,11 @@ export const latestPostsQuery = groq`
   // Common fields
   publishedAt,
   category,
+  // Tags per language
+  tags,
+  tags_en,
+  tags_ar,
+  tags_tr,
   // Cover (support mainImage or coverImage)
   "cover": {
     "src": coalesce(mainImage.asset->url, coverImage.asset->url),
@@ -73,4 +78,56 @@ export function getLocalizedPostField(
     post[field] ||
     ''
   );
+}
+
+// Helper function to get localized tags from post object
+export function getLocalizedTags(
+  post: Record<string, any>,
+  locale: string
+): string[] {
+  const langKey = `tags_${locale}`;
+  const enKey = 'tags_en';
+  const arKey = 'tags_ar';
+  const trKey = 'tags_tr';
+
+  return (
+    post[langKey] ||
+    post[enKey] ||
+    post[arKey] ||
+    post[trKey] ||
+    post.tags ||
+    []
+  );
+}
+
+// Helper function to get localized SEO field from post object
+export function getLocalizedSeoField(
+  post: Record<string, any>,
+  field: 'metaTitle' | 'metaDescription' | 'focusKeyword',
+  locale: string
+): string {
+  // First check direct fields (new schema)
+  const directLangKey = `${field}_${locale}`;
+  const directEnKey = `${field}_en`;
+  const directArKey = `${field}_ar`;
+  const directTrKey = `${field}_tr`;
+
+  if (post[directLangKey]) return post[directLangKey];
+  if (post[directEnKey]) return post[directEnKey];
+  if (post[directArKey]) return post[directArKey];
+  if (post[directTrKey]) return post[directTrKey];
+
+  // Fall back to nested seo object (legacy schema)
+  if (post.seo) {
+    if (post.seo[directLangKey]) return post.seo[directLangKey];
+    if (post.seo[directEnKey]) return post.seo[directEnKey];
+    if (post.seo[directArKey]) return post.seo[directArKey];
+    if (post.seo[directTrKey]) return post.seo[directTrKey];
+    // Very old schema might have title/description directly
+    if (field === 'metaTitle' && post.seo.title) return post.seo.title;
+    if (field === 'metaDescription' && post.seo.description) return post.seo.description;
+    if (field === 'focusKeyword' && post.seo.focusKeyword) return post.seo.focusKeyword;
+  }
+
+  return '';
 }
