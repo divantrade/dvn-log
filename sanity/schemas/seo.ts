@@ -69,11 +69,34 @@ export default defineType({
       group: "basic",
     }),
     defineField({
-      name: "focusKeyword",
-      title: "🎯 Focus Keyword",
+      name: "focusKeyword_en",
+      title: "🇬🇧 Focus Keyword (English)",
       type: "string",
-      description: "Main keyword you want to rank for (e.g., 'sea freight shipping')",
+      description: "Main keyword to rank for (e.g., 'sea freight shipping')",
       group: "basic",
+    }),
+    defineField({
+      name: "focusKeyword_ar",
+      title: "🇸🇦 الكلمة المفتاحية (عربي)",
+      type: "string",
+      description: "الكلمة الرئيسية للتصنيف (مثال: 'شحن بحري دولي')",
+      group: "basic",
+    }),
+    defineField({
+      name: "focusKeyword_tr",
+      title: "🇹🇷 Odak Anahtar Kelime (Türkçe)",
+      type: "string",
+      description: "Sıralama için ana anahtar kelime (örn: 'deniz taşımacılığı')",
+      group: "basic",
+    }),
+    // Legacy field for backward compatibility
+    defineField({
+      name: "focusKeyword",
+      title: "🎯 Focus Keyword (Legacy)",
+      type: "string",
+      description: "Old single keyword field - use language-specific fields above",
+      group: "basic",
+      hidden: true,
     }),
 
     // Social Media
