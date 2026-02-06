@@ -1,32 +1,31 @@
 // lib/sanity/queries.ts
 import { groq } from "next-sanity";
 
-// Query for posts that have content in the specified language
-// Falls back to showing posts with any language content
+// Query for posts - supports both old schema (title, slug) and new schema (title_en, slug_en, etc.)
+// Falls back to old fields if new localized fields don't exist
 export const paginatedPostsQuery = groq`
-*[_type == "blogPost" && defined(coalesce(
-  select($language == "en" => title_en),
-  select($language == "ar" => title_ar),
-  select($language == "tr" => title_tr)
-))] | order(publishedAt desc) [$offset...$end]{
+*[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
   _id,
   "title": coalesce(
     select($language == "en" => title_en),
     select($language == "ar" => title_ar),
     select($language == "tr" => title_tr),
-    title_en, title_ar, title_tr
+    title_en, title_ar, title_tr,
+    title
   ),
   "slug": coalesce(
     select($language == "en" => slug_en.current),
     select($language == "ar" => slug_ar.current),
     select($language == "tr" => slug_tr.current),
-    slug_en.current, slug_ar.current, slug_tr.current
+    slug_en.current, slug_ar.current, slug_tr.current,
+    slug.current
   ),
   "excerpt": coalesce(
     select($language == "en" => excerpt_en),
     select($language == "ar" => excerpt_ar),
     select($language == "tr" => excerpt_tr),
-    excerpt_en, excerpt_ar, excerpt_tr
+    excerpt_en, excerpt_ar, excerpt_tr,
+    excerpt
   ),
   publishedAt,
   category,
@@ -40,23 +39,22 @@ export const paginatedPostsQuery = groq`
 }
 `;
 
-// Count posts that have content in the specified language
-export const postsCountQuery = groq`count(*[_type == "blogPost" && defined(coalesce(
-  select($language == "en" => title_en),
-  select($language == "ar" => title_ar),
-  select($language == "tr" => title_tr)
-))])`;
+// Count all posts
+export const postsCountQuery = groq`count(*[_type == "blogPost"])`;
 
 // Query for all posts (all languages) - for admin/fallback
 export const allPaginatedPostsQuery = groq`
 *[_type == "blogPost"] | order(publishedAt desc) [$offset...$end]{
   _id,
+  title,
   title_en,
   title_ar,
   title_tr,
+  "slug": slug.current,
   "slug_en": slug_en.current,
   "slug_ar": slug_ar.current,
   "slug_tr": slug_tr.current,
+  excerpt,
   excerpt_en,
   excerpt_ar,
   excerpt_tr,
@@ -72,14 +70,21 @@ export const allPaginatedPostsQuery = groq`
 
 export const allPostsCountQuery = groq`count(*[_type == "blogPost"])`;
 
-// Get post by slug - checks all language slugs
+// Get post by slug - checks both old slug and new language slugs
 export const postBySlugQuery = groq`
 *[_type == "blogPost" && (
+  slug.current == $slug ||
   slug_en.current == $slug ||
   slug_ar.current == $slug ||
   slug_tr.current == $slug
 )][0]{
   _id,
+  // Old schema fields
+  title,
+  "slug": slug.current,
+  excerpt,
+  body,
+  // New localized fields
   title_en,
   title_ar,
   title_tr,
@@ -92,6 +97,7 @@ export const postBySlugQuery = groq`
   body_en,
   body_ar,
   body_tr,
+  // Common fields
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   publishedAt,
   _updatedAt,
@@ -113,6 +119,11 @@ export const postBySlugQuery = groq`
     answer_tr
   },
   seo{
+    // Old SEO fields
+    title,
+    description,
+    "ogImageUrl": coalesce(ogImage.asset->url),
+    // New localized SEO fields
     metaTitle_en,
     metaTitle_ar,
     metaTitle_tr,
@@ -120,7 +131,6 @@ export const postBySlugQuery = groq`
     metaDescription_ar,
     metaDescription_tr,
     focusKeyword,
-    "ogImageUrl": ogImage.asset->url,
     twitterCardType,
     canonicalUrl,
     noIndex,
@@ -129,17 +139,13 @@ export const postBySlugQuery = groq`
 }
 `;
 
-// Related posts - has content in the same language and shares tags
+// Related posts - supports both old and new schema
 export const relatedPostsQuery = groq`
 *[_type == "blogPost" &&
+  slug.current != $slug &&
   slug_en.current != $slug &&
   slug_ar.current != $slug &&
   slug_tr.current != $slug &&
-  defined(coalesce(
-    select($language == "en" => title_en),
-    select($language == "ar" => title_ar),
-    select($language == "tr" => title_tr)
-  )) &&
   count((tags[])[@ in $tags]) > 0
 ] | order(publishedAt desc)[0...3]{
   _id,
@@ -147,19 +153,22 @@ export const relatedPostsQuery = groq`
     select($language == "en" => title_en),
     select($language == "ar" => title_ar),
     select($language == "tr" => title_tr),
-    title_en, title_ar, title_tr
+    title_en, title_ar, title_tr,
+    title
   ),
   "slug": coalesce(
     select($language == "en" => slug_en.current),
     select($language == "ar" => slug_ar.current),
     select($language == "tr" => slug_tr.current),
-    slug_en.current, slug_ar.current, slug_tr.current
+    slug_en.current, slug_ar.current, slug_tr.current,
+    slug.current
   ),
   "excerpt": coalesce(
     select($language == "en" => excerpt_en),
     select($language == "ar" => excerpt_ar),
     select($language == "tr" => excerpt_tr),
-    excerpt_en, excerpt_ar, excerpt_tr
+    excerpt_en, excerpt_ar, excerpt_tr,
+    excerpt
   ),
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
   publishedAt,
@@ -171,10 +180,10 @@ export const relatedPostsQuery = groq`
 }
 `;
 
-// Get all post slugs for static generation (all languages)
+// Get all post slugs for static generation (supports both old and new schema)
 export const allPostSlugsQuery = groq`
-*[_type == "blogPost" && (defined(slug_en.current) || defined(slug_ar.current) || defined(slug_tr.current))]{
-  "slugs": [slug_en.current, slug_ar.current, slug_tr.current]
+*[_type == "blogPost" && (defined(slug.current) || defined(slug_en.current) || defined(slug_ar.current) || defined(slug_tr.current))]{
+  "slugs": [slug.current, slug_en.current, slug_ar.current, slug_tr.current]
 }
 `;
 

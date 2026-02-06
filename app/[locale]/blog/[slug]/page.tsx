@@ -24,6 +24,10 @@ type FAQItem = {
 };
 
 type SEOData = {
+  // Old SEO fields
+  title?: string;
+  description?: string;
+  // New localized SEO fields
   metaTitle_en?: string;
   metaTitle_ar?: string;
   metaTitle_tr?: string;
@@ -40,6 +44,12 @@ type SEOData = {
 
 type LocalizedBlogPost = {
   _id: string;
+  // Old schema fields
+  title?: string;
+  slug?: string;
+  excerpt?: string;
+  body?: any[];
+  // New localized fields
   title_en?: string;
   title_ar?: string;
   title_tr?: string;
@@ -52,6 +62,7 @@ type LocalizedBlogPost = {
   body_en?: any[];
   body_ar?: any[];
   body_tr?: any[];
+  // Common fields
   mainImageUrl?: string;
   publishedAt?: string;
   _updatedAt?: string;
@@ -76,7 +87,7 @@ type RelatedPost = {
   mainImageUrl?: string;
 };
 
-// Helper to get localized content
+// Helper to get localized content - supports both old and new schema
 function getLocalizedValue<T>(
   obj: Record<string, T | undefined> | undefined,
   field: string,
@@ -87,7 +98,8 @@ function getLocalizedValue<T>(
   const enKey = `${field}_en`;
   const arKey = `${field}_ar`;
   const trKey = `${field}_tr`;
-  return (obj[langKey] || obj[enKey] || obj[arKey] || obj[trKey]) as T | undefined;
+  // Also check for old field name without language suffix
+  return (obj[langKey] || obj[enKey] || obj[arKey] || obj[trKey] || obj[field]) as T | undefined;
 }
 
 function getLocalizedContent<T>(
@@ -99,7 +111,8 @@ function getLocalizedContent<T>(
   const enKey = `${field}_en` as keyof LocalizedBlogPost;
   const arKey = `${field}_ar` as keyof LocalizedBlogPost;
   const trKey = `${field}_tr` as keyof LocalizedBlogPost;
-  return (post[langKey] || post[enKey] || post[arKey] || post[trKey]) as T | undefined;
+  const oldKey = field as keyof LocalizedBlogPost; // Fallback to old schema field
+  return (post[langKey] || post[enKey] || post[arKey] || post[trKey] || post[oldKey]) as T | undefined;
 }
 
 // Generate metadata for SEO
