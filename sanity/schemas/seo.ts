@@ -1,151 +1,121 @@
 import { defineField, defineType } from "sanity";
 
+// This schema is kept for backward compatibility with old posts
+// New posts use SEO fields directly in the language tabs
 export default defineType({
   name: "seo",
-  title: "SEO & Social Media",
+  title: "SEO (Legacy)",
   type: "object",
-  groups: [
-    { name: "basic", title: "🔍 Basic SEO", default: true },
-    { name: "social", title: "📱 Social Media" },
-    { name: "advanced", title: "⚙️ Advanced" },
-  ],
+  description: "Legacy SEO settings - for new posts, use SEO fields in language tabs",
   fields: [
-    // Basic SEO - Multi-language
+    // Legacy fields - kept for old posts that might have data here
+    defineField({
+      name: "title",
+      title: "SEO Title (Legacy)",
+      type: "string",
+      description: "Old SEO title field",
+    }),
+    defineField({
+      name: "description",
+      title: "Meta Description (Legacy)",
+      type: "text",
+      rows: 3,
+      description: "Old meta description field",
+    }),
+    defineField({
+      name: "focusKeyword",
+      title: "Focus Keyword (Legacy)",
+      type: "string",
+      description: "Old single keyword field",
+    }),
+    // Multi-language SEO fields (legacy - for old posts that used nested seo object)
     defineField({
       name: "metaTitle_en",
-      title: "🇬🇧 SEO Title (English)",
+      title: "SEO Title (English)",
       type: "string",
-      description: "Optimal: 50-60 characters. This appears in Google search results.",
-      validation: (rule) =>
-        rule.max(70).warning("Keep under 60 characters for best results"),
-      group: "basic",
     }),
     defineField({
       name: "metaTitle_ar",
-      title: "🇸🇦 عنوان SEO (عربي)",
+      title: "عنوان SEO (عربي)",
       type: "string",
-      description: "الأمثل: 50-60 حرف. يظهر في نتائج بحث Google.",
-      validation: (rule) =>
-        rule.max(70).warning("حافظ على أقل من 60 حرف للحصول على أفضل النتائج"),
-      group: "basic",
     }),
     defineField({
       name: "metaTitle_tr",
-      title: "🇹🇷 SEO Başlığı (Türkçe)",
+      title: "SEO Başlığı (Türkçe)",
       type: "string",
-      description: "Optimal: 50-60 karakter. Google arama sonuçlarında görünür.",
-      validation: (rule) =>
-        rule.max(70).warning("En iyi sonuçlar için 60 karakterin altında tutun"),
-      group: "basic",
     }),
     defineField({
       name: "metaDescription_en",
-      title: "🇬🇧 Meta Description (English)",
+      title: "Meta Description (English)",
       type: "text",
       rows: 3,
-      description: "Optimal: 150-160 characters. Compelling description for search results.",
-      validation: (rule) =>
-        rule.max(170).warning("Keep under 160 characters for best results"),
-      group: "basic",
     }),
     defineField({
       name: "metaDescription_ar",
-      title: "🇸🇦 وصف Meta (عربي)",
+      title: "وصف Meta (عربي)",
       type: "text",
       rows: 3,
-      description: "الأمثل: 150-160 حرف. وصف جذاب لنتائج البحث.",
-      validation: (rule) =>
-        rule.max(170).warning("حافظ على أقل من 160 حرف للحصول على أفضل النتائج"),
-      group: "basic",
     }),
     defineField({
       name: "metaDescription_tr",
-      title: "🇹🇷 Meta Açıklaması (Türkçe)",
+      title: "Meta Açıklaması (Türkçe)",
       type: "text",
       rows: 3,
-      description: "Optimal: 150-160 karakter. Arama sonuçları için çekici açıklama.",
-      validation: (rule) =>
-        rule.max(170).warning("En iyi sonuçlar için 160 karakterin altında tutun"),
-      group: "basic",
     }),
     defineField({
       name: "focusKeyword_en",
-      title: "🇬🇧 Focus Keyword (English)",
+      title: "Focus Keyword (English)",
       type: "string",
-      description: "Main keyword to rank for (e.g., 'sea freight shipping')",
-      group: "basic",
     }),
     defineField({
       name: "focusKeyword_ar",
-      title: "🇸🇦 الكلمة المفتاحية (عربي)",
+      title: "الكلمة المفتاحية (عربي)",
       type: "string",
-      description: "الكلمة الرئيسية للتصنيف (مثال: 'شحن بحري دولي')",
-      group: "basic",
     }),
     defineField({
       name: "focusKeyword_tr",
-      title: "🇹🇷 Odak Anahtar Kelime (Türkçe)",
+      title: "Odak Anahtar Kelime (Türkçe)",
       type: "string",
-      description: "Sıralama için ana anahtar kelime (örn: 'deniz taşımacılığı')",
-      group: "basic",
     }),
-    // Legacy field for backward compatibility
-    defineField({
-      name: "focusKeyword",
-      title: "🎯 Focus Keyword (Legacy)",
-      type: "string",
-      description: "Old single keyword field - use language-specific fields above",
-      group: "basic",
-      hidden: true,
-    }),
-
-    // Social Media
+    // Social Media (legacy)
     defineField({
       name: "ogImage",
-      title: "📷 Social Share Image",
+      title: "Social Share Image",
       type: "image",
-      description: "Recommended: 1200x630px. Used when sharing on Facebook, LinkedIn, Twitter, WhatsApp.",
       options: { hotspot: true },
-      group: "social",
     }),
     defineField({
       name: "twitterCardType",
-      title: "🐦 Twitter Card Type",
+      title: "Twitter Card Type",
       type: "string",
       options: {
         list: [
           { title: "Summary (small image)", value: "summary" },
-          { title: "Summary Large Image (recommended)", value: "summary_large_image" },
+          { title: "Summary Large Image", value: "summary_large_image" },
         ],
-        layout: "radio",
       },
       initialValue: "summary_large_image",
-      group: "social",
     }),
-
-    // Advanced
+    // Advanced - hidden by default
     defineField({
       name: "canonicalUrl",
-      title: "🔗 Canonical URL",
+      title: "Canonical URL",
       type: "url",
-      description: "Only set if this content exists elsewhere and this is not the original.",
-      group: "advanced",
+      hidden: true,
     }),
     defineField({
       name: "noIndex",
-      title: "🚫 Hide from Search Engines",
+      title: "Hide from Search Engines",
       type: "boolean",
-      description: "Enable to prevent this page from appearing in Google search results.",
       initialValue: false,
-      group: "advanced",
+      hidden: true,
     }),
     defineField({
       name: "noFollow",
-      title: "🔗 No Follow Links",
+      title: "No Follow Links",
       type: "boolean",
-      description: "Enable to tell search engines not to follow links on this page.",
       initialValue: false,
-      group: "advanced",
+      hidden: true,
     }),
   ],
 });

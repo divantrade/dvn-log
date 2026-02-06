@@ -35,7 +35,11 @@ export const paginatedPostsQuery = groq`
     name,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
-  tags
+  // Tags per language (new) + legacy
+  tags,
+  tags_en,
+  tags_ar,
+  tags_tr
 }
 `;
 
@@ -74,7 +78,10 @@ export const allPaginatedPostsQuery = groq`
     name,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
-  tags
+  tags,
+  tags_en,
+  tags_ar,
+  tags_tr
 }
 `;
 
@@ -109,6 +116,7 @@ export const postBySlugQuery = groq`
   body_tr,
   // Common fields
   "mainImageUrl": coalesce(coverImage.asset->url, ""),
+  "ogImageUrl": coalesce(ogImage.asset->url, coverImage.asset->url, ""),
   publishedAt,
   _updatedAt,
   category,
@@ -121,7 +129,12 @@ export const postBySlugQuery = groq`
     "slug": slug.current,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
+  // Tags - legacy and per language
   tags,
+  tags_en,
+  tags_ar,
+  tags_tr,
+  // FAQ
   faq[]{
     question_en,
     question_ar,
@@ -130,12 +143,21 @@ export const postBySlugQuery = groq`
     answer_ar,
     answer_tr
   },
+  // SEO fields - new direct fields
+  metaTitle_en,
+  metaTitle_ar,
+  metaTitle_tr,
+  metaDescription_en,
+  metaDescription_ar,
+  metaDescription_tr,
+  focusKeyword_en,
+  focusKeyword_ar,
+  focusKeyword_tr,
+  // Legacy SEO (for old posts)
   seo{
-    // Old SEO fields
     title,
     description,
     "ogImageUrl": coalesce(ogImage.asset->url),
-    // New localized SEO fields
     metaTitle_en,
     metaTitle_ar,
     metaTitle_tr,
@@ -155,13 +177,19 @@ export const postBySlugQuery = groq`
 `;
 
 // Related posts - fetches all language fields
+// Checks tags in all language variants for related content
 export const relatedPostsQuery = groq`
 *[_type == "blogPost" &&
   slug.current != $slug &&
   slug_en.current != $slug &&
   slug_ar.current != $slug &&
   slug_tr.current != $slug &&
-  count((tags[])[@ in $tags]) > 0
+  (
+    count((tags[])[@ in $tags]) > 0 ||
+    count((tags_en[])[@ in $tags]) > 0 ||
+    count((tags_ar[])[@ in $tags]) > 0 ||
+    count((tags_tr[])[@ in $tags]) > 0
+  )
 ] | order(publishedAt desc)[0...3]{
   _id,
   title,
@@ -182,7 +210,10 @@ export const relatedPostsQuery = groq`
     name,
     "imageUrl": coalesce(avatar.asset->url, "")
   },
-  tags
+  tags,
+  tags_en,
+  tags_ar,
+  tags_tr
 }
 `;
 
