@@ -34,7 +34,11 @@ type SEOData = {
   metaDescription_en?: string;
   metaDescription_ar?: string;
   metaDescription_tr?: string;
-  focusKeyword?: string;
+  // Localized focus keywords
+  focusKeyword_en?: string;
+  focusKeyword_ar?: string;
+  focusKeyword_tr?: string;
+  focusKeyword?: string; // Legacy
   ogImageUrl?: string;
   twitterCardType?: string;
   canonicalUrl?: string;
@@ -181,7 +185,10 @@ export async function generateMetadata({
   return {
     title: seoTitle,
     description: seoDescription,
-    keywords: post.seo?.focusKeyword ? [post.seo.focusKeyword, ...(post.tags || [])] : post.tags,
+    keywords: (() => {
+      const focusKw = getLocalizedValue<string>(post.seo as Record<string, string | undefined>, 'focusKeyword', locale) || post.seo?.focusKeyword;
+      return focusKw ? [focusKw, ...(post.tags || [])] : post.tags;
+    })(),
     authors: post.author?.name ? [{ name: post.author.name }] : undefined,
     openGraph: {
       title: seoTitle,
