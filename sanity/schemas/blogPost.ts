@@ -11,8 +11,42 @@ export default defineType({
     { name: "media", title: "📷 Media" },
     { name: "faq", title: "❓ FAQ" },
     { name: "seo", title: "🔍 SEO" },
+    { name: "legacy", title: "⚙️ Legacy (Old Posts)" },
   ],
   fields: [
+    // Legacy fields for backward compatibility with old posts
+    defineField({
+      name: "title",
+      title: "Title (Legacy)",
+      type: "string",
+      group: "legacy",
+      description: "Old posts only - use English tab for new posts",
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug (Legacy)",
+      type: "slug",
+      options: { source: "title", maxLength: 96 },
+      group: "legacy",
+      description: "Old posts only - use English tab for new posts",
+    }),
+    defineField({
+      name: "excerpt",
+      title: "Excerpt (Legacy)",
+      type: "text",
+      rows: 3,
+      group: "legacy",
+      description: "Old posts only - use English tab for new posts",
+    }),
+    defineField({
+      name: "body",
+      title: "Content (Legacy)",
+      type: "array",
+      of: [{ type: "block" }, { type: "image", options: { hotspot: true } }],
+      group: "legacy",
+      description: "Old posts only - use English tab for new posts",
+    }),
+
     // English Fields
     defineField({
       name: "title_en",

@@ -81,11 +81,45 @@ type LocalizedBlogPost = {
 
 type RelatedPost = {
   _id: string;
-  title: string;
-  slug: string;
+  // Old schema
+  title?: string;
+  slug?: string;
   excerpt?: string;
+  // New localized schema
+  title_en?: string;
+  title_ar?: string;
+  title_tr?: string;
+  slug_en?: string;
+  slug_ar?: string;
+  slug_tr?: string;
+  excerpt_en?: string;
+  excerpt_ar?: string;
+  excerpt_tr?: string;
+  // Common
   mainImageUrl?: string;
 };
+
+// Helper function to get localized field for related posts
+function getRelatedPostField(
+  post: RelatedPost,
+  field: 'title' | 'slug' | 'excerpt',
+  locale: string
+): string {
+  const langKey = `${field}_${locale}` as keyof RelatedPost;
+  const enKey = `${field}_en` as keyof RelatedPost;
+  const arKey = `${field}_ar` as keyof RelatedPost;
+  const trKey = `${field}_tr` as keyof RelatedPost;
+  const oldKey = field as keyof RelatedPost;
+
+  return (
+    (post[langKey] as string) ||
+    (post[enKey] as string) ||
+    (post[arKey] as string) ||
+    (post[trKey] as string) ||
+    (post[oldKey] as string) ||
+    ''
+  );
+}
 
 // Helper to get localized content - supports both old and new schema
 function getLocalizedValue<T>(
@@ -418,42 +452,50 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mx-auto max-w-7xl px-6">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">{t('relatedArticles')}</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {related.map((relatedPost) => (
-                <article key={relatedPost._id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow">
-                  {relatedPost.mainImageUrl && (
-                    <div className="relative aspect-[16/10] w-full">
-                      <Image
-                        src={relatedPost.mainImageUrl}
-                        alt={relatedPost.title}
-                        fill
-                        sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2">
-                      <Link href={`/blog/${relatedPost.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        {relatedPost.title}
-                      </Link>
-                    </h3>
-                    {relatedPost.excerpt && (
-                      <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
-                        {relatedPost.excerpt}
-                      </p>
+              {related.map((relatedPost) => {
+                const relatedTitle = getRelatedPostField(relatedPost, 'title', locale);
+                const relatedSlug = getRelatedPostField(relatedPost, 'slug', locale);
+                const relatedExcerpt = getRelatedPostField(relatedPost, 'excerpt', locale);
+
+                if (!relatedSlug) return null;
+
+                return (
+                  <article key={relatedPost._id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow">
+                    {relatedPost.mainImageUrl && (
+                      <div className="relative aspect-[16/10] w-full">
+                        <Image
+                          src={relatedPost.mainImageUrl}
+                          alt={relatedTitle}
+                          fill
+                          sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
                     )}
-                    <Link
-                      href={`/blog/${relatedPost.slug}`}
-                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                      {t('readMore')}
-                      <svg className="w-4 h-4 ms-1 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
-                </article>
-              ))}
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2">
+                        <Link href={`/blog/${relatedSlug}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                          {relatedTitle}
+                        </Link>
+                      </h3>
+                      {relatedExcerpt && (
+                        <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
+                          {relatedExcerpt}
+                        </p>
+                      )}
+                      <Link
+                        href={`/blog/${relatedSlug}`}
+                        className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        {t('readMore')}
+                        <svg className="w-4 h-4 ms-1 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
