@@ -158,7 +158,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const locale = (await params).locale || 'en';
 
-  const post = await sanityClient.fetch<LocalizedBlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" });
+  const post = await sanityClient.fetch<LocalizedBlogPost>(postBySlugQuery, { slug }, { next: { revalidate: 60 } });
 
   if (!post) {
     return {
@@ -252,7 +252,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   }
 
-  const post = await sanityClient.fetch<LocalizedBlogPost>(postBySlugQuery, { slug }, { cache: "force-cache" });
+  const post = await sanityClient.fetch<LocalizedBlogPost>(postBySlugQuery, { slug }, { next: { revalidate: 60 } });
 
   if (!post) {
     return (
@@ -284,7 +284,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = await sanityClient.fetch<RelatedPost[]>(
     relatedPostsQuery,
     { slug, language: locale, tags: post.tags || [] },
-    { cache: "force-cache" }
+    { next: { revalidate: 60 } }
   );
 
   const publishedDate = formatDate(post.publishedAt);
