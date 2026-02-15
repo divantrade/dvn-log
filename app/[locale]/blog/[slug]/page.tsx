@@ -263,12 +263,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   if (!post) {
     return (
-      <main className="px-0">
+      <main className="px-0 bg-white dark:bg-[#0a0f1a]">
         <NavHeightObserver />
         <div className="mx-auto max-w-4xl px-6 py-16">
-          <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">{t('postNotFound')}</h1>
-          <Link href="/blog" className="mt-4 inline-block text-blue-600 dark:text-blue-400 hover:underline">
-            ← {t('backToBlog')}
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{t('postNotFound')}</h1>
+          <Link href="/blog" className="mt-4 inline-block text-indigo-600 dark:text-indigo-400 hover:underline">
+            &larr; {t('backToBlog')}
           </Link>
         </div>
       </main>
@@ -299,7 +299,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const pageUrl = `${SITE_URL}/${locale}/blog/${currentSlug}`;
 
   return (
-    <main className="px-0">
+    <main className="px-0 bg-white dark:bg-[#0a0f1a]">
       <NavHeightObserver />
 
       {/* JSON-LD Structured Data */}
@@ -328,7 +328,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {faqItems.length > 0 && <FAQJsonLd items={faqItems} />}
 
       {/* Hero Section with Cover Image Background */}
-      <section className="relative w-full min-h-[50vh] md:min-h-[60vh] flex items-end">
+      <section className="relative w-full min-h-[50vh] md:min-h-[60vh] flex items-end -mt-16 md:-mt-24">
         {/* Background Image */}
         {post.mainImageUrl ? (
           <Image
@@ -340,15 +340,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             priority
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-800" />
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 via-violet-900 to-purple-900" />
         )}
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+        {/* Dark Overlay with indigo tint */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-indigo-900/30" />
+
+        {/* Decorative grid */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
 
         {/* Content */}
         <div className="relative z-10 w-full">
-          <div className="mx-auto max-w-4xl px-6 py-8 md:py-12">
+          <div className="mx-auto max-w-4xl px-6 py-8 md:py-12 pt-24 md:pt-32">
             <Link href="/blog" className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors text-sm">
               <svg className="w-4 h-4 me-2 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -359,7 +362,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Category & Reading Time */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
               {post.category && (
-                <span className="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full uppercase">
+                <span className="px-3 py-1 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-xs font-medium rounded-full uppercase">
                   {post.category}
                 </span>
               )}
@@ -375,7 +378,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <h1
               dir={isRTL ? "rtl" : "ltr"}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 text-white drop-shadow-lg"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-4 text-white drop-shadow-lg tracking-tight"
             >
               {title}
             </h1>
@@ -407,33 +410,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Article Content */}
       <article className="mx-auto max-w-4xl px-6 py-10 md:py-12">
-        <div className={`prose prose-lg prose-slate dark:prose-invert max-w-none ${isRTL ? 'text-right' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-indigo-600 dark:prose-a:text-indigo-400 ${isRTL ? 'text-right' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
           {body.length > 0 ? (
             <PortableText value={body} />
           ) : (
-            <p className="text-slate-500 italic">{excerpt || t('postNotFound')}</p>
+            <p className="text-gray-500 italic">{excerpt || t('postNotFound')}</p>
           )}
         </div>
 
         {/* FAQ Section */}
         {faqItems.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+          <div className="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-700/50">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               {locale === 'ar' ? 'الأسئلة الشائعة' : locale === 'tr' ? 'Sıkça Sorulan Sorular' : 'Frequently Asked Questions'}
             </h2>
             <div className="space-y-4">
               {faqItems.map((item, index) => (
                 <details
                   key={index}
-                  className="group bg-slate-50 dark:bg-slate-800 rounded-xl p-4 cursor-pointer"
+                  className="group bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-5 cursor-pointer border border-slate-200/80 dark:border-slate-700/50"
                 >
-                  <summary className="font-semibold text-slate-900 dark:text-white list-none flex items-center justify-between">
+                  <summary className="font-semibold text-gray-900 dark:text-white list-none flex items-center justify-between">
                     {item.question}
-                    <svg className="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-indigo-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
-                  <p className="mt-3 text-slate-600 dark:text-slate-400">
+                  <p className="mt-3 text-gray-500 dark:text-gray-400">
                     {item.answer}
                   </p>
                 </details>
@@ -444,13 +447,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
-          <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700">
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">{t('tags')}</h3>
+          <div className="mt-8 pt-8 border-t border-slate-200/80 dark:border-slate-700/50">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">{t('tags')}</h3>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm rounded-full"
+                  className="px-3 py-1 bg-slate-100 dark:bg-slate-800/60 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-slate-200/80 dark:border-slate-700/50 hover:border-indigo-400 transition-colors"
                 >
                   {tag}
                 </span>
@@ -462,9 +465,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Related Posts */}
       {related && related.length > 0 && (
-        <section className="bg-slate-50 dark:bg-slate-800/50 py-12">
+        <section className="mesh-gradient py-14">
           <div className="mx-auto max-w-7xl px-6">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">{t('relatedArticles')}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('relatedArticles')}</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {related.map((relatedPost) => {
                 const relatedTitle = getRelatedPostField(relatedPost, 'title', locale);
@@ -474,32 +477,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 if (!relatedSlug) return null;
 
                 return (
-                  <article key={relatedPost._id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow">
+                  <article key={relatedPost._id} className="card-hover bg-white dark:bg-slate-800/60 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700/50 overflow-hidden">
                     {relatedPost.mainImageUrl && (
-                      <div className="relative aspect-[16/10] w-full">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden">
                         <Image
                           src={relatedPost.mainImageUrl}
                           alt={relatedTitle}
                           fill
                           sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
                     )}
                     <div className="p-6">
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2">
-                        <Link href={`/blog/${relatedSlug}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                        <Link href={`/blog/${relatedSlug}`} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                           {relatedTitle}
                         </Link>
                       </h3>
                       {relatedExcerpt && (
-                        <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
+                        <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-3 mb-4">
                           {relatedExcerpt}
                         </p>
                       )}
                       <Link
                         href={`/blog/${relatedSlug}`}
-                        className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        className="inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
                       >
                         {t('readMore')}
                         <svg className="w-4 h-4 ms-1 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">

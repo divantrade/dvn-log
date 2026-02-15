@@ -48,22 +48,22 @@ export default function AboutCerts() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Certifications & compliance</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    <section className="relative overflow-hidden">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Certifications & Compliance</h2>
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
           Maintaining the highest standards of quality, security, and environmental responsibility
         </p>
       </div>
 
       {/* Certifications */}
-      <div className="mb-16">
-        <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Our certifications</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="mb-10">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Our Certifications</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
+              className="card-hover bg-white dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/50 text-center"
             >
               <div className="mb-4 flex justify-center">
                 <div className="w-16 h-16 relative">
@@ -76,10 +76,10 @@ export default function AboutCerts() {
                   />
                 </div>
               </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                 {cert.name}
               </h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {cert.description}
               </p>
             </div>
@@ -89,16 +89,16 @@ export default function AboutCerts() {
 
       {/* Compliance Areas */}
       <div>
-        <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Compliance areas</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Compliance Areas</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {compliance.map((area, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/50"
             >
-              <h4 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <div className="w-8 h-8 bg-[#1e40af]/10 rounded-lg flex items-center justify-center text-[#1e40af] mr-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-lg flex items-center justify-center text-white me-3">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -107,8 +107,10 @@ export default function AboutCerts() {
               <ul className="space-y-2">
                 {area.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex items-start">
-                    <span className="text-[#1e40af] mr-3 mt-1">•</span>
-                    <span className="text-gray-600">{item}</span>
+                    <span className="text-indigo-600 dark:text-indigo-400 me-3 mt-0.5 flex-shrink-0">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-600 dark:text-gray-400 text-sm">{item}</span>
                   </li>
                 ))}
               </ul>

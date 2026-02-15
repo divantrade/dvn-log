@@ -84,22 +84,30 @@ export default async function BlogPage({
   const totalPages = Math.max(1, Math.ceil((total as number) / PAGE_SIZE));
 
   return (
-    <main className="px-0 bg-white dark:bg-slate-900 min-h-screen">
+    <main className="px-0 bg-white dark:bg-[#0a0f1a] min-h-screen">
       {/* Hero */}
-      <section className="relative w-full bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <p className="text-xs/6 font-semibold uppercase tracking-[0.2em] opacity-80">
+      <section className="relative w-full bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-700 text-white overflow-hidden -mt-16 md:-mt-24">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-white rounded-full blur-3xl" />
+        </div>
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        <div className="mx-auto max-w-7xl px-6 pt-24 md:pt-32 pb-14 relative z-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] backdrop-blur-md px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/90 mb-4">
             {t('insightsUpdates')}
-          </p>
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{t('title')}</h1>
-          <p className="mt-3 max-w-2xl text-white/80">
+          </span>
+          <h1 className="mt-2 text-3xl font-extrabold sm:text-4xl tracking-tight">{t('title')}</h1>
+          <p className="mt-3 max-w-2xl text-white/80 font-light">
             {t('subtitle')}
           </p>
         </div>
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-[#0a0f1a]" />
       </section>
 
       {/* Grid */}
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="mx-auto max-w-7xl px-6 py-14">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => {
             const postTitle = getLocalizedField(post, 'title', locale);
@@ -113,20 +121,21 @@ export default async function BlogPage({
             const isRTL = locale === 'ar' || /[\u0600-\u06FF]/.test(postTitle);
 
             return (
-              <li key={post._id} className="group overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md">
+              <li key={post._id} className="group card-hover overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 shadow-sm">
                 {/* صورة */}
-                <div className="relative aspect-[16/10] w-full">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
                   {img ? (
                     <Image
                       src={img}
                       alt={postTitle}
                       fill
                       sizes="(min-width:1024px) 360px, 92vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800" />
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
 
                   {(category || date) && (
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-3">
@@ -143,24 +152,24 @@ export default async function BlogPage({
                 </div>
 
                 {/* النص */}
-                <div className="p-4">
+                <div className="p-5">
                   <Link href={`/blog/${postSlug}`} className="block">
                     <h2
                       dir={isRTL ? "rtl" : "ltr"}
-                      className="line-clamp-2 text-lg font-semibold leading-snug text-slate-900 dark:text-white hover:underline"
+                      className="line-clamp-2 text-lg font-bold leading-snug text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                     >
                       {postTitle}
                     </h2>
                   </Link>
 
                   {postExcerpt && (
-                    <p className="mt-2 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">{postExcerpt}</p>
+                    <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">{postExcerpt}</p>
                   )}
 
                   {/* الكاتب */}
                   {(authorName || authorImg) && (
                     <div className="mt-4 flex items-center gap-3">
-                      <div className="relative h-8 w-8 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-600">
+                      <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-violet-500">
                         {authorImg && (
                           <Image
                             src={authorImg}
@@ -171,14 +180,14 @@ export default async function BlogPage({
                           />
                         )}
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-400">{authorName ?? "DVN LOG"}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">{authorName ?? "DVN LOG"}</div>
                     </div>
                   )}
 
                   <div className="mt-4">
                     <Link
                       href={`/blog/${postSlug}`}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-[#1e3a8a] dark:text-blue-400 hover:underline"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
                     >
                       {t('readMore')}
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="rtl:rotate-180">
@@ -198,7 +207,7 @@ export default async function BlogPage({
             {/* Prev */}
             <Link
               href={page > 1 ? (page - 1 === 1 ? "/blog" : `/blog?page=${page - 1}`) : "/blog"}
-              className={`rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-300 ${page === 1 ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700"}`}
+              className={`rounded-xl border border-slate-200/80 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 ${page === 1 ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-indigo-400 transition-colors"}`}
               aria-disabled={page === 1}
             >
               {t('prev')}
@@ -212,7 +221,7 @@ export default async function BlogPage({
                 <Link
                   key={p}
                   href={href}
-                  className={`rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm ${active ? "bg-slate-100 dark:bg-slate-700 font-semibold text-slate-900 dark:text-white" : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"}`}
+                  className={`rounded-xl border px-3 py-1.5 text-sm transition-all ${active ? "border-indigo-500 bg-indigo-600 font-semibold text-white shadow-sm" : "border-slate-200/80 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 text-gray-700 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-indigo-400"}`}
                   aria-current={active ? "page" : undefined}
                 >
                   {p}
@@ -223,7 +232,7 @@ export default async function BlogPage({
             {/* Next */}
             <Link
               href={page < totalPages ? `/blog?page=${page + 1}` : `/blog?page=${totalPages}`}
-              className={`rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-300 ${page === totalPages ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700"}`}
+              className={`rounded-xl border border-slate-200/80 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 ${page === totalPages ? "pointer-events-none opacity-40" : "hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-indigo-400 transition-colors"}`}
               aria-disabled={page === totalPages}
             >
               {t('next')}
