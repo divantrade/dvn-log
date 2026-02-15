@@ -677,8 +677,8 @@ export default function HomePage() {
 
           {Array.isArray(posts) ? (
             posts.length ? (
-              <div className="space-y-8">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {posts.slice(0, 3).map((post: any, index: number) => {
                     const postTitle = getLocalizedPostField(post, 'title', locale);
                     const postSlug = getLocalizedPostField(post, 'slug', locale);
@@ -692,7 +692,6 @@ export default function HomePage() {
                       ? (postExcerpt.length > 80 ? postExcerpt.slice(0, 70).trim() + '...' : postExcerpt)
                       : '';
                     const coverUrl = post?.cover?.src || null;
-                    const isFeatured = index === 0;
                     const wordCount = (postTitle?.length || 0) + (postExcerpt?.length || 0) + 500;
                     const readingTime = `${Math.max(1, Math.ceil(wordCount / 1000))} min read`;
                     const tag = post.category || 'Logistics';
@@ -700,9 +699,7 @@ export default function HomePage() {
                     return (
                       <article
                         key={post._id}
-                        className={`group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 ${
-                          isFeatured ? 'lg:col-span-2 lg:row-span-2' : ''
-                        }`}
+                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-col"
                         style={{
                           animationDelay: `${index * 100}ms`,
                           animation: 'fadeInUp 600ms ease-out forwards',
@@ -731,15 +728,15 @@ export default function HomePage() {
                             })
                           }}
                         />
-                        <Link href={href} className="block h-full focus:outline-none">
-                          <div className={`relative overflow-hidden bg-slate-100 dark:bg-slate-700 ${isFeatured ? 'aspect-[16/9]' : 'aspect-[16/9]'}`}>
+                        <Link href={href} className="flex flex-col h-full focus:outline-none">
+                          <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-700 aspect-[16/10]">
                             {post.cover?.src ? (
                               <Image
                                 src={post.cover.src}
                                 width={post.cover?.w || 800}
                                 height={post.cover?.h || 450}
                                 alt={postTitle}
-                                sizes={isFeatured ? "(min-width:1024px) 640px, 100vw" : "(min-width:1024px) 320px, 100vw"}
+                                sizes="(min-width:1024px) 400px, (min-width:768px) 50vw, 100vw"
                                 priority={index === 0}
                                 loading={index === 0 ? 'eager' : 'lazy'}
                                 placeholder={post.cover?.blur ? 'blur' : undefined}
@@ -761,9 +758,9 @@ export default function HomePage() {
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           </div>
 
-                          <div className={`p-6 ${isFeatured ? 'lg:p-8' : ''}`}>
+                          <div className="p-5 flex flex-col flex-1">
                             {/* Meta */}
-                            <div className="flex items-center gap-3 mb-3">
+                            <div className="flex items-center gap-3 mb-2">
                               {dateStr && (
                                 <time dateTime={post.publishedAt} className="text-xs text-slate-400">
                                   {dateStr}
@@ -772,33 +769,31 @@ export default function HomePage() {
                               <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
                               <span className="text-xs text-slate-400">{readingTime}</span>
                               <span className="ms-auto">
-                                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
+                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
                                   {tag}
                                 </span>
                               </span>
                             </div>
 
                             {/* Title */}
-                            <h3 className={`font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2 ${
-                              isFeatured ? 'text-xl lg:text-2xl mb-3' : 'text-lg mb-2'
-                            }`}>
+                            <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2 mb-2">
                               {postTitle}
                             </h3>
 
                             {excerpt && (
-                              <p className={`text-slate-500 dark:text-slate-400 line-clamp-2 ${isFeatured ? 'text-base' : 'text-sm'}`}>
+                              <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
                                 {excerpt}
                               </p>
                             )}
 
                             {post.author?.name && (
-                              <div className="flex items-center gap-2 mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/50">
+                              <div className="flex items-center gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-700/50">
                                 {post.author?.avatar && (
                                   <Image
                                     src={post.author.avatar}
                                     alt={post.author.name}
-                                    width={28}
-                                    height={28}
+                                    width={24}
+                                    height={24}
                                     className="rounded-full"
                                   />
                                 )}
@@ -816,7 +811,7 @@ export default function HomePage() {
                 <div className="text-center">
                   <Link
                     href="/blog"
-                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-indigo-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 bg-white dark:bg-slate-800/50 hover:shadow-lg"
+                    className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-indigo-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 bg-white dark:bg-slate-800/50 hover:shadow-lg"
                   >
                     {tHomepage('latestArticles.viewAll')}
                     <svg className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
