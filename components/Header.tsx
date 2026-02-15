@@ -11,10 +11,25 @@ import LanguageSwitcher from './LanguageSwitcher';
 export default function Header() {
   const t = useTranslations('nav');
   const tServices = useTranslations('services');
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+
+  // Pages with dark hero images — need white text on transparent header
+  const hasDarkHero = pathname === '/' ||
+    pathname === '/about' ||
+    pathname === '/blog' ||
+    pathname.startsWith('/blog/') ||
+    pathname === '/tracking' ||
+    pathname === '/careers' ||
+    pathname === '/news' ||
+    pathname === '/contact' ||
+    pathname === '/services';
+
+  // Use solid header style when scrolled OR on light-background pages
+  const useSolidHeader = scrolled || !hasDarkHero;
 
   const services = [
     { name: tServices('oceanFreight'), href: '/services/ocean-freight' },
@@ -48,7 +63,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        useSolidHeader
           ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-black/[0.03] dark:shadow-black/[0.2] border-b border-slate-200/50 dark:border-slate-700/50'
           : 'bg-transparent'
       }`}
@@ -62,7 +77,7 @@ export default function Header() {
               alt="DVN LOG"
               width={240}
               height={90}
-              className={`transition-all duration-500 ${scrolled ? 'h-14 md:h-[4.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)]' : 'h-16 md:h-[5.5rem] [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.9))_drop-shadow(0_0_20px_rgba(255,255,255,0.5))]'} w-auto`}
+              className={`transition-all duration-500 ${useSolidHeader ? 'h-14 md:h-[4.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)]' : 'h-16 md:h-[5.5rem] [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.9))_drop-shadow(0_0_20px_rgba(255,255,255,0.5))]'} w-auto`}
               priority
             />
           </Link>
@@ -76,7 +91,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  scrolled
+                  useSolidHeader
                     ? 'text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
@@ -90,7 +105,7 @@ export default function Header() {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  scrolled
+                  useSolidHeader
                     ? 'text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
@@ -142,7 +157,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  scrolled
+                  useSolidHeader
                     ? 'text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
@@ -179,7 +194,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               className={`p-2 rounded-lg transition-colors ${
-                scrolled ? 'text-slate-700 dark:text-slate-200' : 'text-white'
+                useSolidHeader ? 'text-slate-700 dark:text-slate-200' : 'text-white'
               }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
@@ -199,18 +214,18 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-slate-200/20 dark:border-slate-700/20">
             <nav className="flex flex-col space-y-1">
-              <Link href="/" className={`px-4 py-3 rounded-lg font-medium transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
+              <Link href="/" className={`px-4 py-3 rounded-lg font-medium transition-colors ${useSolidHeader ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
                 {t('home')}
               </Link>
               <div className="space-y-1">
-                <Link href="/services" className={`flex items-center px-4 py-3 rounded-lg font-medium transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
+                <Link href="/services" className={`flex items-center px-4 py-3 rounded-lg font-medium transition-colors ${useSolidHeader ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
                   {t('allServices')}
                 </Link>
                 {services.map((service) => (
                   <Link
                     key={service.name}
                     href={service.href}
-                    className={`flex items-center text-sm ps-8 px-4 py-2 rounded-lg transition-colors ${scrolled ? 'text-slate-500 dark:text-slate-400 hover:text-indigo-600' : 'text-white/70 hover:text-white'}`}
+                    className={`flex items-center text-sm ps-8 px-4 py-2 rounded-lg transition-colors ${useSolidHeader ? 'text-slate-500 dark:text-slate-400 hover:text-indigo-600' : 'text-white/70 hover:text-white'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-current opacity-40 me-2"></div>
@@ -218,13 +233,13 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-              <Link href="/about" className={`px-4 py-3 rounded-lg font-medium transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
+              <Link href="/about" className={`px-4 py-3 rounded-lg font-medium transition-colors ${useSolidHeader ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
                 {t('aboutUs')}
               </Link>
-              <Link href="/blog" className={`px-4 py-3 rounded-lg font-medium transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
+              <Link href="/blog" className={`px-4 py-3 rounded-lg font-medium transition-colors ${useSolidHeader ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
                 {t('blog')}
               </Link>
-              <Link href="/contact" className={`px-4 py-3 rounded-lg font-medium transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
+              <Link href="/contact" className={`px-4 py-3 rounded-lg font-medium transition-colors ${useSolidHeader ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMenuOpen(false)}>
                 {t('contact')}
               </Link>
               <Link
