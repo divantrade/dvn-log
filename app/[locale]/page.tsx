@@ -327,7 +327,7 @@ export default function HomePage() {
             ].map((stat, idx) => (
               <div key={idx} className="text-center group">
                 <div className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 tracking-tight">
-                  {stat.value === '24/7' ? '24/7' : <Counter value={parseInt(stat.value)} />}
+                  {stat.value === '24/7' ? '24/7' : <Counter value={parseInt(stat.value)} format={stat.value === '2017' ? { useGrouping: false } : undefined} />}
                   {stat.suffix && <span className="text-white/70">{stat.suffix}</span>}
                 </div>
                 <div className="text-sm md:text-base text-white/60 font-medium uppercase tracking-wider">{stat.label}</div>
@@ -678,35 +678,31 @@ export default function HomePage() {
           {Array.isArray(posts) ? (
             posts.length ? (
               <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {posts.slice(0, 3).map((post: any, index: number) => {
+                {/* Bento layout: big featured card + 2 smaller cards */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5" style={{ gridAutoRows: '1fr' }}>
+                  {/* Featured (big) card - right side */}
+                  {(() => {
+                    const post: any = posts[0];
+                    if (!post) return null;
                     const postTitle = getLocalizedPostField(post, 'title', locale);
                     const postSlug = getLocalizedPostField(post, 'slug', locale);
                     const postExcerpt = getLocalizedPostField(post, 'excerpt', locale);
-
                     const href = `/blog/${postSlug}`;
                     const dateStr = post?.publishedAt
                       ? new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short' }).format(new Date(post.publishedAt))
                       : '';
                     const excerpt = postExcerpt.length > 0
-                      ? (postExcerpt.length > 80 ? postExcerpt.slice(0, 70).trim() + '...' : postExcerpt)
+                      ? (postExcerpt.length > 120 ? postExcerpt.slice(0, 110).trim() + '...' : postExcerpt)
                       : '';
                     const coverUrl = post?.cover?.src || null;
                     const wordCount = (postTitle?.length || 0) + (postExcerpt?.length || 0) + 500;
                     const readingTime = `${Math.max(1, Math.ceil(wordCount / 1000))} min read`;
                     const tag = post.category || 'Logistics';
-
                     return (
                       <article
-                        key={post._id}
-                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-col"
-                        style={{
-                          animationDelay: `${index * 100}ms`,
-                          animation: 'fadeInUp 600ms ease-out forwards',
-                          opacity: 0,
-                        }}
+                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-col lg:row-span-2 lg:order-2"
+                        style={{ animation: 'fadeInUp 600ms ease-out forwards', opacity: 0 }}
                       >
-                        {/* JSON-LD */}
                         <script
                           type="application/ld+json"
                           dangerouslySetInnerHTML={{
@@ -729,16 +725,119 @@ export default function HomePage() {
                           }}
                         />
                         <Link href={href} className="flex flex-col h-full focus:outline-none">
-                          <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-700 aspect-[16/10]">
+                          <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-700 flex-1 min-h-[260px]">
                             {post.cover?.src ? (
                               <Image
                                 src={post.cover.src}
                                 width={post.cover?.w || 800}
-                                height={post.cover?.h || 450}
+                                height={post.cover?.h || 600}
                                 alt={postTitle}
-                                sizes="(min-width:1024px) 400px, (min-width:768px) 50vw, 100vw"
-                                priority={index === 0}
-                                loading={index === 0 ? 'eager' : 'lazy'}
+                                sizes="(min-width:1024px) 50vw, 100vw"
+                                priority
+                                placeholder={post.cover?.blur ? 'blur' : undefined}
+                                blurDataURL={post.cover?.blur}
+                                className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                              />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-slate-100 dark:from-indigo-950/50 dark:to-slate-800 flex items-center justify-center">
+                                <div className="text-center">
+                                  <svg className="w-16 h-16 mx-auto text-indigo-300 dark:text-indigo-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                  </svg>
+                                  <p className="text-base text-indigo-500 font-medium">DVN LOG</p>
+                                </div>
+                              </div>
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          </div>
+                          <div className="p-6 flex flex-col">
+                            <div className="flex items-center gap-3 mb-3">
+                              {dateStr && (
+                                <time dateTime={post.publishedAt} className="text-xs text-slate-400">{dateStr}</time>
+                              )}
+                              <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
+                              <span className="text-xs text-slate-400">{readingTime}</span>
+                              <span className="ms-auto">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">{tag}</span>
+                              </span>
+                            </div>
+                            <h3 className="font-bold text-xl lg:text-2xl text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2 mb-3">
+                              {postTitle}
+                            </h3>
+                            {excerpt && (
+                              <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-3">{excerpt}</p>
+                            )}
+                            {post.author?.name && (
+                              <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/50">
+                                {post.author?.avatar && (
+                                  <Image src={post.author.avatar} alt={post.author.name} width={28} height={28} className="rounded-full" />
+                                )}
+                                <span className="text-sm text-slate-500">{post.author.name}</span>
+                              </div>
+                            )}
+                          </div>
+                        </Link>
+                      </article>
+                    );
+                  })()}
+
+                  {/* Two smaller cards - left side */}
+                  {posts.slice(1, 3).map((post: any, index: number) => {
+                    const postTitle = getLocalizedPostField(post, 'title', locale);
+                    const postSlug = getLocalizedPostField(post, 'slug', locale);
+                    const postExcerpt = getLocalizedPostField(post, 'excerpt', locale);
+                    const href = `/blog/${postSlug}`;
+                    const dateStr = post?.publishedAt
+                      ? new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short' }).format(new Date(post.publishedAt))
+                      : '';
+                    const excerpt = postExcerpt.length > 0
+                      ? (postExcerpt.length > 80 ? postExcerpt.slice(0, 70).trim() + '...' : postExcerpt)
+                      : '';
+                    const coverUrl = post?.cover?.src || null;
+                    const wordCount = (postTitle?.length || 0) + (postExcerpt?.length || 0) + 500;
+                    const readingTime = `${Math.max(1, Math.ceil(wordCount / 1000))} min read`;
+                    const tag = post.category || 'Logistics';
+                    return (
+                      <article
+                        key={post._id}
+                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-row lg:flex-row lg:order-1"
+                        style={{
+                          animationDelay: `${(index + 1) * 100}ms`,
+                          animation: 'fadeInUp 600ms ease-out forwards',
+                          opacity: 0,
+                        }}
+                      >
+                        <script
+                          type="application/ld+json"
+                          dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                              "@context": "https://schema.org",
+                              "@type": "Article",
+                              "headline": postTitle,
+                              "description": excerpt || postTitle,
+                              "image": coverUrl || "https://dvnlog.com/logo.png",
+                              "author": { "@type": "Organization", "name": "DVN LOG" },
+                              "publisher": {
+                                "@type": "Organization",
+                                "name": "DVN LOG",
+                                "logo": { "@type": "ImageObject", "url": "https://dvnlog.com/logo.png" }
+                              },
+                              "datePublished": post.publishedAt,
+                              "dateModified": post.publishedAt,
+                              "mainEntityOfPage": { "@type": "WebPage", "@id": `https://dvnlog.com${href}` }
+                            })
+                          }}
+                        />
+                        <Link href={href} className="flex flex-row h-full w-full focus:outline-none">
+                          <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-700 w-2/5 min-h-[160px]">
+                            {post.cover?.src ? (
+                              <Image
+                                src={post.cover.src}
+                                width={post.cover?.w || 400}
+                                height={post.cover?.h || 300}
+                                alt={postTitle}
+                                sizes="(min-width:1024px) 20vw, 40vw"
+                                loading="lazy"
                                 placeholder={post.cover?.blur ? 'blur' : undefined}
                                 blurDataURL={post.cover?.blur}
                                 className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
@@ -746,59 +845,28 @@ export default function HomePage() {
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-slate-100 dark:from-indigo-950/50 dark:to-slate-800 flex items-center justify-center">
                                 <div className="text-center">
-                                  <svg className="w-12 h-12 mx-auto text-indigo-300 dark:text-indigo-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <svg className="w-10 h-10 mx-auto text-indigo-300 dark:text-indigo-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                                   </svg>
                                   <p className="text-sm text-indigo-500 font-medium">DVN LOG</p>
                                 </div>
                               </div>
                             )}
-
-                            {/* Hover overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           </div>
-
-                          <div className="p-5 flex flex-col flex-1">
-                            {/* Meta */}
-                            <div className="flex items-center gap-3 mb-2">
+                          <div className="p-4 flex flex-col flex-1 justify-center">
+                            <div className="flex items-center gap-2 mb-2">
                               {dateStr && (
-                                <time dateTime={post.publishedAt} className="text-xs text-slate-400">
-                                  {dateStr}
-                                </time>
+                                <time dateTime={post.publishedAt} className="text-xs text-slate-400">{dateStr}</time>
                               )}
                               <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
                               <span className="text-xs text-slate-400">{readingTime}</span>
-                              <span className="ms-auto">
-                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
-                                  {tag}
-                                </span>
-                              </span>
                             </div>
-
-                            {/* Title */}
-                            <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2 mb-2">
+                            <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2 mb-1">
                               {postTitle}
                             </h3>
-
                             {excerpt && (
-                              <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
-                                {excerpt}
-                              </p>
-                            )}
-
-                            {post.author?.name && (
-                              <div className="flex items-center gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-700/50">
-                                {post.author?.avatar && (
-                                  <Image
-                                    src={post.author.avatar}
-                                    alt={post.author.name}
-                                    width={24}
-                                    height={24}
-                                    className="rounded-full"
-                                  />
-                                )}
-                                <span className="text-sm text-slate-500">{post.author.name}</span>
-                              </div>
+                              <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{excerpt}</p>
                             )}
                           </div>
                         </Link>
