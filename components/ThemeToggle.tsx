@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ solid = false }: { solid?: boolean }) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -14,7 +14,11 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+        className={`p-2 rounded-lg transition-colors ${
+          solid
+            ? 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600'
+            : 'bg-white/10 hover:bg-white/20'
+        }`}
         aria-label="Toggle theme"
       >
         <div className="w-5 h-5" />
@@ -27,7 +31,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 group"
+      className={`p-2 rounded-lg transition-all duration-300 group ${
+        solid
+          ? 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600'
+          : 'bg-white/10 hover:bg-white/20'
+      }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
@@ -49,7 +57,9 @@ export default function ThemeToggle() {
       ) : (
         // Moon icon for light mode (click to switch to dark)
         <svg
-          className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300"
+          className={`w-5 h-5 group-hover:rotate-12 transition-transform duration-300 ${
+            solid ? 'text-slate-700 dark:text-slate-200' : 'text-white'
+          }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

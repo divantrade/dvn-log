@@ -169,8 +169,8 @@ export default function Header() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse">
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <LanguageSwitcher solid={useSolidHeader} />
+            <ThemeToggle solid={useSolidHeader} />
             <Link
               href="/tracking"
               className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105"
@@ -190,8 +190,8 @@ export default function Header() {
 
           {/* Mobile: Language, Theme Toggle & Menu Button */}
           <div className="md:hidden flex items-center space-x-2 rtl:space-x-reverse">
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <LanguageSwitcher solid={useSolidHeader} />
+            <ThemeToggle solid={useSolidHeader} />
             <button
               className={`p-2 rounded-lg transition-colors ${
                 useSolidHeader ? 'text-slate-700 dark:text-slate-200' : 'text-white'
