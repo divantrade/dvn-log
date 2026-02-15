@@ -15,6 +15,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const servicesRef = useRef<HTMLDivElement>(null);
 
   // Pages with dark hero images — need white text on transparent header
@@ -43,7 +45,15 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentY = window.scrollY;
+      setScrolled(currentY > 20);
+      // Hide on scroll down, show on scroll up (only after passing hero area)
+      if (currentY > 100) {
+        setHidden(currentY > lastScrollY.current);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -63,6 +73,8 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        hidden && !isMenuOpen ? '-translate-y-full' : 'translate-y-0'
+      } ${
         useSolidHeader
           ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-black/[0.03] dark:shadow-black/[0.2] border-b border-slate-200/50 dark:border-slate-700/50'
           : 'bg-transparent'
@@ -169,8 +181,8 @@ export default function Header() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse">
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <LanguageSwitcher solid={useSolidHeader} />
+            <ThemeToggle solid={useSolidHeader} />
             <Link
               href="/tracking"
               className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105"
@@ -190,8 +202,8 @@ export default function Header() {
 
           {/* Mobile: Language, Theme Toggle & Menu Button */}
           <div className="md:hidden flex items-center space-x-2 rtl:space-x-reverse">
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <LanguageSwitcher solid={useSolidHeader} />
+            <ThemeToggle solid={useSolidHeader} />
             <button
               className={`p-2 rounded-lg transition-colors ${
                 useSolidHeader ? 'text-slate-700 dark:text-slate-200' : 'text-white'

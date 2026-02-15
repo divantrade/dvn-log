@@ -5,7 +5,7 @@ import { usePathname, useRouter } from '@/i18n/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { locales, localeNames, localeShortNames, localeFlags, type Locale } from '@/i18n/config';
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ solid = false }: { solid?: boolean }) {
   const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
@@ -32,7 +32,11 @@ export default function LanguageSwitcher() {
     <div ref={dropdownRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white text-sm font-medium"
+        className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg transition-colors text-sm font-medium ${
+          solid
+            ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200'
+            : 'bg-white/10 hover:bg-white/20 text-white'
+        }`}
         aria-label="Change language"
       >
         <span className="text-base">{localeFlags[locale]}</span>

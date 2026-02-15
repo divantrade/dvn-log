@@ -60,6 +60,10 @@ export default function EnhancedHeroSlider({
       className="relative h-[100vh] min-h-[600px] overflow-hidden -mt-16 md:-mt-24"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
+      style={{
+        WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
+      }}
     >
       {/* Background Images with Zoom Effect */}
       <div className="absolute inset-0">
@@ -183,9 +187,6 @@ export default function EnhancedHeroSlider({
           </div>
         </div>
       </div>
-
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-[#0a0f1a] to-transparent" />
 
       {/* Loading State */}
       {!isLoaded && (
