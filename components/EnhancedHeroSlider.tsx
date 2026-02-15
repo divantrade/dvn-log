@@ -89,12 +89,7 @@ export default function EnhancedHeroSlider({
       </div>
 
       {/* Modern Gradient Overlays */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(15,23,42,0.70) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.50) 65%, rgba(15,23,42,0.70) 85%, rgba(15,23,42,0.85) 100%)'
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/60" />
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 to-transparent" />
 
       {/* Decorative Grid Overlay */}
@@ -189,19 +184,8 @@ export default function EnhancedHeroSlider({
         </div>
       </div>
 
-      {/* Bottom Gradient Fade — smooth transition to page background */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40"
-        style={{
-          background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 100%)'
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 hidden dark:block"
-        style={{
-          background: 'linear-gradient(to top, rgba(10,15,26,1) 0%, rgba(10,15,26,0.6) 30%, rgba(10,15,26,0.2) 60%, rgba(10,15,26,0) 100%)'
-        }}
-      />
+      {/* Bottom fade — simple short fade to white */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-[#0a0f1a] to-transparent" />
 
       {/* Loading State */}
       {!isLoaded && (

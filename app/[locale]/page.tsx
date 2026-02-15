@@ -235,7 +235,7 @@ export default function HomePage() {
       {/* ===== SERVICES SECTION ===== */}
       <section
         id="services"
-        className="relative -mt-6 pt-8 pb-14 overflow-hidden"
+        className="relative pt-8 pb-14 overflow-hidden"
       >
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
