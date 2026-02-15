@@ -50,19 +50,23 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-black/[0.03] dark:shadow-black/[0.2] border-b border-slate-200/50 dark:border-slate-700/50'
-          : 'bg-gradient-to-b from-black/40 via-black/20 to-transparent'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16 md:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <Link href="/" className={`flex items-center transition-all duration-500 ${
+            scrolled
+              ? ''
+              : 'bg-white/10 backdrop-blur-md rounded-xl px-3 py-1.5'
+          }`}>
             <Image
               src={DVNLogo}
               alt="DVN LOG"
               width={240}
               height={90}
-              className={`transition-all duration-500 ${scrolled ? 'h-14 md:h-[4.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)]' : 'h-16 md:h-[5.5rem] drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.3))_drop-shadow(0_2px_12px_rgba(0,0,0,0.5))]'} w-auto`}
+              className={`transition-all duration-500 ${scrolled ? 'h-14 md:h-[4.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)]' : 'h-14 md:h-[5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.2)]'} w-auto`}
               priority
             />
           </Link>
