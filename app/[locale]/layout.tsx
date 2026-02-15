@@ -31,7 +31,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <NextIntlClientProvider messages={messages}>
         <Providers>
           <Header />
-          <main className="pt-16 md:pt-20">
+          <main className="pt-16 md:pt-24">
             {children}
           </main>
           <Footer />

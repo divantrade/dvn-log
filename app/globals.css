@@ -361,11 +361,11 @@ body {
    ========================================= */
 
 .section-heading {
-  @apply text-center mb-16;
+  @apply text-center mb-8;
 }
 
 .section-heading .heading-wrapper {
-  @apply flex items-center justify-center gap-4 mb-4;
+  @apply flex items-center justify-center gap-4 mb-2;
 }
 
 .section-heading .heading-wrapper h2 {
@@ -378,7 +378,7 @@ body {
 }
 
 .section-heading .section-badge {
-  @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold mb-4;
+  @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold mb-2;
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(59, 130, 246, 0.1));
   color: #6366f1;
 }

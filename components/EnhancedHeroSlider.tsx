@@ -57,7 +57,7 @@ export default function EnhancedHeroSlider({
 
   return (
     <section
-      className="relative h-[100vh] min-h-[600px] overflow-hidden -mt-16 md:-mt-20"
+      className="relative h-[100vh] min-h-[600px] overflow-hidden -mt-16 md:-mt-24"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >

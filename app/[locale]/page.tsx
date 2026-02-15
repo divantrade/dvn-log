@@ -110,7 +110,7 @@ function TrustSignalsSection() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-14 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 mesh-gradient"></div>
 
@@ -235,10 +235,10 @@ export default function HomePage() {
       {/* ===== SERVICES SECTION ===== */}
       <section
         id="services"
-        className="relative py-24 overflow-hidden"
+        className="relative py-14 overflow-hidden"
       >
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
             <div>
               <div className="section-heading text-start mb-0">
                 <div className="section-badge">{tHomepage('specialServices')}</div>
@@ -310,7 +310,7 @@ export default function HomePage() {
       <TrustSignalsSection />
 
       {/* ===== STATS SECTION ===== */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-14 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600"></div>
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px)',
@@ -338,7 +338,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== CLIENT FEEDBACK ===== */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-14 overflow-hidden">
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="section-heading">
             <div className="heading-wrapper">
@@ -434,8 +434,8 @@ export default function HomePage() {
 
 
       {/* ===== CTA SECTION ===== */}
-      <section className="relative mx-auto max-w-7xl px-6 py-12">
-        <div className="cta-modern relative rounded-3xl overflow-hidden py-20 px-8 md:px-16">
+      <section className="relative mx-auto max-w-7xl px-6 py-8">
+        <div className="cta-modern relative rounded-3xl overflow-hidden py-14 px-8 md:px-16">
           {/* Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"></div>
 
@@ -445,7 +445,7 @@ export default function HomePage() {
 
           <div className="relative z-10 text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{tCta('title')}</h2>
-            <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed">{tCta('description')}</p>
+            <p className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed">{tCta('description')}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
@@ -468,7 +468,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== PARTNERS SECTION ===== */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-12 overflow-hidden">
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="section-heading">
             <div className="heading-wrapper">
@@ -523,7 +523,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== ABOUT SECTION ===== */}
-      <section id="about" className="relative py-24 overflow-hidden">
+      <section id="about" className="relative py-14 overflow-hidden">
         <div className="absolute inset-0 mesh-gradient"></div>
 
         <div className="relative mx-auto max-w-7xl px-6">
@@ -665,7 +665,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== LATEST ARTICLES ===== */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-14 overflow-hidden">
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="section-heading">
             <div className="heading-wrapper">
@@ -677,7 +677,7 @@ export default function HomePage() {
 
           {Array.isArray(posts) ? (
             posts.length ? (
-              <div className="space-y-10">
+              <div className="space-y-8">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {posts.slice(0, 3).map((post: any, index: number) => {
                     const postTitle = getLocalizedPostField(post, 'title', locale);

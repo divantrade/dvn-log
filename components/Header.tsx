@@ -54,15 +54,15 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <Image
               src={DVNLogo}
               alt="DVN LOG"
-              width={180}
-              height={68}
-              className={`transition-all duration-500 ${scrolled ? 'h-12 md:h-14' : 'h-14 md:h-16'} w-auto`}
+              width={240}
+              height={90}
+              className={`transition-all duration-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${scrolled ? 'h-14 md:h-[4.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)]' : 'h-16 md:h-[5.5rem]'} w-auto`}
               priority
             />
           </Link>
