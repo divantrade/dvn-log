@@ -11,7 +11,7 @@ export default function Footer() {
   const tNav = useTranslations('nav');
 
   return (
-    <footer className="relative bg-slate-950 text-slate-300 overflow-hidden">
+    <footer className="relative bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-300 overflow-hidden border-t border-slate-200 dark:border-slate-800">
       {/* Decorative Top Border */}
       <div className="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
                 className="h-14 w-auto"
               />
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+            <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
               {t('description')}
             </p>
             <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-indigo-600 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-slate-200/80 dark:bg-slate-800/80 hover:bg-indigo-600 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white transition-all duration-300"
                   aria-label={`Follow us on ${social.label}`}
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('services')}</h3>
+            <h3 className="text-slate-900 dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('services')}</h3>
             <ul className="space-y-3">
               {[
                 { href: "/services/ocean-freight", label: tServices('oceanFreight') },
@@ -70,7 +70,7 @@ export default function Footer() {
                 { href: "/services/customs", label: tServices('customs') },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-slate-400 hover:text-indigo-400 transition-colors duration-200">
+                  <Link href={link.href} className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('company')}</h3>
+            <h3 className="text-slate-900 dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('company')}</h3>
             <ul className="space-y-3">
               {[
                 { href: "/about", label: tNav('aboutUs') },
@@ -91,7 +91,7 @@ export default function Footer() {
                 { href: "/news", label: t('news') },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-slate-400 hover:text-indigo-400 transition-colors duration-200">
+                  <Link href={link.href} className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -101,7 +101,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('contactInfo')}</h3>
+            <h3 className="text-slate-900 dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('contactInfo')}</h3>
             <div className="space-y-4">
               {[
                 {
@@ -122,14 +122,14 @@ export default function Footer() {
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 rounded-lg bg-slate-200/80 dark:bg-slate-800/80 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                     </svg>
                   </div>
                   <div>
                     {item.lines.map((line, i) => (
-                      <p key={i} className="text-sm text-slate-400">{line}</p>
+                      <p key={i} className="text-sm text-slate-500 dark:text-slate-400">{line}</p>
                     ))}
                   </div>
                 </div>
@@ -139,8 +139,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
+        <div className="border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-400 dark:text-slate-500 text-sm">
             &copy; 2025 DVN LOG. {t('rights')}
           </p>
           <div className="flex items-center gap-6">
@@ -149,7 +149,7 @@ export default function Footer() {
               { href: "/terms", label: t('terms') },
               { href: "/cookies", label: t('cookies') },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="text-slate-500 hover:text-indigo-400 text-sm transition-colors duration-200">
+              <Link key={link.href} href={link.href} className="text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-sm transition-colors duration-200">
                 {link.label}
               </Link>
             ))}
