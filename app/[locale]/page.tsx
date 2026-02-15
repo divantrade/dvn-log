@@ -700,7 +700,7 @@ export default function HomePage() {
                     const tag = post.category || 'Logistics';
                     return (
                       <article
-                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-col lg:row-span-2 lg:order-2"
+                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-col lg:row-span-2"
                         style={{ animation: 'fadeInUp 600ms ease-out forwards', opacity: 0 }}
                       >
                         <script
@@ -800,7 +800,7 @@ export default function HomePage() {
                     return (
                       <article
                         key={post._id}
-                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-row lg:flex-row lg:order-1"
+                        className="group card-hover rounded-2xl overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 flex flex-row lg:flex-row"
                         style={{
                           animationDelay: `${(index + 1) * 100}ms`,
                           animation: 'fadeInUp 600ms ease-out forwards',
