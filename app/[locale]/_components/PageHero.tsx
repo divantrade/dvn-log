@@ -10,13 +10,12 @@ type PageHeroProps = {
   zoomOut?: boolean;
 };
 
-// Server component: simple static hero using a consistent image across pages
 export default function PageHero({ title, subtitle, imageAlt = "Maritime logistics hero", image, zoomOut = false }: PageHeroProps) {
   return (
     <section
-      className="relative w-full overflow-hidden text-white [min-height:calc(var(--nav-h,112px)*3.25)]"
+      className="relative w-full overflow-hidden text-white -mt-16 md:-mt-24"
       aria-label="Page hero"
-      style={{ minHeight: "364px" }} // Fixed height to prevent layout shift
+      style={{ minHeight: "364px" }}
     >
       {/* Background image */}
       <div className="absolute inset-0">
@@ -26,21 +25,34 @@ export default function PageHero({ title, subtitle, imageAlt = "Maritime logisti
           fill
           sizes="100vw"
           priority={false}
-          className={"object-cover" + (zoomOut ? " animate-hero-zoom-out animate-hero-subtle-zoom" : "")}
+          className={"object-cover" + (zoomOut ? " animate-hero-zoom-out" : "")}
         />
-        {/* subtle overlay for text legibility */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(30,58,138,0.55)_0%,rgba(59,130,246,0.45)_50%,rgba(96,165,250,0.35)_100%)]" aria-hidden />
+        {/* Modern gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 to-transparent" />
       </div>
+
+      {/* Decorative Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '80px 80px'
+        }}
+      />
 
       {/* Content */}
       {(title || subtitle) && (
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 flex h-full min-h-[inherit] items-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 flex h-full min-h-[inherit] items-center pt-24 md:pt-32">
           <div>
-            {title && <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-sm">{title}</h1>}
-            {subtitle && <p className="mt-2 text-white/85 text-sm md:text-base drop-shadow-sm">{subtitle}</p>}
+            {title && <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm">{title}</h1>}
+            {subtitle && <p className="mt-3 text-white/80 text-base md:text-lg drop-shadow-sm max-w-2xl font-light">{subtitle}</p>}
           </div>
         </div>
       )}
+
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-[#0a0f1a] to-transparent" />
     </section>
   );
 }

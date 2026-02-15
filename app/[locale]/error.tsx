@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center px-6">
+    <main className="min-h-screen bg-white dark:bg-[#0a0f1a] flex items-center justify-center px-6">
       <div className="text-center">
         {/* Error Icon */}
         <div className="mb-8">
@@ -36,19 +36,19 @@ export default function Error({
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
           Something Went Wrong
         </h1>
 
         {/* Description */}
-        <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md mx-auto">
+        <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-md mx-auto">
           We apologize for the inconvenience. An unexpected error has occurred.
           Please try again or contact our support team if the problem persists.
         </p>
 
         {/* Error Details (development only) */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg text-left max-w-lg mx-auto">
+          <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/20 rounded-2xl text-left max-w-lg mx-auto border border-red-200 dark:border-red-800/50">
             <p className="text-sm text-red-800 dark:text-red-200 font-mono break-all">
               {error.message}
             </p>
@@ -64,7 +64,8 @@ export default function Error({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => reset()}
-            className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-xl transition-all hover:scale-105 hover:shadow-lg"
+            style={{ background: 'linear-gradient(135deg, #4f46e5, #7c3aed)' }}
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -73,7 +74,7 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -84,9 +85,9 @@ export default function Error({
 
         {/* Contact Support */}
         <div className="mt-8">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Need help?{' '}
-            <Link href="/contact" className="text-blue-600 dark:text-blue-400 hover:underline">
+            <Link href="/contact" className="text-indigo-600 dark:text-indigo-400 hover:underline">
               Contact our support team
             </Link>
           </p>

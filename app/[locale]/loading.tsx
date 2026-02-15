@@ -1,17 +1,17 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
+    <div className="min-h-screen bg-white dark:bg-[#0a0f1a] flex items-center justify-center">
       <div className="text-center">
         {/* Animated Logo/Spinner */}
         <div className="relative w-20 h-20 mx-auto mb-6">
           {/* Outer ring */}
-          <div className="absolute inset-0 border-4 border-blue-200 dark:border-blue-900 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-indigo-200 dark:border-indigo-900 rounded-full"></div>
           {/* Spinning ring */}
-          <div className="absolute inset-0 border-4 border-transparent border-t-blue-600 rounded-full animate-spin"></div>
+          <div className="absolute inset-0 border-4 border-transparent border-t-indigo-600 rounded-full animate-spin"></div>
           {/* Inner icon */}
           <div className="absolute inset-0 flex items-center justify-center">
             <svg
-              className="w-8 h-8 text-blue-600 dark:text-blue-400"
+              className="w-8 h-8 text-indigo-600 dark:text-indigo-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -27,13 +27,13 @@ export default function Loading() {
         </div>
 
         {/* Loading Text */}
-        <p className="text-slate-600 dark:text-slate-400 font-medium">Loading...</p>
+        <p className="text-gray-500 dark:text-gray-400 font-medium">Loading...</p>
 
         {/* Animated dots */}
         <div className="flex justify-center gap-1 mt-2">
-          <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
-          <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-          <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+          <span className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+          <span className="w-2 h-2 bg-violet-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+          <span className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
         </div>
       </div>
     </div>
