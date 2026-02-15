@@ -89,7 +89,7 @@ export default function EnhancedHeroSlider({
       </div>
 
       {/* Modern Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 to-transparent" />
 
       {/* Decorative Grid Overlay */}
