@@ -11,6 +11,7 @@ import { latestPostsQuery, getLocalizedPostField } from '@/lib/sanity/client-sid
 import { urlForClientSide } from '@/lib/sanity/client-side';
 import EnhancedHeroSlider from '@/components/EnhancedHeroSlider';
 import Counter from './_components/Counter';
+import AnimatedCard from './_components/AnimatedCard';
 import NavHeightObserver from './_components/NavHeightObserver';
 import AnchorSmoothScroll from './_components/AnchorSmoothScroll';
 
@@ -125,13 +126,14 @@ function TrustSignalsSection() {
         </div>
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {trustSignals.map((signal) => (
-            <li
+          {trustSignals.map((signal, idx) => (
+            <AnimatedCard
               key={signal.key}
+              index={idx}
               className="group card-hover rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 p-6 backdrop-blur-sm"
             >
               <div className="flex items-start gap-4 rtl:gap-reverse">
-                <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${signal.bgGradient} ${signal.darkBgGradient} rounded-xl flex items-center justify-center transition-all duration-300`}>
+                <div className={`trust-icon flex-shrink-0 w-12 h-12 bg-gradient-to-br ${signal.bgGradient} ${signal.darkBgGradient} rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
                   <div className={`bg-gradient-to-br ${signal.gradient} bg-clip-text`}>
                     <span className={`text-transparent bg-gradient-to-br ${signal.gradient}`}>
                       {signal.icon}
@@ -147,7 +149,7 @@ function TrustSignalsSection() {
                   </p>
                 </div>
               </div>
-            </li>
+            </AnimatedCard>
           ))}
         </ul>
       </div>
