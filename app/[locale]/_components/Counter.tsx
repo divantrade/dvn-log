@@ -20,7 +20,7 @@ export default function Counter({ value, durationMs = 1200, locale, format, suff
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const nf = new Intl.NumberFormat(locale || undefined, format || (compact ? { notation: 'compact', maximumFractionDigits: 1 } : { maximumFractionDigits: 1 }));
+    const nf = new Intl.NumberFormat('en-US', format || (compact ? { notation: 'compact', maximumFractionDigits: 0 } : { maximumFractionDigits: 0 }));
 
     if (prefersReduced) {
       setDisplay(nf.format(value) + suffix);

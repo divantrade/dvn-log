@@ -61,8 +61,8 @@ export default function EnhancedHeroSlider({
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
       style={{
-        WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
-        maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
       }}
     >
       {/* Background Images with Zoom Effect */}

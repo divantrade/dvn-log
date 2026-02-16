@@ -235,7 +235,7 @@ export default function HomePage() {
       {/* ===== SERVICES SECTION ===== */}
       <section
         id="services"
-        className="relative pt-8 pb-14 overflow-hidden"
+        className="relative -mt-16 pt-8 pb-14 overflow-hidden"
       >
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
@@ -320,14 +320,14 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '2017', label: tAbout('since'), suffix: '' },
-              { value: '50', label: tAbout('countries'), suffix: '+' },
-              { value: '24/7', label: tAbout('supportAvailable'), suffix: '' },
-              { value: '1000', label: tAbout('globalCoverage'), suffix: '+' },
+              { value: '2017', label: tAbout('since'), suffix: '', isStatic: true },
+              { value: '50', label: tAbout('countries'), suffix: '+', isStatic: false },
+              { value: '24/7', label: tAbout('supportAvailable'), suffix: '', isStatic: true },
+              { value: '1000', label: tAbout('globalCoverage'), suffix: '+', isStatic: false },
             ].map((stat, idx) => (
               <div key={idx} className="text-center group">
                 <div className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 tracking-tight">
-                  {stat.value === '24/7' ? '24/7' : <Counter value={parseInt(stat.value)} format={stat.value === '2017' ? { useGrouping: false } : undefined} />}
+                  {stat.isStatic ? stat.value : <Counter value={parseInt(stat.value)} />}
                   {stat.suffix && <span className="text-white/70">{stat.suffix}</span>}
                 </div>
                 <div className="text-sm md:text-base text-white/60 font-medium uppercase tracking-wider">{stat.label}</div>
