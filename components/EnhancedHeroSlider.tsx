@@ -57,12 +57,12 @@ export default function EnhancedHeroSlider({
 
   return (
     <section
-      className="relative h-[75vh] min-h-[480px] overflow-hidden -mt-16 md:-mt-24"
+      className="relative h-[100vh] min-h-[600px] overflow-hidden -mt-16 md:-mt-24"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
       style={{
-        WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
-        maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
       }}
     >
       {/* Background Images with Zoom Effect */}
